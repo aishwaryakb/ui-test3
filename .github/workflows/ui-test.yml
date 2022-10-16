@@ -52,10 +52,10 @@ jobs:
           target: ${{ matrix.target }}
           arch: x86_64
           profile: Nexus 6
-          script: cd ui-test && mvn clean test # running our test to check the results
+          script: mvn clean test # running our test to check the results
       - name: Use the Upload Artifact GitHub Action
         uses: actions/upload-artifact@v2
         with: 
           name: Report-download
-          path: target/surefire-reports/ExtentReportsTestNG.html
+          path: index.html
 
