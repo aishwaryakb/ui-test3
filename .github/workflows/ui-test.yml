@@ -1,8 +1,8 @@
 name: UI Test
 # on push we will trigger our code
 #on: [push]
-on: pull_request
-
+on: 
+  workflow_dispatch:
 jobs:
   build:
     runs-on: macos-latest # the machine type
