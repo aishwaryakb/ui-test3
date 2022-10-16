@@ -33,6 +33,7 @@ public class MyApartmentDocumentsPageTest extends Base {
 	public MyApartmentDocumentsPageTest() {
 		super();
 	}
+	
 	@BeforeMethod
 	public void setup() throws MalformedURLException, InterruptedException {
 		initialization();

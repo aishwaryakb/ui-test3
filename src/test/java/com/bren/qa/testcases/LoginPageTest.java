@@ -28,6 +28,7 @@ public class LoginPageTest extends Base {
 		Thread.sleep(2000);
 		loginPage = launchPage.clickSignInButton();
 	}
+	
 	@Test(priority = 1)
 	public void loginPageContentsVerification() {
 		boolean isLoginPageDisplayed = loginPage.isLoginPageIsDisplayed();

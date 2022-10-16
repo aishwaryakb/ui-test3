@@ -32,6 +32,7 @@ public class SingleApartmentAccountTest extends Base {
 	public SingleApartmentAccountTest() {
 		super();
 	}
+	
 	@BeforeMethod
 	public void setup() throws MalformedURLException, InterruptedException {
 		initialization();

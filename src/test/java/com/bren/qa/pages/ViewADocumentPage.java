@@ -31,6 +31,7 @@ public class ViewADocumentPage extends Base{
 				driver.findElementsByClassName("android.widget.ImageView").size() > 0) {
 			return true;
 		}
+		
 		else 
 			return false;
 	}

@@ -21,7 +21,6 @@ public class RewardsPage extends Base {
 	
 	@FindBy(xpath ="//*[@content-desc='name']")
 	public WebElement nameInReferralCard;
-	
 	@FindBy(xpath ="//*[@content-desc='mobileNumber']")
 	public WebElement mobileNumberInReferralCard;
 	

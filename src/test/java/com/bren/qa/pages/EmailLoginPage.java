@@ -26,7 +26,6 @@ public class EmailLoginPage extends Base{
 	WebElement sendOtpButton;
 	@FindBy(xpath = "//*[@text = 'Please enter a valid email']")
 	WebElement invalidEmailMessage;
-
 	public EmailLoginPage() {
 		PageFactory.initElements(driver, this);
 	}

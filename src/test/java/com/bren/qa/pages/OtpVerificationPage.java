@@ -27,6 +27,7 @@ public class OtpVerificationPage extends Base{
 	public OtpVerificationPage() {
 		PageFactory.initElements(driver, this);
 	}
+	
 	public SingleApartmentHomePage inputOtp(String otp) {
 		enterOTPField.click();
 		action.sendKeys(otp).perform();

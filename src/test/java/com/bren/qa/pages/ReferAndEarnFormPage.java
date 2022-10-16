@@ -18,6 +18,7 @@ public class ReferAndEarnFormPage extends Base{
 	@FindBy(xpath = "//*[@text ='Enter the details of your friend and a Bren customer support "
 			+ "executive will get in touch with them']")
 	public WebElement formDescreption;
+	
 	@FindBy(xpath = "//*[@text ='First name']")
 	public WebElement firstNameTitle;
 	@FindBy(xpath = "//android.widget.EditText[@index ='2']")

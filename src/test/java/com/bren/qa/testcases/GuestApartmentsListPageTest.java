@@ -31,7 +31,6 @@ public class GuestApartmentsListPageTest extends Base{
 		Thread.sleep(4000);
 		apartmentsListPage = guestHomePage.clickApartmentsTab();
 	}
-	
 	@Test(priority = 1)
 	public void verifyApartmentTabPage() {
 		apartmentsListPage.verifyApartmentsTabPage();

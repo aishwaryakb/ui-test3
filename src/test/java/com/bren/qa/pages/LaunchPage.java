@@ -19,6 +19,7 @@ public class LaunchPage extends Base {
 	public LaunchPage() {
 		PageFactory.initElements(driver, this);
 	}
+	
 	public boolean validateLogoDisplayed() {
 		return brenLogo.isDisplayed();
 	}

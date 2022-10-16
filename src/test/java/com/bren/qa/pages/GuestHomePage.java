@@ -30,7 +30,6 @@ public class GuestHomePage extends Base{
 		Assert.assertTrue(profileTab.isDisplayed(), "Profile-Tab isn't showing");
 		ExtentManager.getExtentTest().log(Status.PASS, "Profile-Tab is Displayed");
 	}
-	
 	public ApartmentsListPage clickApartmentsTab() {
 		apartmentsTab.click();
 		return new ApartmentsListPage(); 

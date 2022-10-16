@@ -70,7 +70,6 @@ public class GetInTouchFormPage extends Base {
 	public boolean issubmitButtonIsDisplayed() {
 		return submitButton.isDisplayed();
 	}
-	
 	public boolean isConfirmationScreenOrExistingReferalMessageIsDisplayed(String firstNameFieldValue) {
 		String referAFriendConfirmationMessage = "A Bren customer support executive will get in touch with "+firstNameFieldValue+ " soon";
 		String alreadyExistingReferalMessage = "The contact information that you shared already exists in our system. We appreciate your time";

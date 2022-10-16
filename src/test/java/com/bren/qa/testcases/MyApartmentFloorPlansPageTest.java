@@ -38,6 +38,7 @@ public class MyApartmentFloorPlansPageTest extends Base {
 	public MyApartmentFloorPlansPageTest() {
 		super();
 	}
+	
 	@BeforeMethod
 	public void setup() throws MalformedURLException, InterruptedException {
 		initialization();

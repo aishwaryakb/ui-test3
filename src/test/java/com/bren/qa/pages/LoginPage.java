@@ -30,6 +30,7 @@ public class LoginPage extends Base {
 	public LoginPage() {
 		PageFactory.initElements(driver, this);
 	}
+	
 	public OtpVerificationPage inputNumber(String number) {
 		String expectedToastMessage = "OTP is sent successfully";
 		mobileInputField.sendKeys(number);

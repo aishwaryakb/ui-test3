@@ -31,6 +31,7 @@ public class EmailLoginPageTest extends Base {
 		loginPage = launchPage.clickSignInButton();
 		emailLoginPage = loginPage.clickOnUseMail();
 	}
+	
 	@Test(priority = 1)
 	public void emailLoginPageContentsVerification() {
 		boolean isLoginPageDisplayed = emailLoginPage.isLoginPageIsDisplayed();

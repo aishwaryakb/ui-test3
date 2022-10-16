@@ -42,6 +42,7 @@ public class InteriorDesignPackagesListPageTest extends Base {
 		myHomePage.scrollDownUntil(referAndEarnTitle);
 		interiorDesignPackagesListPage = myHomePage.clickViewOptions();
 	}
+	
 	@Test(priority = 1)
 	public void verifyInteriorDesignPackageCardContents() { 
 		Assert.assertEquals(interiorDesignPackagesListPage.pageHeading.getAttribute("text"), expectedPageHeading);

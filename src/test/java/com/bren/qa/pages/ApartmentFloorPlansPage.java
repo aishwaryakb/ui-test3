@@ -24,7 +24,6 @@ public class ApartmentFloorPlansPage extends Base{
 	public ApartmentFloorPlansPage() {
 		PageFactory.initElements(driver, this);
 	}
-	
 	public void clickDownload() {
 		downloadButton.click();
 	}

@@ -30,6 +30,7 @@ public class OtpVerificationPageTest extends Base {
 		otpVerificationPage = loginPage.enterNumber(prop.get("number").toString());
 		Thread.sleep(8000);
 	}
+	
 	@Test(priority = 1)
 	public void otpPageContentsVerification() {
 		boolean isInfoMessageDisplayed = otpVerificationPage.infoMessageIsDisplayed();

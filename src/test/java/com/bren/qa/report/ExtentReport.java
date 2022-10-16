@@ -21,3 +21,4 @@ public class ExtentReport {
 		ExtentManager.setExtentTest(extent.createTest(testcaseName, className));
 	}
 }
+

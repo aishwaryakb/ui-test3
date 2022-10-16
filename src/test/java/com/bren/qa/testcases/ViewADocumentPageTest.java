@@ -32,6 +32,7 @@ public class ViewADocumentPageTest extends Base {
 	public ViewADocumentPageTest() {
 		super();
 	}
+	
 	@BeforeMethod
 	public void setup() throws MalformedURLException, InterruptedException {
 		initialization();

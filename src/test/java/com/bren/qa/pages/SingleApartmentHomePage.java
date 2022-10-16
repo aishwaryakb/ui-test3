@@ -253,6 +253,7 @@ public class SingleApartmentHomePage extends Base {
 	public boolean viewOptionsIsDisplayed() {
 		return interiorDesignName.isDisplayed();
 	}
+	
 	public boolean referFriendAndEarnViewIsDisplayed() {
 		return referFriendAndEarnView.isDisplayed();
 	}

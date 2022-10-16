@@ -32,6 +32,7 @@ public class OwnerProfilePageTest extends Base {
 	public OwnerProfilePageTest() {
 		super();
 	}
+	
 	@BeforeMethod
 	public void setup() throws MalformedURLException, InterruptedException {
 		initialization();

@@ -23,7 +23,6 @@ public class DocumentsPage extends Base{
 	public DocumentsPage() {
 		PageFactory.initElements(driver, this);
 	}
-	
 	public ViewADocumentPage clickOnOneDoc() {
 		docIconElement.click();
 		return new ViewADocumentPage();

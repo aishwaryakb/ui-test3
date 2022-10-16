@@ -37,7 +37,6 @@ public class ApartmentDetailPageTest extends Base {
 	ReferAndEarnFormPage referAndEarnFormPage;
 	
 	
-	
 	public ApartmentDetailPageTest() {
 		super();
 	}

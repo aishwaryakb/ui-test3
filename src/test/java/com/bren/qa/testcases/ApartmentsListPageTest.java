@@ -26,7 +26,6 @@ public class ApartmentsListPageTest extends Base {
 	ApartmentDetailPage apartmentDetailPage;
 	
 	
-	
 	public ApartmentsListPageTest() {
 		super();
 	}

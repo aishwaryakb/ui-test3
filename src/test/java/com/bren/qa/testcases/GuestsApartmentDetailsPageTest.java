@@ -29,7 +29,6 @@ public class GuestsApartmentDetailsPageTest extends Base {
 	public GuestsApartmentDetailsPageTest() {
 		super();
 	}
-	
 	@BeforeMethod
 	public void setup() throws MalformedURLException, InterruptedException {
 		initialization();

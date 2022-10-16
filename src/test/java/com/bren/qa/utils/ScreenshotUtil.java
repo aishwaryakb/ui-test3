@@ -8,3 +8,4 @@ public final class ScreenshotUtil {
 		return ((TakesScreenshot)Base.driver).getScreenshotAs(OutputType.BASE64);
 	}
 }
+

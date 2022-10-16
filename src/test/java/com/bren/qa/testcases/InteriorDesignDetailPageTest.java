@@ -32,6 +32,7 @@ public class InteriorDesignDetailPageTest extends Base {
 	String interiorDesignTitle = "Explore interior design furnishings for your home";
 	String expectedPageHeading = "Interior design details";
 	
+	
 	public InteriorDesignDetailPageTest() {
 		super();
 	}

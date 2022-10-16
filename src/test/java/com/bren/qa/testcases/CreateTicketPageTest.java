@@ -33,6 +33,7 @@ public class CreateTicketPageTest extends Base{
 	CreateTicketPage createTicketPage;
 	TicketCreationSuccessPage ticketCreationSuccessPage;
 	MyTicketsPage myTicketsPage;
+	
 	public CreateTicketPageTest() {
 		super();
 	}

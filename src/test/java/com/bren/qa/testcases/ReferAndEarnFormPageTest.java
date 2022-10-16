@@ -35,7 +35,6 @@ public class ReferAndEarnFormPageTest extends Base{
 	public ReferAndEarnFormPageTest() {
 		super();
 	}
-	
 	@BeforeMethod
 	public void setup() throws MalformedURLException, InterruptedException {
 		initialization();
