@@ -20,9 +20,15 @@ jobs:
         run: |
           chmod +x ./scripts/RunAppiumServer.sh # install and run appium server in the background
           ./scripts/RunAppiumServer.sh
-
-      - name: Gradle cache
-        uses: gradle/gradle-build-action@v2
+      
+      - name: Cache Maven packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+#       - name: Gradle cache
+#         uses: gradle/gradle-build-action@v2
 
       - name: AVD cache
         uses: actions/cache@v3
