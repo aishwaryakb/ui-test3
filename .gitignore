@@ -1,0 +1,33 @@
+
+
+# Target folder
+target/
+
+# Test folder
+test-output/
+
+# index.html file
+index.html
+
+# .class file
+.classpath
+
+# .metadata
+.metadata/
+
+# ui-test/.metadata
+
+ui-test/.metadata/
+
+#.project file
+.project
+
+#.classpath file
+.classpath
+
+# settings
+
+.settings/
+
+#bin folder
+bin/
