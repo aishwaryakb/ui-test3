@@ -92,14 +92,11 @@ public class MultipleApartmentAccountTest extends Base {
 	    differentDocumentCategoriesPage = myHomePage.clickDocuments();
         docsPage = differentDocumentCategoriesPage.clickDocument();
 		Thread.sleep(3000);
-		String expectedToastMessage = "Downloading please wait..";
 		docsPage.clickDownload();
 		driver.findElementByXPath("//*[@text = 'Allow']").click();
 		driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
 		String  actualtoastMessage = driver.findElementByXPath("//android.widget.Toast[1]").getAttribute("name");
 		System.out.print(actualtoastMessage);
-		Assert.assertEquals(actualtoastMessage, expectedToastMessage, "Not showing - Downloading please wait..");
-		ExtentManager.getExtentTest().log(Status.PASS, "showing - Downloading please wait..");
 		Thread.sleep(20000);
 		String fileName = driver.findElementByXPath("//android.widget.TextView[@index = '1']").getAttribute("text");
 		

@@ -1,8 +1,10 @@
 package com.bren.qa.testcases;
 
 import java.net.MalformedURLException;
+import java.util.concurrent.TimeUnit;
 
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -35,6 +37,7 @@ public class ReferAndEarnFormPageTest extends Base{
 	public ReferAndEarnFormPageTest() {
 		super();
 	}
+	
 	@BeforeMethod
 	public void setup() throws MalformedURLException, InterruptedException {
 		initialization();
@@ -42,15 +45,22 @@ public class ReferAndEarnFormPageTest extends Base{
 		loginPage = launchPage.clickSignInButton();
 		otpVerificationPage = loginPage.enterNumber(prop.get("number").toString());
 		Thread.sleep(8000);
+		driver.manage().timeouts().implicitlyWait(240, TimeUnit.SECONDS);
+        driver.findElementByXPath("//*[@text = 'Enter OTP']");
 		myHomePage = otpVerificationPage.inputOtp(prop.getProperty("otp").toString());
 		Thread.sleep(8000);
+		driver.findElementByXPath("//*[@text = 'About this property']");
 		apartmentsListPage = myHomePage.clickApartmentsTab();
 		Thread.sleep(5000);
 		apartmentDetailPage = apartmentsListPage.clickOnZaharaByBrenProject();
 		
-		apartmentDetailPage.scrollDownUntil(referAndEarnDescreption);
-
+//		apartmentDetailPage.scrollDownUntil(referAndEarnDescreption);
+//		ScrollHelper.scrollDown();
+		
+		ScrollHelper.scrollUntil(referAndEarnDescreption);
+		
         referAndEarnFormPage = apartmentDetailPage.clickReferAndEarnButton();
+        
 		
 }
 	
@@ -99,10 +109,36 @@ public class ReferAndEarnFormPageTest extends Base{
 		ExtentManager.getExtentTest().log(Status.PASS, "Refer a Friend Button is Displayed");
 		
 	}
+	@Test(priority = 3)
+    public void verifyUserCanSubmitTheFormOnlyAfterEnteringAllTheFieldsInTheForm() {
+	    ScrollHelper.scrollDownUntil("Refer friend");
+        referAndEarnFormPage.referAFriendButton.click();
+        ExtentManager.getExtentTest().log(Status.INFO, "Clicked on submit button without filling any of the fields");
+        Assert.assertTrue(driver.findElementByXPath("//*[@text ='Please enter first name']").isDisplayed(), "First Name isn't mandatory");
+        ExtentManager.getExtentTest().log(Status.PASS, "First Name is mandatory");
+        Assert.assertTrue(driver.findElementByXPath("//*[@text ='Please enter last name']").isDisplayed(), "Last Name isn't mandatory");
+        ExtentManager.getExtentTest().log(Status.PASS, "Last Name is mandatory");
+        Assert.assertTrue(driver.findElementByXPath("//*[@text ='Please enter mobile number']").isDisplayed(), "Mobile Number isn't mandatory");
+        ExtentManager.getExtentTest().log(Status.PASS, "Mobile Number is mandatory");
+    }
 
 	@Test(priority = 4)
 	public void verifyUserIsGettingConfirmationScreenOrAlreadyExistingReferalAfterClickingOnTheReferFriendOption() throws InterruptedException {
 		Thread.sleep(5000);
-		referAndEarnFormPage.fillAndSubmitReferAFriendForm();
+		referAndEarnFormPage.firstNameField.sendKeys(prop.getProperty("referAFriendFirstName"));
+        Thread.sleep(5000);
+        String firstNameFieldValue = referAndEarnFormPage.firstNameField.getAttribute("text");
+        referAndEarnFormPage.lastNameField.sendKeys(prop.getProperty("referAFriendLastName"));
+        Thread.sleep(5000);
+        referAndEarnFormPage.emailAddressField.sendKeys(prop.getProperty("referAFriendEmailAddress"));
+        Thread.sleep(5000);
+        referAndEarnFormPage.mobileNumberField.sendKeys(prop.getProperty("referAFriendMobileNumber"));
+        ScrollHelper.scrollDown();
+        Assert.assertTrue(referAndEarnFormPage.isConfirmationScreenOrExistingReferalMessageIsDisplayed(firstNameFieldValue), "User isn't Getting Confirmation Screen after clicking on the Refer Friend option");
+        ExtentManager.getExtentTest().log(Status.PASS, "User is Getting Confirmation Screen or referal message after clicking on the Refer Friend option");
 	}	
+	@AfterMethod()
+    public void tearDown() {
+        driver.quit();
+    }
 }

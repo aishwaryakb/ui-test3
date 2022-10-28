@@ -1,5 +1,6 @@
 package com.bren.qa.testcases;
 import java.net.MalformedURLException;
+import java.util.concurrent.TimeUnit;
 
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -32,7 +33,6 @@ public class SingleApartmentAccountTest extends Base {
 	public SingleApartmentAccountTest() {
 		super();
 	}
-	
 	@BeforeMethod
 	public void setup() throws MalformedURLException, InterruptedException {
 		initialization();
@@ -40,6 +40,8 @@ public class SingleApartmentAccountTest extends Base {
 		loginPage = launchPage.clickSignInButton();
 		otpVerificationPage = loginPage.enterNumber(prop.get("number").toString());
 		Thread.sleep(8000);
+		driver.manage().timeouts().implicitlyWait(240, TimeUnit.SECONDS);
+        driver.findElementByXPath("//*[@text = 'Enter OTP']");
 		myHomePage = otpVerificationPage.inputOtp(prop.getProperty("otp").toString());
 	}
 	@Test(priority = 1)
@@ -85,8 +87,20 @@ public class SingleApartmentAccountTest extends Base {
 		ScrollHelper.scrollDown();
 		referAndEarnFormPage = myHomePage.clickReferAFriendButton();
 		ExtentManager.getExtentTest().log(Status.INFO, "Clicked on Refer A Friend Button");
-		referAndEarnFormPage.fillAndSubmitReferAFriendForm();
-		ExtentManager.getExtentTest().log(Status.PASS, "Submitted Refer A Friend Form");
+		referAndEarnFormPage.firstNameField.sendKeys(prop.getProperty("referAFriendFirstName"));
+        Thread.sleep(5000);
+        String firstNameFieldValue = referAndEarnFormPage.firstNameField.getAttribute("text");
+        referAndEarnFormPage.lastNameField.sendKeys(prop.getProperty("referAFriendLastName"));
+        Thread.sleep(5000);
+        referAndEarnFormPage.emailAddressField.sendKeys(prop.getProperty("referAFriendEmailAddress"));
+        Thread.sleep(5000);
+        referAndEarnFormPage.mobileNumberField.sendKeys(prop.getProperty("referAFriendMobileNumber"));
+        ScrollHelper.scrollDown();
+        Assert.assertTrue(referAndEarnFormPage.isConfirmationScreenOrExistingReferalMessageIsDisplayed(firstNameFieldValue), "User isn't Getting Confirmation Screen after clicking on the Refer Friend option");
+        ExtentManager.getExtentTest().log(Status.PASS, "User is Getting Confirmation Screen or referal message after clicking on the Refer Friend option");
+        
+//		referAndEarnFormPage.fillAndSubmitReferAFriendForm();
+//		ExtentManager.getExtentTest().log(Status.PASS, "Submitted Refer A Friend Form");
 	}
 	@AfterMethod()
 	public void tearDown() {

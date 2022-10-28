@@ -29,6 +29,7 @@ public class GuestsApartmentDetailsPageTest extends Base {
 	public GuestsApartmentDetailsPageTest() {
 		super();
 	}
+	
 	@BeforeMethod
 	public void setup() throws MalformedURLException, InterruptedException {
 		initialization();
@@ -42,7 +43,7 @@ public class GuestsApartmentDetailsPageTest extends Base {
 	}
 	@Test(priority = 1)
 	public void verifyTheUserCanSubmitTheFormOnlyAfterEnteringAllTheFieldsInTheForm() {
-		ScrollHelper.scrollDownUntil("Submit");
+		ScrollHelper.scrollUntil("Submit");
 		getInTouchFormPage.submitButton.click();
 		ExtentManager.getExtentTest().log(Status.INFO, "Clicked on submit button withtout filling any of the fields");
 		Assert.assertTrue(driver.findElementByXPath("//*[@text ='Please enter first name']").isDisplayed(), "First Name isn't mandatory");
@@ -54,7 +55,7 @@ public class GuestsApartmentDetailsPageTest extends Base {
 	}
 	@Test(priority = 2)
 	public void verifyUserIsGettingConfirmationScreenOrAlreadyExistingReferalAfterSubmittingGetInTouchFormOption() throws InterruptedException {
-		ScrollHelper.scrollDownUntil("Submit");
+		ScrollHelper.scrollUntil("Submit");
 		getInTouchFormPage.firstNameInputField.sendKeys(prop.getProperty("referAFriendFirstName"));
 		Thread.sleep(5000);
 		String firstNameFieldValue = driver.findElementsByClassName("android.widget.EditText").get(0).getAttribute("text");

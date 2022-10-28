@@ -39,7 +39,6 @@ public class LaunchPageTest extends Base{
 		Assert.assertTrue(isContinueAsGuestDisplayed,"Continue-as-guest button isnt displayed");	
 		ExtentManager.getExtentTest().log(Status.PASS, "Continue-as-guest button is displayed");		
 	}
-	
 	@Test(priority = 2)
 	public void continueAsGuestOptionVerification() throws InterruptedException {
 		guestHomePage = launchPage.clickContinueAsGuest();

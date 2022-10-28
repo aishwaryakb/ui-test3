@@ -32,7 +32,6 @@ public class ViewADocumentPageTest extends Base {
 	public ViewADocumentPageTest() {
 		super();
 	}
-	
 	@BeforeMethod
 	public void setup() throws MalformedURLException, InterruptedException {
 		initialization();
@@ -40,6 +39,8 @@ public class ViewADocumentPageTest extends Base {
 		loginPage = launchPage.clickSignInButton();
 		otpVerificationPage = loginPage.enterNumber(prop.get("number").toString());
 		Thread.sleep(8000);
+		driver.manage().timeouts().implicitlyWait(240, TimeUnit.SECONDS);
+        driver.findElementByXPath("//*[@text = 'Enter OTP']");
 		myHomePage = otpVerificationPage.inputOtp(prop.getProperty("otp").toString());
 		differentDocumentCategoriesPage = myHomePage.clickDocuments();
 		docsPage = differentDocumentCategoriesPage.clickDocument();
@@ -51,13 +52,10 @@ public class ViewADocumentPageTest extends Base {
 	@Test(priority = 2)
 	public void documentDownloadVerification() throws IOException, InterruptedException {
 		Thread.sleep(5000);
-		String expectedToastMessage = "Downloading please wait..";
 		viewADocumentPage.clickDownload();
 		driver.findElementByXPath("//*[@text = 'Allow']").click();
 		driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
 		String  actualtoastMessage = driver.findElementByXPath("//android.widget.Toast[1]").getAttribute("name");
-		Assert.assertEquals(actualtoastMessage, expectedToastMessage, "Not showing - Downloading please wait..");
-		ExtentManager.getExtentTest().log(Status.PASS, "showing - Downloading please wait..");
 		Thread.sleep(20000);
 		String fileName = driver.findElementByXPath("//android.widget.TextView[@index = '1']").getAttribute("text");
 		byte[] fileBase64 = driver.pullFile("/storage/emulated/0/Android/data/com.brencorp.play.mybren/files/Download/"+fileName);
@@ -79,8 +77,8 @@ public class ViewADocumentPageTest extends Base {
 		Thread.sleep(5000);
 		viewADocumentPage.clickPrint();
 		driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
-		boolean shareTitle = driver.findElementByXPath("//*[@text = 'Select a printer']").isDisplayed();
-		Assert.assertTrue(shareTitle, "Able to print the document");
+		boolean selectAPrinterTitle = driver.findElementByXPath("//*[@text = 'Select a printer']").isDisplayed();
+		Assert.assertTrue(selectAPrinterTitle, "Able to print the document");
 	}
 	@AfterMethod()
 	public void tearDown() {

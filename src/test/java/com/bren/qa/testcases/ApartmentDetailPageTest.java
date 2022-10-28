@@ -23,6 +23,7 @@ import com.bren.qa.pages.ReferAndEarnFormPage;
 import com.bren.qa.pages.SingleApartmentHomePage;
 import com.bren.qa.report.ExtentManager;
 
+
 public class ApartmentDetailPageTest extends Base {
 	String portraitMode ="PORTRAIT";
 	String referAndEarnDescreption = "Refer people to buy an apartment with Bren and "
@@ -47,8 +48,11 @@ public class ApartmentDetailPageTest extends Base {
 		loginPage = launchPage.clickSignInButton();
 		otpVerificationPage = loginPage.enterNumber(prop.get("number").toString());
 		Thread.sleep(8000);
+		driver.manage().timeouts().implicitlyWait(240, TimeUnit.SECONDS);
+		driver.findElementByXPath("//*[@text = 'Enter OTP']");
 		myHomePage = otpVerificationPage.inputOtp(prop.getProperty("otp").toString());
 		Thread.sleep(8000);
+		driver.findElementByXPath("//*[@text = 'About this property']");
 		apartmentsListPage = myHomePage.clickApartmentsTab();
 		Thread.sleep(5000);
 		apartmentDetailPage = apartmentsListPage.clickOnZaharaByBrenProject();
@@ -73,7 +77,7 @@ public class ApartmentDetailPageTest extends Base {
 		Assert.assertTrue(apartmentDetailPage.projectImageContainerIsDisplayed(), "Project Image Container isn't displayed");
 		ExtentManager.getExtentTest().log(Status.PASS, "Project Image Container is displayed");
 		
-		apartmentDetailPage.scrollDownUntil("LOCATION");
+		ScrollHelper.scrollDownUntil("LOCATION");
 		Assert.assertTrue(apartmentDetailPage.locationSection.isDisplayed(), "Location section isn't displayed");
 		ExtentManager.getExtentTest().log(Status.PASS, "Location section is displayed");
 		
@@ -105,7 +109,7 @@ public class ApartmentDetailPageTest extends Base {
 	
 	@Test(priority = 18)
 	public void verifyThatTheUserCanSeeTheListOfAllSpecificationsByClickingOnTheViewMoreOption() {
-		ScrollHelper.scrollDownUntil("SPECIFICATIONS");
+		ScrollHelper.scrollUntil("SPECIFICATIONS");
 		try {
 			driver.findElementByXPath("//*[@text = 'View more']").click();
 		}
@@ -178,7 +182,7 @@ public class ApartmentDetailPageTest extends Base {
 	
 	@Test(priority = 10)
 	public void verifyUserCanSlideAllImagesAddedinTheHighlights() throws InterruptedException {
-        apartmentDetailPage.scrollDownUntil("WALKTHROUGH");
+        ScrollHelper.scrollUntil("WALKTHROUGH");
         ScrollHelper.scrollUp();
 		Assert.assertTrue(apartmentDetailPage.highLightsSubTitle1IsDisplayed(), "First Highlights section is not displayed");
 		ExtentManager.getExtentTest().log(Status.PASS, "First HighLight Is Displayed");
@@ -211,7 +215,7 @@ public class ApartmentDetailPageTest extends Base {
 	
 	@Test(priority = 10)
 	public void verifyWalkthroughVideoAddedInTheDetailScreenIsPlayingWhenClickingOnIt() {
-		apartmentDetailPage.scrollDownUntil("WALKTHROUGH");
+	    ScrollHelper.scrollUntil("WALKTHROUGH");
 		apartmentDetailPage.clickYoutubeVideContainer();
 		Assert.assertTrue(apartmentDetailPage.pauseButtonIsDisplayed(), "Walkthrough Video Added In The Detail Screen Is Playing When Clicking On It");
 		ExtentManager.getExtentTest().log(Status.PASS, "Verified Walkthrough Video Added In The Detail Screen is Playing When Clicking On It");
@@ -219,7 +223,7 @@ public class ApartmentDetailPageTest extends Base {
 	@Test(priority = 11)
 	public void verifyThatUserCanViewTheWalkthroughVideoInFullScreen() throws InterruptedException {
 		System.out.println(driver.getOrientation());
-		apartmentDetailPage.scrollDownUntil("WALKTHROUGH");
+		ScrollHelper.scrollUntil("WALKTHROUGH");
 		apartmentDetailPage.clickYoutubeVideContainer();
 		driver.findElementByXPath("//*[@text = 'Full screen']").click();
 		Thread.sleep(3000);
@@ -229,7 +233,7 @@ public class ApartmentDetailPageTest extends Base {
 	@Test(priority = 12)
 	public void verifyAmenitiesSection() {
 		
-		apartmentDetailPage.scrollDownUntil("AMENITIES");
+	    ScrollHelper.scrollUntil("AMENITIES");
 		ScrollHelper.scrollDown();
 		Assert.assertTrue(apartmentDetailPage.amenitiesTitleIsDisplayed(), "Amenities Title isn't displayed");
 		ExtentManager.getExtentTest().log(Status.PASS, "Amenities Title Is Displayed");	
@@ -245,7 +249,7 @@ public class ApartmentDetailPageTest extends Base {
 	@Test(priority = 12)
 	
 	public void verifyUserCanClickOnDropDownArrowOnSpecificationForADetailedList() {
-		apartmentDetailPage.scrollDownUntil("REQUEST FOR A CALLBACK");
+	    ScrollHelper.scrollUntil("REQUEST FOR A CALLBACK");
 		driver.findElementsByXPath("//*[@resource-id = 'downArrow']").get(0).click();
 		Assert.assertTrue(apartmentDetailPage.detailsOfSpecification.isDisplayed(), "Clicking on Drop Down Arrow on a Specification isn't opening a DetailedList");
 		ExtentManager.getExtentTest().log(Status.PASS, "Clicking on Drop Down Arrow on a Specification opens a Detailed List");	
@@ -256,7 +260,7 @@ public class ApartmentDetailPageTest extends Base {
 	public void verifyUserWillGetPopupMessageWhenClickOnRequestForACallBackFromApartmentDetailScreen() throws InterruptedException {
 		String  actualtoastMessage;
 		String expectedToastMessage = "The contact information that you shared already exists in our system. We appreciate your time";
-		apartmentDetailPage.scrollDownUntil("Refer and earn");
+		ScrollHelper.scrollUntil("Refer and earn");
 		apartmentDetailPage.requestForACallBackButton.click();
 		Thread.sleep(60000);
 		apartmentDetailPage.requestForACallBackButton.click(); 
@@ -267,7 +271,7 @@ public class ApartmentDetailPageTest extends Base {
 	}
 	@Test(priority = 14)
 	public void verifyReferAFriendFormIsOpeningWhenUserClicksOnTheReferAFriendOptionFromApartmentDetailsScreen() {
-		apartmentDetailPage.scrollDownUntil(referAndEarnDescreption);
+	    ScrollHelper.scrollUntil(referAndEarnDescreption);
 		ScrollHelper.scrollDown();
 		referAndEarnFormPage = apartmentDetailPage.clickReferAndEarnButton();
 		Assert.assertTrue(referAndEarnFormPage.formDescreption.isDisplayed(), "Refer And Earn Form is not opening");
@@ -278,7 +282,8 @@ public class ApartmentDetailPageTest extends Base {
 	public void verifyThatReferAFriendFormShouldBePreselectedWithCorrespondingApartment() throws InterruptedException {
 		String projectTitle = driver.findElementByXPath("//android.widget.TextView[@index ='0']").getAttribute("text");
 		System.out.println(projectTitle);
-		apartmentDetailPage.scrollDownUntil(referAndEarnDescreption);
+		ScrollHelper.scrollUntil(referAndEarnDescreption);
+		ScrollHelper.scrollDown();
 		referAndEarnFormPage = apartmentDetailPage.clickReferAndEarnButton();
 		String preSelectedApartment = driver.findElementByXPath("//*[@resource-id = 'text_input']").getAttribute("text");
 		System.out.println(preSelectedApartment);
@@ -289,7 +294,8 @@ public class ApartmentDetailPageTest extends Base {
 	
 	@Test(priority = 16)
 	public void verifyUserIsGettingConfirmationScreenOrAlreadyExistingReferalAfterClickingOnTheReferFriendOption() throws InterruptedException {
-		apartmentDetailPage.scrollDownUntil(referAndEarnDescreption);
+	    ScrollHelper.scrollUntil(referAndEarnDescreption);
+		ScrollHelper.scrollDown();
 		referAndEarnFormPage = apartmentDetailPage.clickReferAndEarnButton();
 		Thread.sleep(5000);
 		referAndEarnFormPage.firstNameField.sendKeys(prop.getProperty("referAFriendFirstName"));

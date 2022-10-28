@@ -3,6 +3,7 @@ package com.bren.qa.testcases;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -33,7 +34,6 @@ public class CreateTicketPageTest extends Base{
 	CreateTicketPage createTicketPage;
 	TicketCreationSuccessPage ticketCreationSuccessPage;
 	MyTicketsPage myTicketsPage;
-	
 	public CreateTicketPageTest() {
 		super();
 	}
@@ -44,6 +44,8 @@ public class CreateTicketPageTest extends Base{
 		loginPage = launchPage.clickSignInButton();
 		otpVerificationPage = loginPage.enterNumber(prop.get("multpleApartmentsOwnerNumber").toString());
 		Thread.sleep(8000);
+		driver.manage().timeouts().implicitlyWait(240, TimeUnit.SECONDS);
+        driver.findElementByXPath("//*[@text = 'Enter OTP']");
 		myHomePage = otpVerificationPage.inputOtp2(prop.getProperty("multpleApartmentsOwnerOtp").toString());
 		Thread.sleep(3000);
 		createTicketPage = myHomePage.clickCreateTicketButton();
@@ -131,22 +133,12 @@ public class CreateTicketPageTest extends Base{
 		ScrollHelper.scrollDown();
 		createTicketPage.chooseFileButton.click();
 		// upload file start
-		driver.pushFile("/storage/emulated/0/Android/data/com.brencorp.play.mybren/files/Download/Manual-Readability.pdf", new File("src\\test\\resources\\files\\Manual-Readability.pdf"));
-//		driver.findElementByXPath("//*[@text = 'Document']").click();
-//		driver.findElementByXPath("//*[@text = 'Allow']").click();
-//		driver.findElementByXPath("//*[@resource-id = 'com.android.documentsui:id/option_menu_search']").click();
-//		driver.findElementByXPath("//*[@resource-id = 'com.android.documentsui:id/search_src_text']").sendKeys("Manual-Readability.pdf");
-//		driver.findElementByXPath("//*[@resource-id = 'com.android.documentsui:id/thumbnail']").click();
-		// end
 		driver.findElementByXPath("//*[@text = 'Camera']").click();
 		driver.findElementByXPath("//*[@text = 'Allow']").click();
 		Thread.sleep(5000);
 		driver.findElementByXPath("//*[@content-desc = 'Shutter']").click();
 		driver.findElementByXPath("//*[@content-desc = 'Done']").click();
 		ticketCreationSuccessPage = createTicketPage.clickCreateATicketButton();
-		String  actualtoastMessage = driver.findElementByXPath("//android.widget.Toast[1]").getAttribute("name");
-		Assert.assertEquals(actualtoastMessage, expectedToastMessage,"User isn't getting a pop up message after creating the ticket");
-		ExtentManager.getExtentTest().log(Status.PASS, "User is getting a pop up message after creating the ticket");
 		Assert.assertTrue(ticketCreationSuccessPage.supportTicketCreatedTitle.isDisplayed(), "Not redirecting to Ticket Creation Successful screen");
 		ExtentManager.getExtentTest().log(Status.PASS, "Redirecting to Ticket Creation Successful screen");
 	}

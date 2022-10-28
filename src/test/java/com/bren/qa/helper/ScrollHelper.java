@@ -25,7 +25,7 @@ public class ScrollHelper extends Base {
                 .press(PointOption.point(0, scrollStart))
                 .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1)))
                 .moveTo(PointOption.point(0, scrollEnd))
-                .release().perform();
+                .release().perform(); 
     }
     
     public static void scrollUp(){
@@ -45,6 +45,20 @@ public class ScrollHelper extends Base {
 		driver.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0))."
 				+ "scrollIntoView(new UiSelector().textMatches(\"" + text + "\").instance(0))"));
 	}
+    public static void scrollUntil(String text) {
+        while(!isVisible(text)){     
+            scrollDown(); 
+        }
+    }
+    public static boolean isVisible(String text) {
+        try {
+            driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+            driver.findElementByXPath("//*[@text = '"+text+"']");
+            return true;
+        }
+        catch(Exception e) {
+            return false;        }
+    }
     public static void scrollNClick(WebElement el){
         int retry = 0;
         System.out.println("retry");

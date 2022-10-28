@@ -1,5 +1,6 @@
 package com.bren.qa.testcases;
 import java.net.MalformedURLException;
+import java.util.concurrent.TimeUnit;
 
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -38,11 +39,13 @@ public class InteriorDesignPackagesListPageTest extends Base {
 		loginPage = launchPage.clickSignInButton();
 		otpVerificationPage = loginPage.enterNumber(prop.get("number").toString());
 		Thread.sleep(8000);
+		driver.manage().timeouts().implicitlyWait(240, TimeUnit.SECONDS);
+        driver.findElementByXPath("//*[@text = 'Enter OTP']");
 		myHomePage = otpVerificationPage.inputOtp(prop.getProperty("otp").toString());
 		myHomePage.scrollDownUntil(referAndEarnTitle);
+		
 		interiorDesignPackagesListPage = myHomePage.clickViewOptions();
 	}
-	
 	@Test(priority = 1)
 	public void verifyInteriorDesignPackageCardContents() { 
 		Assert.assertEquals(interiorDesignPackagesListPage.pageHeading.getAttribute("text"), expectedPageHeading);

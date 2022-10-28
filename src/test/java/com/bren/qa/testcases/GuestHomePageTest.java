@@ -43,6 +43,7 @@ public class GuestHomePageTest extends Base {
 		getInTouchFormPage = new GetInTouchFormPage();
 		getInTouchFormPage = new GetInTouchFormPage();
 		apartmentDetailPage = new ApartmentDetailPage();
+		
 	}
 	@Test(priority = 1)
 	public void verifyThatGetInTouchFormIsOpeningWhenUserClickOnSupportsTabFromFooter() {

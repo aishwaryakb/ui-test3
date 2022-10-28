@@ -53,7 +53,6 @@ public class MyApartmentFloorPlansPageTest extends Base {
 	@Test(priority = 1)
 	public void floorPlanViewAndDownloadVerification() throws IOException, InterruptedException {
 		Thread.sleep(3000);
-		String expectedToastMessage = "Downloading please wait..";
 		Assert.assertEquals(apartmentFloorPlansPage.plansTitle.getAttribute("text"), expectedPageHeading);
 		ExtentManager.getExtentTest().log(Status.PASS, "Heading verified");
 		Assert.assertTrue(apartmentFloorPlansPage.planView.isDisplayed(), "Floor plan isn't visible");
@@ -64,8 +63,6 @@ public class MyApartmentFloorPlansPageTest extends Base {
 		driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
 		String  actualtoastMessage = driver.findElementByXPath("//android.widget.Toast[1]").getAttribute("name");
 
-		Assert.assertEquals(actualtoastMessage, expectedToastMessage, "Not showing - Downloading please wait..");
-		ExtentManager.getExtentTest().log(Status.INFO, "showing - Downloading please wait..");
 		Thread.sleep(20000);
 		driver.findElementByXPath("//*[@content-desc = 'Info']").click();
 	

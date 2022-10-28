@@ -1,8 +1,10 @@
 package com.bren.qa.testcases;
 
 import java.net.MalformedURLException;
+import java.util.concurrent.TimeUnit;
 
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -26,6 +28,7 @@ public class ApartmentsListPageTest extends Base {
 	ApartmentDetailPage apartmentDetailPage;
 	
 	
+	
 	public ApartmentsListPageTest() {
 		super();
 	}
@@ -36,8 +39,11 @@ public class ApartmentsListPageTest extends Base {
 		loginPage = launchPage.clickSignInButton();
 		otpVerificationPage = loginPage.enterNumber(prop.get("number").toString());
 		Thread.sleep(8000);
+		driver.manage().timeouts().implicitlyWait(240, TimeUnit.SECONDS);
+        driver.findElementByXPath("//*[@text = 'Enter OTP']");
 		myHomePage = otpVerificationPage.inputOtp(prop.getProperty("otp").toString());
 		Thread.sleep(8000);
+		driver.findElementByXPath("//*[@text = 'About this property']");
 		apartmentsListPage = myHomePage.clickApartmentsTab();
 		
 	}
@@ -63,4 +69,8 @@ public class ApartmentsListPageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "Verified that the User is Navigating to the Home"
 				+ " Screen When clicking on the Brens Icon from Multiple Apartments Details screen");
 	}
+	@AfterMethod()
+    public void tearDown() {
+        driver.quit();
+    }
 }

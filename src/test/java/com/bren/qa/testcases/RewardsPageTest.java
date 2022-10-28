@@ -1,6 +1,7 @@
 package com.bren.qa.testcases;
 
 import java.net.MalformedURLException;
+import java.util.concurrent.TimeUnit;
 
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -36,7 +37,6 @@ public class RewardsPageTest extends Base {
 	public RewardsPageTest() {
 		super();
 	}
-	
 	@BeforeMethod
 	public void setup() throws MalformedURLException, InterruptedException {
 		initialization();
@@ -44,6 +44,8 @@ public class RewardsPageTest extends Base {
 		loginPage = launchPage.clickSignInButton();
 		otpVerificationPage = loginPage.enterNumber(prop.get("multpleApartmentsOwnerNumber").toString());
 		Thread.sleep(8000);
+		driver.manage().timeouts().implicitlyWait(240, TimeUnit.SECONDS);
+        driver.findElementByXPath("//*[@text = 'Enter OTP']");
 		myHomePage = otpVerificationPage.inputOtp2(prop.getProperty("multpleApartmentsOwnerOtp").toString());
 		rewardsPage = myHomePage.clickRewardsPage();
 		Thread.sleep(5000);
@@ -115,28 +117,7 @@ public class RewardsPageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "Refer a Friend Button is Displayed");
 		
 	}
-	
-	@Test(priority = 5)
-	public void verifyAlreadyExistingReferalConfirmationMessage() throws InterruptedException {
-		referAndEarnFormPage = rewardsPage.clickReferAFriendButton();
-		Thread.sleep(5000);
-		referAndEarnFormPage.firstNameField.sendKeys(prop.getProperty("referAFriendFirstName"));
-		Thread.sleep(5000);
-		referAndEarnFormPage.lastNameField.sendKeys(prop.getProperty("referAFriendLastName"));
-		Thread.sleep(5000);
-		referAndEarnFormPage.emailAddressField.sendKeys(prop.getProperty("referAFriendEmailAddress"));
-		Thread.sleep(5000);
-		referAndEarnFormPage.mobileNumberField.sendKeys(prop.getProperty("referAFriendExistingMobileNumber"));
-		ScrollHelper.scrollDown();
-		referAndEarnFormPage.projectNameField.click();
-		referAndEarnFormPage.projectNameListItem.click();
-		Thread.sleep(5000);
-		referAndEarnFormPage.referAFriendButton.click();
-		Assert.assertEquals(driver.findElementByXPath("//android.widget.Toast[1]").getAttribute("name"), alreadyExistingReferalMessage, "Not showing the message 'The contact information that you shared already exists in our system'");
-		ExtentManager.getExtentTest().log(Status.PASS, "Showing the message 'The contact information that you shared already exists in our system");
 		
-	}
-	
 	@Test(priority = 4)
 	public void verifyUserIsGettingConfirmationScreenOrAlreadyExistingReferalAfterClickingOnTheReferFriendOption() throws InterruptedException {
 		referAndEarnFormPage = rewardsPage.clickReferAFriendButton();
@@ -193,26 +174,14 @@ public class RewardsPageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "Project is showing inside Referral Card");
 		Assert.assertTrue(rewardsPage.statusTitleInReferralCard.isDisplayed(), "Status isn't showing inside Referral Card");
 		ExtentManager.getExtentTest().log(Status.PASS, "Status is showing inside Referral Card");
-		
-		
 	}
 	
-	@Test(priority = 5)
+	@Test(priority = 5) 
 	public void verifyThatTheUserIsNavigatingToTheHomeScreenWhenClickingOnTheBrensIconFromRewardsTab() throws InterruptedException {
 		driver.findElementByXPath("//*[@resource-id ='RNE__Image']").click();
 		myHomePage.homePageVerification();
 		ExtentManager.getExtentTest().log(Status.PASS, "Verified that the User is Navigating to the Home"
 				+ " Screen When clicking on the Brens Icon from Rewards Tab");
-	}
-	@Test(priority = 6)
-	public void verifyThatTheRewardsTabContainsTheListOfAlreadySubmittedReferralIfThereAny() {
-		Assert.assertTrue(rewardsPage.referralCard.isDisplayed(), "Rewards tab isn't having any existing referals");
-		Assert.assertTrue(rewardsPage.mobileNumberInReferralCard.isDisplayed(), "Mobile Number isn't displayed inside referral card");
-		Assert.assertTrue(rewardsPage.emailIdInReferralCard.isDisplayed(), "Email isn't displayed inside referral card");
-		Assert.assertTrue(rewardsPage.projectTitleInReferralCard.isDisplayed(), "Project Title isn't displayed inside referral card");
-		Assert.assertTrue(rewardsPage.statusTitleInReferralCard.isDisplayed(), "Status Title isn't displayed inside referral card");
-		
-		ExtentManager.getExtentTest().log(Status.PASS, "Verified that Rewards Tab contains the list of Already Submitted Referrals");
 	}
 	@AfterMethod()
 	public void tearDown() {

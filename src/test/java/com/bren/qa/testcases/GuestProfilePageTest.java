@@ -32,7 +32,6 @@ public class GuestProfilePageTest extends Base{
 	public GuestProfilePageTest() {
 		super();
 	}
-	
 	@BeforeMethod
 	public void setup() throws MalformedURLException, InterruptedException{
 		initialization();
