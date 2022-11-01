@@ -60,7 +60,7 @@ public class EmailLoginPageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "Showing -Invalid Email-message for invalid mail-Id");
 	}
 	@Test(priority = 4)
-	public void validateUseMobileOption() {
+	public void validateUseMobileOption() throws InterruptedException {
 		otpVerificationPage = emailLoginPage.loginViaMobile(prop.getProperty("number"));
 		myHomePage = otpVerificationPage.inputOtp(prop.getProperty("otp"));
 		Assert.assertTrue(myHomePage.myHomeIsDisplayed(), "Mail login was not successful");

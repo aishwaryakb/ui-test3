@@ -77,33 +77,35 @@ public class ApartmentDetailPageTest extends Base {
 		Assert.assertTrue(apartmentDetailPage.projectImageContainerIsDisplayed(), "Project Image Container isn't displayed");
 		ExtentManager.getExtentTest().log(Status.PASS, "Project Image Container is displayed");
 		
-		ScrollHelper.scrollDownUntil("LOCATION");
+		ScrollHelper.scrollUntil("LOCATION");
 		Assert.assertTrue(apartmentDetailPage.locationSection.isDisplayed(), "Location section isn't displayed");
 		ExtentManager.getExtentTest().log(Status.PASS, "Location section is displayed");
 		
-		apartmentDetailPage.scrollDownUntil("PRICE");
+		ScrollHelper.scrollUntil("PRICE");
 		Assert.assertTrue(apartmentDetailPage.priceSection.isDisplayed(), "Price section isn't displayed");
 		ExtentManager.getExtentTest().log(Status.PASS, "Price section is displayed");
 		
-		apartmentDetailPage.scrollDownUntil("ZAHARA BY BREN HIGHLIGHTS");
+		ScrollHelper.scrollUntil("ZAHARA BY BREN HIGHLIGHTS");
 		Assert.assertTrue(apartmentDetailPage.highLightsSectionIsDisplayed(), "HighLights Section isn't displayed");
 		ExtentManager.getExtentTest().log(Status.PASS, "HighLights Section is displayed");
-		
-		ScrollHelper.scrollDownUntil("WALKTHROUGH");
+		 
+		ScrollHelper.scrollUntil("WALKTHROUGH");
 		Assert.assertTrue(apartmentDetailPage.youtubePlayerContainerIsDisplayed(), "Youtube Player Container isn't displayed");
 		ExtentManager.getExtentTest().log(Status.PASS, "Youtube Player Container is displayed");
 		
-		apartmentDetailPage.scrollDownUntil("Refer people to buy an apartment with Bren and earn a reward when the referred person buys an apartment");
+		ScrollHelper.scrollUntil("AMENITIES");
+        apartmentDetailPage.downArrow.click();
+        Assert.assertTrue(apartmentDetailPage.amenitiesNameIsDisplayed(), "Clicking on drop down arrow for each amenities isnt opening the detailed list");
+        ExtentManager.getExtentTest().log(Status.PASS, "Clicking on drop down arrow for each amenities isnt opening the detailed list");
+        
+		
+		ScrollHelper.scrollUntil("Refer people to buy an apartment with Bren and earn a reward when the referred person buys an apartment");
 		Assert.assertTrue(apartmentDetailPage.requestForACallBackButtonIsDisplayed(), "REQUEST FOR A CALLBACK isn't displayed");
 		ExtentManager.getExtentTest().log(Status.PASS, "REQUEST FOR A CALLBACK section is displayed");
 		
 		Assert.assertTrue(apartmentDetailPage.referAndEarnSectionIsDisplayed(), "Refer And Earn Section isn't displayed");
 		ExtentManager.getExtentTest().log(Status.PASS, "Refer And Earn section is displayed");	
 		
-		ScrollHelper.scrollDownUntil("AMENITIES");
-		apartmentDetailPage.downArrow.click();
-		Assert.assertTrue(apartmentDetailPage.amenitiesNameIsDisplayed(), "Clicking on drop down arrow for each amenities isnt opening the detailed list");
-		ExtentManager.getExtentTest().log(Status.PASS, "Clicking on drop down arrow for each amenities isnt opening the detailed list");
 		
 	}
 	
@@ -128,7 +130,7 @@ public class ApartmentDetailPageTest extends Base {
 		Assert.assertEquals(apartmentDetailPage.getCurrentImagePosition(), apartmentDetailPage.getImageCount(), "All images in the gallery section is viewed ");
 	}
 	
-	@Test(priority =4)
+	@Test(priority = 4)
 	public void verifyUserCanReturnToApartmentDetailScreenByClickOnTheCloseIconOnImages() throws InterruptedException {
 		apartmentDetailPage.clickViewGallery();
 		Thread.sleep(5000);
@@ -253,7 +255,6 @@ public class ApartmentDetailPageTest extends Base {
 		driver.findElementsByXPath("//*[@resource-id = 'downArrow']").get(0).click();
 		Assert.assertTrue(apartmentDetailPage.detailsOfSpecification.isDisplayed(), "Clicking on Drop Down Arrow on a Specification isn't opening a DetailedList");
 		ExtentManager.getExtentTest().log(Status.PASS, "Clicking on Drop Down Arrow on a Specification opens a Detailed List");	
-		
 		
 	}
 	@Test(priority = 13)

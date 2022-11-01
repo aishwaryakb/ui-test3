@@ -33,7 +33,6 @@ public class MyApartmentDocumentsPageTest extends Base {
 	public MyApartmentDocumentsPageTest() {
 		super();
 	}
-	
 	@BeforeMethod
 	public void setup() throws MalformedURLException, InterruptedException {
 		initialization();
@@ -41,6 +40,8 @@ public class MyApartmentDocumentsPageTest extends Base {
 		loginPage = launchPage.clickSignInButton();
 		otpVerificationPage = loginPage.enterNumber(prop.get("number").toString());
 		Thread.sleep(8000);
+		driver.manage().timeouts().implicitlyWait(240, TimeUnit.SECONDS);
+        driver.findElementByXPath("//*[@text = 'Enter OTP']");
 		myHomePage = otpVerificationPage.inputOtp(prop.getProperty("otp").toString());
 		differentDocumentCategoriesPage = myHomePage.clickDocuments();
 		docsPage = differentDocumentCategoriesPage.clickDocument();
@@ -54,6 +55,7 @@ public class MyApartmentDocumentsPageTest extends Base {
 		Thread.sleep(8000);
 		boolean isDocDisplayed = viewADocumentPage.isDocumentDisplayed();
 		Assert.assertTrue(isDocDisplayed, "Document isn't opened");
+		ExtentManager.getExtentTest().log(Status.PASS, "Document Viewing is verified");
 	}
 	@Test(priority = 3)
 	public void documentDownloadVerification() throws IOException, InterruptedException {
@@ -65,9 +67,8 @@ public class MyApartmentDocumentsPageTest extends Base {
 		System.out.print(actualtoastMessage);
 		Thread.sleep(20000);
 		String fileName = driver.findElementByXPath("//android.widget.TextView[@index = '1']").getAttribute("text");
-		
 		byte[] fileBase64 = driver.pullFile("/storage/emulated/0/Android/data/com.brencorp.play.mybren/files/Download/"+fileName);
-		Assert.assertTrue(fileBase64.length > 0, "Document wasnt downloaded successfully");
+		Assert.assertTrue(fileBase64.length > 0, "Document downloaded was unsuccessfull");
 		ExtentManager.getExtentTest().log(Status.PASS, "Document downloaded successfully");
 	}
 	@Test(priority = 2)
@@ -77,16 +78,17 @@ public class MyApartmentDocumentsPageTest extends Base {
 		driver.findElementByXPath("//*[@text = 'Allow']").click();
 		driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
 		boolean shareTitle = driver.findElementByXPath("//*[@text = 'Share']").isDisplayed();
-		Assert.assertTrue(shareTitle, "Not working share option");
+		Assert.assertTrue(shareTitle, "Not able to share the document");
 		ExtentManager.getExtentTest().log(Status.PASS, "Able to share the document");
 	}
 	@Test(priority = 4)
 	public void documentPrintVerification() throws IOException, InterruptedException {
 		Thread.sleep(5000);
 		docsPage.clickPrint();
-		driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
-		boolean shareTitle = driver.findElementByXPath("//*[@text = 'Select a printer']").isDisplayed();
-		Assert.assertTrue(shareTitle, "Able to print the document");
+		driver.manage().timeouts().implicitlyWait(120,TimeUnit.SECONDS);
+		boolean selectAPrinterTitle = driver.findElementByXPath("//*[@text = 'Select a printer']").isDisplayed();
+		Assert.assertTrue(selectAPrinterTitle, "Not Able to print the document");
+		ExtentManager.getExtentTest().log(Status.PASS, "Able to Print the document");
 	}
 	@AfterMethod()
 	public void tearDown() {

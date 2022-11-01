@@ -63,7 +63,7 @@ public class GuestProfilePageTest extends Base{
 		otpVerificationPage = loginPage.enterNumber(prop.get("multpleApartmentsOwnerNumber").toString());
 		ExtentManager.getExtentTest().log(Status.INFO,"Number is Inputed");
 		Thread.sleep(8000);
-		myHomePage = otpVerificationPage.inputOtp2(prop.getProperty("multpleApartmentsOwnerOtp").toString());
+		myHomePage = otpVerificationPage.inputOtpForMultupleApartmentAccount(prop.getProperty("multpleApartmentsOwnerOtp").toString());
 		ExtentManager.getExtentTest().log(Status.INFO,"Otp entered");
 		myHomePage.verifyOwnerHomePage();
 	}

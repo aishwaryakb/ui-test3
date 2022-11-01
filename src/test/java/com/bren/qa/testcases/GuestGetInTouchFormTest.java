@@ -35,7 +35,6 @@ public class GuestGetInTouchFormTest extends Base {
 		apartmentsListPage = new ApartmentsListPage();
 		Thread.sleep(3000);
 	}
-	
 	@Test(priority = 1)
 	public void verifyFieldsInGetInTouchForm() throws InterruptedException {
 		Assert.assertTrue(getInTouchFormPage.getInTouchFormIcon.isDisplayed(),"Get-In-Touch Icon is not Added to Navbar inside SupportTab");

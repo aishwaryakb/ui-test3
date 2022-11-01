@@ -30,7 +30,6 @@ public class OtpVerificationPageTest extends Base {
 		otpVerificationPage = loginPage.enterNumber(prop.get("number").toString());
 		Thread.sleep(8000);
 	}
-	
 	@Test(priority = 1)
 	public void otpPageContentsVerification() {
 		boolean isInfoMessageDisplayed = otpVerificationPage.infoMessageIsDisplayed();
@@ -47,9 +46,8 @@ public class OtpVerificationPageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "VERIFY button is displayed");
 	}
 	@Test(priority = 2)
-	public void verifySuccessfulSignIn() {
+	public void verifySuccessfulSignIn() throws InterruptedException {
 		myHomePage = otpVerificationPage.inputOtp(prop.get("otp").toString());
-		myHomePage.verifyOwnerHomePage();
 		Assert.assertTrue(myHomePage.myHomeIsDisplayed(), "Login wasn't successfull");
 		ExtentManager.getExtentTest().log(Status.PASS, "User Logged in Successfully");
 	}
@@ -76,9 +74,13 @@ public class OtpVerificationPageTest extends Base {
 	}
 	@Test(priority = 7)
 	public void verifyResendOtpButton() throws InterruptedException {
-		Thread.sleep(45000);
+	    driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
 		boolean isResendOtpDisplayed = otpVerificationPage.verifyResendOtp();
 		Assert.assertTrue(isResendOtpDisplayed, "Resend-Otp option isnt available after 45 seconds");
 		ExtentManager.getExtentTest().log(Status.PASS, "Showing Resend-OTP option after 45 seconds");
 	}
+	@AfterMethod()
+    public void tearDown() {
+        driver.quit();
+    }
 }

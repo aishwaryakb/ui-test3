@@ -32,7 +32,6 @@ public class OwnerProfilePageTest extends Base {
 	public OwnerProfilePageTest() {
 		super();
 	}
-	
 	@BeforeMethod
 	public void setup() throws MalformedURLException, InterruptedException {
 		initialization();
@@ -40,7 +39,9 @@ public class OwnerProfilePageTest extends Base {
 		loginPage = launchPage.clickSignInButton();
 		otpVerificationPage = loginPage.enterNumber(prop.get("multpleApartmentsOwnerNumber").toString());
 		Thread.sleep(8000);
-		myHomePage = otpVerificationPage.inputOtp2(prop.getProperty("multpleApartmentsOwnerOtp").toString());
+		driver.manage().timeouts().implicitlyWait(240, TimeUnit.SECONDS);
+        driver.findElementByXPath("//*[@text = 'Enter OTP']");
+		myHomePage = otpVerificationPage.inputOtpForMultupleApartmentAccount(prop.getProperty("multpleApartmentsOwnerOtp").toString());
 		ownerProfilePage = myHomePage.clickProfileTab();
 		singleApartmentHomePage = new SingleApartmentHomePage();
 		
@@ -88,9 +89,6 @@ public class OwnerProfilePageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "Name Input field non editable");
 		
 		
-		
-		
-		
 		preSetFieldValue = ownerProfilePage.emailInputField.getAttribute("text");
 		try {
 			ownerProfilePage.emailInputField.sendKeys(prop.getProperty("referAFriendEmailAddress"));
@@ -116,7 +114,7 @@ public class OwnerProfilePageTest extends Base {
 		
 	}
 	@Test(priority = 3)
-	public void verifyThatTheUserCanLogOuTheAccountByClickingOnTheLogoutButton() {
+	public void verifyThatTheUserCanLogOutTheAccountByClickingOnTheLogoutButton() {
 		
 		ownerProfilePage.logOutButton.click();
 		ExtentManager.getExtentTest().log(Status.INFO, "clicked on logout button");
@@ -133,7 +131,7 @@ public class OwnerProfilePageTest extends Base {
 	}
 	
 	@Test(priority = 5)
-	public void verifyThatUserCanUpdateProfilePictureFromTheProfileScreenIfThereIsAnExistingOne() throws InterruptedException {
+	public void verifyThatUserCanUpdateProfilePictureFromTheProfileScreen() throws InterruptedException {
 		String expectedToastMessage = "Customer's Profile Photo updated successfully";
 		Thread.sleep(4000);
 		WebElement parrentScrollView = driver.findElementByClassName("android.widget.ScrollView");
@@ -141,26 +139,31 @@ public class OwnerProfilePageTest extends Base {
 		driver.findElementByXPath("//*[@text = 'Camera']").click();
 		driver.findElementByXPath("//*[@text = 'Allow']").click();
 		Thread.sleep(5000);
+		driver.findElementByXPath("//*[@content-desc = 'Shutter']");
 		driver.findElementByXPath("//*[@content-desc = 'Shutter']").click();
 		driver.findElementByXPath("//*[@content-desc = 'Done']").click();
 		String actualToastMessage = driver.findElementByXPath("//android.widget.Toast[1]").getAttribute("name");
 		Assert.assertEquals(actualToastMessage, expectedToastMessage);
 	}
 	@Test(priority = 6)
-	public void verifyThatUserCanUpdateProfilePictureFromTheProfileScreenIfThereIsNoExistingOne() throws InterruptedException {
-		String expectedToastMessage = "Customer's Profile Photo updated successfully";
+	public void verifyThatUserCanDeleteProfilePictureFromTheProfileScreen() throws InterruptedException {
+		String expectedToastMessage = "Profile image deleted";
 		Thread.sleep(4000);
 		WebElement parrentScrollView = driver.findElementByClassName("android.widget.ScrollView");
 		parrentScrollView.findElement(By.xpath("//*[@resource-id = 'RNE__Image']")).click();
-		driver.findElementByXPath("//*[@text = 'Delete Photo']").click();
-		Thread.sleep(4000);
-		parrentScrollView.findElement(By.xpath("//*[@resource-id = 'RNE__Image']")).click();
 		driver.findElementByXPath("//*[@text = 'Camera']").click();
-		driver.findElementByXPath("//*[@text = 'Allow']").click();
-		driver.findElementByXPath("//*[@content-desc = 'Shutter']").click();
-		driver.findElementByXPath("//*[@content-desc = 'Done']").click();
-		String actualToastMessage = driver.findElementByXPath("//android.widget.Toast[1]").getAttribute("name");
-		Assert.assertEquals(actualToastMessage, expectedToastMessage);
+        driver.findElementByXPath("//*[@text = 'Allow']").click();
+        Thread.sleep(5000);
+        driver.findElementByXPath("//*[@content-desc = 'Shutter']");
+        driver.findElementByXPath("//*[@content-desc = 'Shutter']").click();
+        driver.findElementByXPath("//*[@content-desc = 'Done']").click();
+        driver.findElementByXPath("//*[@text = 'Name']");
+        parrentScrollView.findElement(By.xpath("//*[@resource-id = 'RNE__Image']")).click();
+        driver.findElementByXPath("//*[@text = 'Delete Photo']").click();
+        String actualToastMessage = driver.findElementByXPath("//android.widget.Toast[1]").getAttribute("name");
+        Assert.assertEquals(actualToastMessage, expectedToastMessage);
+        
+		
 	}
 	@AfterMethod()
 	public void tearDown() {

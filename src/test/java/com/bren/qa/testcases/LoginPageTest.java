@@ -28,7 +28,6 @@ public class LoginPageTest extends Base {
 		Thread.sleep(2000);
 		loginPage = launchPage.clickSignInButton();
 	}
-	
 	@Test(priority = 1)
 	public void loginPageContentsVerification() {
 		boolean isLoginPageDisplayed = loginPage.isLoginPageIsDisplayed();
@@ -63,10 +62,14 @@ public class LoginPageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "Showing -Invalid mobile number- message for invalid mobile-number");	
 	}
 	@Test(priority = 5)
-	public void validateUseMailOption() {
+	public void validateUseMailOption() throws InterruptedException {
 		otpVerificationPage = loginPage.loginViaMail(prop.getProperty("email"));
 		myHomePage = otpVerificationPage.inputOtp(prop.getProperty("email_otp"));
 		Assert.assertTrue(myHomePage.myHomeIsDisplayed(), "Mail login was not successful");
 		ExtentManager.getExtentTest().log(Status.PASS, "Login with Mail was successful");
 	}
+	@AfterMethod()
+    public void tearDown() {
+        driver.quit();
+    }
 }

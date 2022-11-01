@@ -32,7 +32,6 @@ public class InteriorDesignDetailPageTest extends Base {
 	String interiorDesignTitle = "Explore interior design furnishings for your home";
 	String expectedPageHeading = "Interior design details";
 	
-	
 	public InteriorDesignDetailPageTest() {
 		super();
 	}
@@ -43,6 +42,8 @@ public class InteriorDesignDetailPageTest extends Base {
 		loginPage = launchPage.clickSignInButton();
 		otpVerificationPage = loginPage.enterNumber(prop.get("number").toString());
 		Thread.sleep(8000);
+		driver.manage().timeouts().implicitlyWait(240, TimeUnit.SECONDS);
+        driver.findElementByXPath("//*[@text = 'Enter OTP']");
 		myHomePage = otpVerificationPage.inputOtp(prop.getProperty("otp").toString());
 		myHomePage.scrollDownUntil(referAndEarnTitle);
 		interiorDesignPackagesListPage = myHomePage.clickViewOptions();

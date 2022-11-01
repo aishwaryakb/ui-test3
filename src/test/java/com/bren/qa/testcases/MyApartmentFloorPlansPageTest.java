@@ -38,7 +38,6 @@ public class MyApartmentFloorPlansPageTest extends Base {
 	public MyApartmentFloorPlansPageTest() {
 		super();
 	}
-	
 	@BeforeMethod
 	public void setup() throws MalformedURLException, InterruptedException {
 		initialization();
@@ -46,6 +45,8 @@ public class MyApartmentFloorPlansPageTest extends Base {
 		loginPage = launchPage.clickSignInButton();
 		otpVerificationPage = loginPage.enterNumber(prop.get("number").toString());
 		Thread.sleep(8000);
+		driver.manage().timeouts().implicitlyWait(240, TimeUnit.SECONDS);
+        driver.findElementByXPath("//*[@text = 'Enter OTP']");
 		myHomePage = otpVerificationPage.inputOtp(prop.getProperty("otp").toString());
 		apartmentFloorPlansPage =  myHomePage.clickFloorPlans();
 	}
@@ -62,7 +63,6 @@ public class MyApartmentFloorPlansPageTest extends Base {
 		driver.findElementByXPath("//*[@text = 'Allow']").click();
 		driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
 		String  actualtoastMessage = driver.findElementByXPath("//android.widget.Toast[1]").getAttribute("name");
-
 		Thread.sleep(20000);
 		driver.findElementByXPath("//*[@content-desc = 'Info']").click();
 	
@@ -88,8 +88,8 @@ public class MyApartmentFloorPlansPageTest extends Base {
 		Thread.sleep(5000);
 		apartmentFloorPlansPage.clickPrint();
 		driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
-		boolean shareTitle = driver.findElementByXPath("//*[@text = 'Select a printer']").isDisplayed();
-		Assert.assertTrue(shareTitle, "Able to print the document");
+		boolean selectAPrinterTitle = driver.findElementByXPath("//*[@text = 'Select a printer']").isDisplayed();
+		Assert.assertTrue(selectAPrinterTitle, "Able to print the document");
 	}
 	@AfterMethod()
 	public void tearDown() {

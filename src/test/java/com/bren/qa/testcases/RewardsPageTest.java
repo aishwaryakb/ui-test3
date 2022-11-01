@@ -46,7 +46,7 @@ public class RewardsPageTest extends Base {
 		Thread.sleep(8000);
 		driver.manage().timeouts().implicitlyWait(240, TimeUnit.SECONDS);
         driver.findElementByXPath("//*[@text = 'Enter OTP']");
-		myHomePage = otpVerificationPage.inputOtp2(prop.getProperty("multpleApartmentsOwnerOtp").toString());
+		myHomePage = otpVerificationPage.inputOtpForMultupleApartmentAccount(prop.getProperty("multpleApartmentsOwnerOtp").toString());
 		rewardsPage = myHomePage.clickRewardsPage();
 		Thread.sleep(5000);
 	}

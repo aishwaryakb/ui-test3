@@ -59,7 +59,7 @@ public class GuestHomePageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "Verified that Get-In-Touch Icon is Added to Navbar inside guests apartments tab");
 		
 		driver.findElementByXPath("//*[@resource-id = 'project']").click();
-		apartmentDetailPage.scrollDownUntil("Request a site visit");
+		ScrollHelper.scrollUntil("Request a site visit");
         Assert.assertTrue(getInTouchFormPage.getInTouchFormTitle.isDisplayed(), "GetInTouch Form title isn't Displayed");
 		ExtentManager.getExtentTest().log(Status.PASS, "GetInTouch Form title is Displayed");
 		Assert.assertTrue(getInTouchFormPage.firstNameInputField.isDisplayed(), "First name Input field isn't Displayed");

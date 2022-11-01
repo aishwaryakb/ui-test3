@@ -46,7 +46,7 @@ public class CreateTicketPageTest extends Base{
 		Thread.sleep(8000);
 		driver.manage().timeouts().implicitlyWait(240, TimeUnit.SECONDS);
         driver.findElementByXPath("//*[@text = 'Enter OTP']");
-		myHomePage = otpVerificationPage.inputOtp2(prop.getProperty("multpleApartmentsOwnerOtp").toString());
+		myHomePage = otpVerificationPage.inputOtpForMultupleApartmentAccount(prop.getProperty("multpleApartmentsOwnerOtp").toString());
 		Thread.sleep(3000);
 		createTicketPage = myHomePage.clickCreateTicketButton();
 		
@@ -136,6 +136,7 @@ public class CreateTicketPageTest extends Base{
 		driver.findElementByXPath("//*[@text = 'Camera']").click();
 		driver.findElementByXPath("//*[@text = 'Allow']").click();
 		Thread.sleep(5000);
+		driver.findElementByXPath("//*[@content-desc = 'Shutter']");
 		driver.findElementByXPath("//*[@content-desc = 'Shutter']").click();
 		driver.findElementByXPath("//*[@content-desc = 'Done']").click();
 		ticketCreationSuccessPage = createTicketPage.clickCreateATicketButton();
