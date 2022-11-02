@@ -151,6 +151,7 @@ public class ApartmentDetailPage extends Base{
 	public int getHighlightsImageCount() {
 		return dotsAndArrowSection.findElements(By.className("android.view.ViewGroup")).size();
 	}
+	
 	public void clickOnImageElement() {
 		imageViewElement.click();
 	}

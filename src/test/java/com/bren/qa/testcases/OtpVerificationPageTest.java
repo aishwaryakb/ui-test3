@@ -1,5 +1,6 @@
 package com.bren.qa.testcases;
 import java.net.MalformedURLException;
+import java.util.concurrent.TimeUnit;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;

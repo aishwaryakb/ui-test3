@@ -19,6 +19,7 @@ public class CreateTicketPage extends Base {
 	@FindBy(xpath = "//*[@text = 'We love to hear from our customers. Create "
 			+ "a ticket below. We aim to reply to all tickets within 24 hours during regular working hours.']")
 	public WebElement createATicketDesc;
+	
 	@FindBy(xpath = "//*[@text = 'Ticket title']")
 	public WebElement ticketTitle;
 	@FindBy(xpath = "//android.widget.EditText[@index = '3']")

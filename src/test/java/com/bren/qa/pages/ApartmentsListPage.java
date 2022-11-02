@@ -32,6 +32,7 @@ public class ApartmentsListPage extends Base {
 	@FindBy(xpath = "//*[@content-desc = 'supportIcon']")
 	public WebElement createTicketIcon;
 	
+	
 	public ApartmentsListPage() {
 		PageFactory.initElements(driver, this);
 	}

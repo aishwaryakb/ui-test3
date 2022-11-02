@@ -1,5 +1,7 @@
 package com.bren.qa.pages;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -18,7 +20,6 @@ public class ReferAndEarnFormPage extends Base{
 	@FindBy(xpath = "//*[@text ='Enter the details of your friend and a Bren customer support "
 			+ "executive will get in touch with them']")
 	public WebElement formDescreption;
-	
 	@FindBy(xpath = "//*[@text ='First name']")
 	public WebElement firstNameTitle;
 	@FindBy(xpath = "//android.widget.EditText[@index ='2']")
@@ -100,7 +101,7 @@ public class ReferAndEarnFormPage extends Base{
 		mobileNumberField.sendKeys(prop.getProperty("referAFriendExistingMobileNumber"));
 		ScrollHelper.scrollDown();
 		referAFriendButton.click();
-		Thread.sleep(5000);
+//		Thread.sleep(5000);
 		Assert.assertEquals(driver.findElementByXPath("//android.widget.Toast[1]").getAttribute("name"), alreadyExistingReferalMessage, "Not showing the message 'The contact information that you shared already exists in our system'");
 		ExtentManager.getExtentTest().log(Status.PASS, "Showing the message 'The contact information that you shared already exists in our system");
 		
@@ -108,8 +109,10 @@ public class ReferAndEarnFormPage extends Base{
 	public boolean isConfirmationScreenOrExistingReferalMessageIsDisplayed(String firstNameFieldValue) {
 		String referAFriendConfirmationMessage = "A Bren customer support executive will get in touch with "+firstNameFieldValue+ " soon";
 		String alreadyExistingReferalMessage = "The contact information that you shared already exists in our system. We appreciate your time";
+		ScrollHelper.scrollDown();
 		referAFriendButton.click();
 		try {
+		    driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 			if(driver.findElementByXPath("//*[@text ='"+referAFriendConfirmationMessage+"']").isDisplayed())
 				return true;
 		}

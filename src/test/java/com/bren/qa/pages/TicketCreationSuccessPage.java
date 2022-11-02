@@ -24,4 +24,3 @@ public class TicketCreationSuccessPage extends Base {
 		return new CreateTicketPage();
 	}
 }
-

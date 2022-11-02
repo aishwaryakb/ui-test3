@@ -18,6 +18,7 @@ public class DifferentDocumentCategoriesPage extends Base{
 	public DifferentDocumentCategoriesPage() {
 		PageFactory.initElements(driver, this);
 	}
+	
 	public DocumentsPage clickDocument() {
 		categoryName.click();
 		return new DocumentsPage();

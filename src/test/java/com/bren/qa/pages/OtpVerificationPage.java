@@ -15,7 +15,7 @@ public class OtpVerificationPage extends Base{
 	@FindBy(xpath = "//*[@text = 'OTP Verification']")
 	WebElement otpVerificationTitle;
 	@FindBy(xpath = "//*[@text = 'Enter OTP']")
-	WebElement enterOTPField;
+	public WebElement enterOTPField;
 	@FindBy(xpath = "//*[@text = 'VERIFY']")
 	WebElement verifyButton;
 	@FindBy(xpath = "//*[@text = 'Invalid OTP']")
@@ -27,15 +27,16 @@ public class OtpVerificationPage extends Base{
 	public OtpVerificationPage() {
 		PageFactory.initElements(driver, this);
 	}
-	
-	public SingleApartmentHomePage inputOtp(String otp) {
+	public SingleApartmentHomePage inputOtp(String otp) throws InterruptedException {
 		enterOTPField.click();
+		Thread.sleep(3000);
 		action.sendKeys(otp).perform();
 		verifyButton.click();
 		return new SingleApartmentHomePage();
 	}
-	public MultipleApartmentHomePage inputOtp2(String otp) {
+	public MultipleApartmentHomePage inputOtpForMultupleApartmentAccount(String otp) throws InterruptedException {
 		enterOTPField.click();
+		Thread.sleep(3000);
 		action.sendKeys(otp).perform();
 		verifyButton.click();
 		return new MultipleApartmentHomePage();

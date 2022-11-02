@@ -14,7 +14,6 @@ import io.appium.java_client.MobileBy;
 public class MultipleApartmentHomePage extends Base {
 	@FindBy(xpath = "//*[@text = 'My Home']")
 	WebElement myHomeTab;
-	
 	@FindBy(xpath = "//*[@text = 'Apartments']")
 	WebElement apartmentsTab;
 	@FindBy(xpath = "//*[@text = 'Rewards']")

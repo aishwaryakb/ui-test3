@@ -23,6 +23,7 @@ public class InteriorDesignPackagesListPage extends Base {
 	@FindBy(xpath = "//*[@resource-id = 'viewMoreDetails']")
 	public WebElement viewMoreDetailsLink;
 	
+	
 	public InteriorDesignPackagesListPage() {
 		PageFactory.initElements(driver, this);
 	}

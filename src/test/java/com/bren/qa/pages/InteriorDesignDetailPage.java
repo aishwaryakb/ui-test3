@@ -31,6 +31,7 @@ public class InteriorDesignDetailPage extends Base{
 	public InteriorDesignDetailPage() {
 		PageFactory.initElements(driver, this);
 	}
+	
 	public void swipeInteriorImages () {
 		int numberOfImages = imageDots.findElements(By.className("android.view.ViewGroup")).size() - 1;
 		System.out.println(numberOfImages);

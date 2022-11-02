@@ -26,11 +26,11 @@ public class LoginPage extends Base {
 	WebElement sendOtpButton;
 	@FindBy(xpath = "//*[@text = 'Please enter a valid mobile number']")
 	WebElement invalidMobileNumberMessage;
+	String mobileOrMailRequiredToastMsg = "Either Mobile No or Email id is required to send OTP";
 	
 	public LoginPage() {
 		PageFactory.initElements(driver, this);
 	}
-	
 	public OtpVerificationPage inputNumber(String number) {
 		String expectedToastMessage = "OTP is sent successfully";
 		mobileInputField.sendKeys(number);
@@ -48,6 +48,10 @@ public class LoginPage extends Base {
 	public OtpVerificationPage enterNumber(String number) {
 		mobileInputField.sendKeys(number);
 		sendOtpButton.click();
+		if(driver.findElementByXPath("//android.widget.Toast[1]").getAttribute("name").equals(mobileOrMailRequiredToastMsg) ) {
+		    System.out.println("yesss");
+		    sendOtpButton.click();  
+		}
 		return new OtpVerificationPage();
 	}
 	public OtpVerificationPage loginViaMail(String mailId) {
