@@ -13,7 +13,7 @@
          	<class name="com.bren.qa.testcases.MultipleApartmentAccountTest"/>
          	<class name="com.bren.qa.testcases.GuestProfilePageTest"/>
          	
-         	<class name="com.bren.qa.testcases.ApartmentsListPageTest"/>
+<!--          	<class name="com.bren.qa.testcases.ApartmentsListPageTest"/>
          	<class name="com.bren.qa.testcases.CreateTicketPageTest"/>
          	<class name="com.bren.qa.testcases.GuestApartmentsListPageTest"/>
          	<class name="com.bren.qa.testcases.GuestGetInTouchFormTest"/>
@@ -26,7 +26,7 @@
          	<class name="com.bren.qa.testcases.ReferAndEarnFormPageTest"/>
          	<class name="com.bren.qa.testcases.RewardsPageTest"/>
          	<class name="com.bren.qa.testcases.SingleApartmentAccountTest"/>
-         	<class name="com.bren.qa.testcases.ViewADocumentPageTest"/>
+         	<class name="com.bren.qa.testcases.ViewADocumentPageTest"/> -->
 
         </classes>
 	</test>     
