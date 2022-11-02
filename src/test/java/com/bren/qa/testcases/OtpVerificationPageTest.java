@@ -79,7 +79,7 @@ public class OtpVerificationPageTest extends Base {
 		Assert.assertTrue(isResendOtpDisplayed, "Resend-Otp option isnt available after 45 seconds");
 		ExtentManager.getExtentTest().log(Status.PASS, "Showing Resend-OTP option after 45 seconds");
 	}
-	@AfterMethod()
+	@AfterMethod
     public void tearDown() {
         driver.quit();
     }

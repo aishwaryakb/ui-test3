@@ -90,7 +90,7 @@ public class MyApartmentDocumentsPageTest extends Base {
 		Assert.assertTrue(selectAPrinterTitle, "Not Able to print the document");
 		ExtentManager.getExtentTest().log(Status.PASS, "Able to Print the document");
 	}
-	@AfterMethod()
+	@AfterMethod
 	public void tearDown() {
 		driver.quit();
 	}

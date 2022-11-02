@@ -137,7 +137,7 @@ public class ReferAndEarnFormPageTest extends Base{
         Assert.assertTrue(referAndEarnFormPage.isConfirmationScreenOrExistingReferalMessageIsDisplayed(firstNameFieldValue), "User isn't Getting Confirmation Screen after clicking on the Refer Friend option");
         ExtentManager.getExtentTest().log(Status.PASS, "User is Getting Confirmation Screen or referal message after clicking on the Refer Friend option");
 	}	
-	@AfterMethod()
+	@AfterMethod
     public void tearDown() {
         driver.quit();
     }

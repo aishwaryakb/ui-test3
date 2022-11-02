@@ -204,7 +204,7 @@ public class GuestGetInTouchFormTest extends Base {
 		Assert.assertTrue(getInTouchFormPage.getInTouchFormTitle.isDisplayed(), "GET-IN-TOUCH form is not opening when clicking on the icon from Nav bar");
 		ExtentManager.getExtentTest().log(Status.PASS, "verified that Get-In-Touch Form is opening when the user click on the icon from Navbar");
 	}
-	@AfterMethod()
+	@AfterMethod
 	public void tearDown() {
 		driver.quit();
 	}

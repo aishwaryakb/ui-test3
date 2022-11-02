@@ -177,7 +177,7 @@ public class CreateTicketPageTest extends Base{
 		ExtentManager.getExtentTest().log(Status.PASS, "The MyTickets Screen  contains The List of the Tickets created");
 		
 	}
-	@AfterMethod()
+	@AfterMethod
 	public void tearDown() {
 		driver.quit();
 	}

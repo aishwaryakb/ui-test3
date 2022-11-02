@@ -171,7 +171,7 @@ public class MultipleApartmentAccountTest extends Base {
 		boolean selectAPrinterTitle = driver.findElementByXPath("//*[@text = 'Select a printer']").isDisplayed();
 		Assert.assertTrue(selectAPrinterTitle, "Able to print the document");
 	}
-	@AfterMethod()
+	@AfterMethod
 	public void tearDown() {
 		driver.quit();
 	}

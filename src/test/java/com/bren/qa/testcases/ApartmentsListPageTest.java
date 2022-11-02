@@ -69,7 +69,7 @@ public class ApartmentsListPageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "Verified that the User is Navigating to the Home"
 				+ " Screen When clicking on the Brens Icon from Multiple Apartments Details screen");
 	}
-	@AfterMethod()
+	@AfterMethod
     public void tearDown() {
         driver.quit();
     }

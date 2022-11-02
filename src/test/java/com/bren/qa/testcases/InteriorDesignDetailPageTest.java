@@ -85,7 +85,7 @@ public class InteriorDesignDetailPageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.INFO, "All Interior images swiped");
 	}
 	
-	@AfterMethod()
+	@AfterMethod
 	public void tearDown() {
 		driver.quit();
 	}

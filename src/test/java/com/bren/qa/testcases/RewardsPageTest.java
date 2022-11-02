@@ -183,7 +183,7 @@ public class RewardsPageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "Verified that the User is Navigating to the Home"
 				+ " Screen When clicking on the Brens Icon from Rewards Tab");
 	}
-	@AfterMethod()
+	@AfterMethod
 	public void tearDown() {
 		driver.quit();
 	}
