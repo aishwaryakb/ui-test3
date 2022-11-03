@@ -51,7 +51,7 @@ public class CreateTicketPageTest extends Base{
 		createTicketPage = myHomePage.clickCreateTicketButton();
 		
 	}
-	@Test(priority = 1)
+// 	@Test(priority = 1)
 	public void verifyTheDetailsOfTheScreenOpeningWhenUserClicksOnTheIconForTicketCreation() {
 		Assert.assertTrue(createTicketPage.createATicketTab.isDisplayed(), "Create Ticket Tab isn't Displayed");
 		ExtentManager.getExtentTest().log(Status.PASS, "Create Ticket Tab is Displayed");
@@ -95,7 +95,7 @@ public class CreateTicketPageTest extends Base{
 		Assert.assertTrue(createTicketPage.createATicketButton.isDisplayed(), "Create A Ticket Button isn't Displayed");
 		ExtentManager.getExtentTest().log(Status.PASS, "Create A Ticket Button is Displayed");
 	}
-	@Test(priority = 2)
+// 	@Test(priority = 2)
 	public void verifyThatTheUserCanEditTheTicketTitleAndDescreptionField() {
 		createTicketPage.ticketTitleInputField.sendKeys("ticket-title");
 		Assert.assertTrue(createTicketPage.ticketTitleInputField.getAttribute("text").length() > 0, "Ticket Title Input field isn't Editable");
@@ -105,7 +105,7 @@ public class CreateTicketPageTest extends Base{
 		Assert.assertTrue(createTicketPage.describeYourIssueInputField.getAttribute("text").length() > 0, "Describe-your-issue Input field isn't Editable");
 		ExtentManager.getExtentTest().log(Status.PASS, "Describe your issue Input field is editable");
 	}
-	@Test(priority = 3)
+// 	@Test(priority = 3)
 	public void verifyTicketTitleDescriptionAndUnitNameFieldsInTheFormAreMandatory() throws InterruptedException {
 		Thread.sleep(3000);
 		ScrollHelper.scrollDown();
@@ -143,7 +143,7 @@ public class CreateTicketPageTest extends Base{
 		Assert.assertTrue(ticketCreationSuccessPage.supportTicketCreatedTitle.isDisplayed(), "Not redirecting to Ticket Creation Successful screen");
 		ExtentManager.getExtentTest().log(Status.PASS, "Redirecting to Ticket Creation Successful screen");
 	}
-	@Test(priority = 5)
+// 	@Test(priority = 5)
 	public void verifyANewlyCreatedTicketIsAddedIntoTheList() throws InterruptedException {
 		createTicketPage.ticketTitleInputField.sendKeys("ticket-title");
 		Thread.sleep(2000);
@@ -169,7 +169,7 @@ public class CreateTicketPageTest extends Base{
 		Thread.sleep(3000);
 
 	}
-	@Test(priority = 6 )
+// 	@Test(priority = 6 )
 	public void verifyThatTheMyTicketsScreenContainsTheListOfTheTicketsCreated() throws InterruptedException, IOException {
 		createTicketPage.myTicketsTab.click();
 		Thread.sleep(3000);
