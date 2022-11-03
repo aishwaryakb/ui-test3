@@ -58,6 +58,7 @@ jobs:
           target: ${{ matrix.target }}
           arch: x86_64
           profile: Pixel 4
+          emulator-build: 7425822
           script: mvn clean test -Dsurefire.suiteXmlFiles=testng.xml # running our test to check the results
       - name: Use the Upload Artifact GitHub Action
         uses: actions/upload-artifact@v2
