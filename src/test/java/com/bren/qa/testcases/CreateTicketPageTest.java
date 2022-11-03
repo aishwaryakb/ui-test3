@@ -134,7 +134,7 @@ public class CreateTicketPageTest extends Base{
 		createTicketPage.chooseFileButton.click();
 		// upload file start
 		driver.findElementByXPath("//*[@text = 'Camera']").click();
-		driver.findElementByXPath("//*[@text = 'Allow']").click();
+		driver.findElementByXPath("//*[@text = 'ALLOW']").click();
 		Thread.sleep(5000);
 		driver.findElementByXPath("//*[@content-desc = 'Shutter']");
 		driver.findElementByXPath("//*[@content-desc = 'Shutter']").click();
