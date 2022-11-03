@@ -137,8 +137,8 @@ public class MultipleApartmentAccountTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "floor plan is visible on screen");
 		apartmentFloorPlansPage.clickDownload();
 		driver.findElementByXPath("//*[@text = 'Download image file']").click();
-		System.out.print(driver.findElementByXPath("//android.widget.Button[@index = '0']").getAttribute("text"));
-		driver.findElementByXPath("//*[@text = 'Allow']").click();
+// 		System.out.print(driver.findElementByXPath("//android.widget.Button[@index = '0']").getAttribute("text"));
+// 		driver.findElementByXPath("//*[@text = 'Allow']").click();
 		driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
 		String  actualtoastMessage = driver.findElementByXPath("//android.widget.Toast[1]").getAttribute("name");
 		System.out.print(actualtoastMessage);
