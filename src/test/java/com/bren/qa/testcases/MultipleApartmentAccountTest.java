@@ -45,7 +45,7 @@ public class MultipleApartmentAccountTest extends Base {
         driver.findElementByXPath("//*[@text = 'Enter OTP']");
 		myHomePage = otpVerificationPage.inputOtpForMultupleApartmentAccount(prop.getProperty("multpleApartmentsOwnerOtp").toString());
 	}
-	@Test(priority = 1)
+// 	@Test(priority = 1)
 	public void verifyHomePageOfMultipleApartmentsOwner() {
 		Assert.assertTrue(myHomePage.createTicketIcon.isDisplayed(),"Create A Ticket Icon is not Added to Navbar inside home page");
 		ExtentManager.getExtentTest().log(Status.PASS, "Verified that Create A Ticket Icon is Added to Navbar inside home page");
@@ -54,21 +54,21 @@ public class MultipleApartmentAccountTest extends Base {
 		
 	}
 	
-	@Test(priority = 2)
+// 	@Test(priority = 2)
 	public void verifyViewMoreOptionOpensApartmentDetails() {
 		apartmentDetailsPage = myHomePage.clickapartmentMoreDetails();
 		Assert.assertTrue(apartmentDetailsPage.aboutThisPropertySectionIsDisplayed(), "View more option doesn't opens Apartment Details");
 		ExtentManager.getExtentTest().log(Status.PASS, "View more option opens Apartment Details");
 	}
 	
-	@Test(priority = 3)
+// 	@Test(priority = 3)
 	public void clickOnTheCardOpensApartmentDetails() {
 		apartmentDetailsPage = myHomePage.clickapartmentMoreDetails();
 		Assert.assertTrue(apartmentDetailsPage.aboutThisPropertySectionIsDisplayed(), "View more option doesn't opens Apartment Details");
 		ExtentManager.getExtentTest().log(Status.PASS, "View more option opens Apartment Details");
 	}
 	
-	@Test(priority = 5)
+// 	@Test(priority = 5)
 	public void verifyThatTheUserIsNavigatingToTheHomeScreenWhenClickingOnTheBrensIconFromMultipleApartmentsHomePage() throws InterruptedException {
 		driver.findElementByXPath("//*[@resource-id ='RNE__Image']").click();
 		myHomePage.homePageVerification();
@@ -76,7 +76,7 @@ public class MultipleApartmentAccountTest extends Base {
 				+ " Screen When clicking on the Brens Icon from Multiple apartments Home Page");
 	}
 	
-	@Test(priority = 6)
+// 	@Test(priority = 6)
 	public void documentsViewVerification() throws IOException, InterruptedException {
 	    differentDocumentCategoriesPage = myHomePage.clickDocuments();
         docsPage = differentDocumentCategoriesPage.clickDocument();
@@ -88,7 +88,7 @@ public class MultipleApartmentAccountTest extends Base {
 		
 	}
 	
-	@Test(priority = 7)
+// 	@Test(priority = 7)
 	public void documentDownloadVerification() throws IOException, InterruptedException {
 	    differentDocumentCategoriesPage = myHomePage.clickDocuments();
         docsPage = differentDocumentCategoriesPage.clickDocument();
@@ -105,7 +105,7 @@ public class MultipleApartmentAccountTest extends Base {
 		Assert.assertTrue(fileBase64.length > 0, "Document wasnt downloaded successfully");
 		ExtentManager.getExtentTest().log(Status.PASS, "Document downloaded successfully");
 	}
-	@Test(priority = 8)
+// 	@Test(priority = 8)
 	public void documentShareVerification() throws IOException, InterruptedException {
 	    differentDocumentCategoriesPage = myHomePage.clickDocuments();
 	    docsPage = differentDocumentCategoriesPage.clickDocument();
@@ -118,7 +118,7 @@ public class MultipleApartmentAccountTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "Able to share the document");
 		
 	}
-	@Test(priority = 9)
+// 	@Test(priority = 9)
 	public void documentPrintVerification() throws IOException, InterruptedException {
 	    differentDocumentCategoriesPage = myHomePage.clickDocuments();
 	    docsPage = differentDocumentCategoriesPage.clickDocument();
@@ -151,7 +151,7 @@ public class MultipleApartmentAccountTest extends Base {
 		Assert.assertTrue(fileBase64.length > 0, "Document wasnt downloaded successfully");
 		ExtentManager.getExtentTest().log(Status.PASS, "Document downloaded successfully");
 	}
-	@Test(priority = 2)
+// 	@Test(priority = 2)
 	public void floorPlanShareVerification() throws IOException, InterruptedException {
 		Thread.sleep(5000);
 		apartmentFloorPlansPage = myHomePage.clickFloorPlans();
@@ -163,7 +163,7 @@ public class MultipleApartmentAccountTest extends Base {
 		Assert.assertTrue(shareTitle, "Not working share option");
 		ExtentManager.getExtentTest().log(Status.PASS, "Able to share the document");
 	}
-	@Test(priority = 4)
+// 	@Test(priority = 4)
 	public void floorPlanPrintVerification() throws IOException, InterruptedException {
 		Thread.sleep(5000);
 		apartmentFloorPlansPage = myHomePage.clickFloorPlans();
