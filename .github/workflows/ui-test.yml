@@ -54,7 +54,7 @@ jobs:
           disable-animations: true
           target: ${{ matrix.target }}
           arch: x86_64
-          profile: Pixel 4 API 29
+          profile: Pixel 4
           script: mvn clean test -Dsurefire.suiteXmlFiles=testng.xml # running our test to check the results
       - name: Use the Upload Artifact GitHub Action
         uses: actions/upload-artifact@v2
