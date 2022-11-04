@@ -143,7 +143,7 @@ public class MultipleApartmentAccountTest extends Base {
 		String  actualtoastMessage = driver.findElementByXPath("//android.widget.Toast[1]").getAttribute("name");
 		System.out.print(actualtoastMessage);
 		driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
-		driver.findElementByXPath("//*[@content-desc = 'Info']").click();
+		driver.findElementByXPath("//*[@content-desc = 'INFO']").click();
 	
 		String fileNamelabel = driver.findElementByXPath("//*[@resource-id = 'com.google.android.apps.photos:id/label']").getAttribute("text");
 		String fileName = fileNamelabel.substring(fileNamelabel.indexOf("Download/")+9);
