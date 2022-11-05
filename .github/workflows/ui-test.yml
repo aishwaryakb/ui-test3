@@ -44,7 +44,6 @@ jobs:
           force-avd-creation: false
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: false
-          profile: Pixel
           script: echo "Generated AVD snapshot for caching."
       - name: Run Appium Tests
         uses: reactivecircus/android-emulator-runner@v2 # install and create the Emulator
