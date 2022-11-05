@@ -61,4 +61,5 @@ jobs:
         with: 
           name: Report-download
           path: index.html
+        if: always()
 
