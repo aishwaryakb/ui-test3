@@ -9,16 +9,16 @@
 <!--         	<class name="com.bren.qa.testcases.LaunchPageTest"/>
          	<class name="com.bren.qa.testcases.LoginPageTest"/>
          	<class name="com.bren.qa.testcases.OtpVerificationPageTest"/>
-         	<class name="com.bren.qa.testcases.EmailLoginPageTest"/> -->
+         	<class name="com.bren.qa.testcases.EmailLoginPageTest"/>-->
          	<class name="com.bren.qa.testcases.MultipleApartmentAccountTest"/>
-		<class name="com.bren.qa.testcases.CreateTicketPageTest"/>
+<!-- 		<class name="com.bren.qa.testcases.CreateTicketPageTest"/>
         	<class name="com.bren.qa.testcases.GuestProfilePageTest"/> -->
          	
-		<class name="com.bren.qa.testcases.ApartmentsListPageTest"/>
+<!-- 		<class name="com.bren.qa.testcases.ApartmentsListPageTest"/>
          	<class name="com.bren.qa.testcases.GuestApartmentsListPageTest"/>
          	<class name="com.bren.qa.testcases.GuestGetInTouchFormTest"/>
          	<class name="com.bren.qa.testcases.GuestHomePageTest"/>
-         	<class name="com.bren.qa.testcases.InteriorDesignDetailPageTest"/>
+         	<class name="com.bren.qa.testcases.InteriorDesignDetailPageTest"/> -->
 		
 <!-- 		
          	<class name="com.bren.qa.testcases.InteriorDesignPackagesListPageTest"/>
