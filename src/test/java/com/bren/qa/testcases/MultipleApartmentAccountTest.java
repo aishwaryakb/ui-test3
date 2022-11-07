@@ -140,10 +140,10 @@ public class MultipleApartmentAccountTest extends Base {
 // 		System.out.print(driver.findElementByXPath("//android.widget.Button[@index = '0']").getAttribute("text"));
 		driver.findElementByXPath("//*[@text = 'ALLOW']").click();
 		Thread.sleep(5000);
-		System.out.println(driver.getPageSource());
 		driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
 		String  actualtoastMessage = driver.findElementByXPath("//android.widget.Toast[1]").getAttribute("name");
 		System.out.print(actualtoastMessage);
+		System.out.println(driver.getPageSource());
 		driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
 		driver.findElementByXPath("//*[@content-desc = 'Info']").click();
 	
