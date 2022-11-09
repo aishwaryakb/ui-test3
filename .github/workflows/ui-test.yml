@@ -36,21 +36,26 @@ jobs:
             ~/.android/avd/*
             ~/.android/adb*
           key: avd-${{ matrix.api-level }} 
-      - name: create AVD and generate snapshot for caching
-        if: steps.avd-cache.outputs.cache-hit != 'true'
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: ${{ matrix.api-level }}
+#      - name: create AVD and generate snapshot for caching
+ #       if: steps.avd-cache.outputs.cache-hit != 'true'
+  #      uses: reactivecircus/android-emulator-runner@v2
+   #     with:
+    #      api-level: ${{ matrix.api-level }}
 #           force-avd-creation: false
-          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
-          disable-animations: false
-          script: echo "Generated AVD snapshot for caching."
+     #     emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+      #    disable-animations: false
+       #   script: echo "Generated AVD snapshot for caching."
+       
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v2
+       
       - name: listing adb devices
         run: |
           adb devices
           adb devices -l
       - name: Run Appium Tests
-        uses: reactivecircus/android-emulator-runner@v2 # install and create the Emulator
+       # uses: reactivecircus/android-emulator-runner@v2 # install and create the Emulator
+        uses: android-actions/setup-android@v2
         with:
           api-level: ${{ matrix.api-level }}
 #           force-avd-creation: false
