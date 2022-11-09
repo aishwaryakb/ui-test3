@@ -50,7 +50,7 @@ jobs:
       - name: listing adb devices
         run: avdmanager list avd
       - name: delete directory
-        run: rm -R Android
+        run: rm -R /Users/runner/Library/Android
       - name: Run Appium Tests
         uses: reactivecircus/android-emulator-runner@v2 # install and create the Emulator
         with:
