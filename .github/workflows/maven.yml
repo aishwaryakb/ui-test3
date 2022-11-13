@@ -1,3 +1,11 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
 name: UI Test
 # on push we will trigger our code
 #on: [push]
@@ -36,21 +44,15 @@ jobs:
             ~/.android/avd/*
             ~/.android/adb*
           key: avd-${{ matrix.api-level }} 
-      
       - name: create AVD and generate snapshot for caching
         if: steps.avd-cache.outputs.cache-hit != 'true'
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: ${{ matrix.api-level }}
-     #    force-avd-creation: false
-          avd-name: pixel-test
+#           force-avd-creation: false
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: false
           script: echo "Generated AVD snapshot for caching."
-      - name: listing adb devices
-        run: avdmanager list avd
-      - name: delete directory
-        run: rm -R /Users/runner/Library/Android
       - name: Run Appium Tests
         uses: reactivecircus/android-emulator-runner@v2 # install and create the Emulator
         with:
@@ -60,7 +62,6 @@ jobs:
           disable-animations: true
           target: ${{ matrix.target }}
           arch: x86_64
-          avd-name: pixel-test
           profile: pixel
           script: mvn clean test -Dsurefire.suiteXmlFiles=testng.xml # running our test to check the results
       - name: Use the Upload Artifact GitHub Action
@@ -69,4 +70,3 @@ jobs:
           name: Report-download
           path: index.html
         if: always()
-
