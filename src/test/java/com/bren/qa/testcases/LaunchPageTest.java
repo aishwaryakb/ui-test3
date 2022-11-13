@@ -55,7 +55,7 @@ public class LaunchPageTest extends Base{
 		Assert.assertTrue(guestHomePage.isProjectTitleIsDisplayed(), "Landing Page for the app isn't apartments for Guest User");
 		ExtentManager.getExtentTest().log(Status.PASS, "Verified that Landing Page for the app is apartments for Guest User");
 	}
-	@AfterMethod
+	@AfterMethod()
 	public void tearDown() {
 		driver.quit();
 	}

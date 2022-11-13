@@ -138,7 +138,7 @@ public class OwnerProfilePageTest extends Base {
 		WebElement parrentScrollView = driver.findElementByClassName("android.widget.ScrollView");
 		parrentScrollView.findElement(By.xpath("//*[@resource-id = 'RNE__Image']")).click();
 		driver.findElementByXPath("//*[@text = 'Camera']").click();
-		driver.findElementByXPath("//*[@text = 'Allow']").click();
+		driver.findElementByXPath("//*[@text = 'WHILE USING THE APP']").click();
 		Thread.sleep(5000);
 		driver.findElementByXPath("//*[@content-desc = 'Shutter']");
 		driver.findElementByXPath("//*[@content-desc = 'Shutter']").click();
@@ -153,7 +153,7 @@ public class OwnerProfilePageTest extends Base {
 		WebElement parrentScrollView = driver.findElementByClassName("android.widget.ScrollView");
 		parrentScrollView.findElement(By.xpath("//*[@resource-id = 'RNE__Image']")).click();
 		driver.findElementByXPath("//*[@text = 'Camera']").click();
-        driver.findElementByXPath("//*[@text = 'Allow']").click();
+        driver.findElementByXPath("//*[@text = 'WHILE USING THE APP']").click();
         Thread.sleep(5000);
         driver.findElementByXPath("//*[@content-desc = 'Shutter']");
         driver.findElementByXPath("//*[@content-desc = 'Shutter']").click();
@@ -166,7 +166,7 @@ public class OwnerProfilePageTest extends Base {
         
 		
 	}
-	@AfterMethod
+	@AfterMethod()
 	public void tearDown() {
 		driver.quit();
 	}

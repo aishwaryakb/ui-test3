@@ -72,7 +72,7 @@ public class GuestsApartmentDetailsPageTest extends Base {
 		
 	}
 	
-	@AfterMethod
+	@AfterMethod()
 	public void tearDown() {
 		driver.quit();
 	}

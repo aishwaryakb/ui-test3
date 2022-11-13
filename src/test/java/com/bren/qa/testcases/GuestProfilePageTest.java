@@ -75,7 +75,7 @@ public class GuestProfilePageTest extends Base{
 				+ " Screen When clicking on the Brens Icon from Guest Profile Page");
 	}
 
-	@AfterMethod
+	@AfterMethod()
 	public void tearDown() {
 		driver.quit();
 	}

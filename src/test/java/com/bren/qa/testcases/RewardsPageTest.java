@@ -105,7 +105,7 @@ public class RewardsPageTest extends Base {
 	
 		Assert.assertTrue(referAndEarnFormPage.isMobileNumberFieldIsDisplayed(), "Mobile Number Input Field isn't Displayed");
 		ExtentManager.getExtentTest().log(Status.PASS, "Mobile Number Input Field is Displayed");
-	
+	    ScrollHelper.scrollDown();
 		Assert.assertTrue(referAndEarnFormPage.isProjectNameTitleIsDisplayed(), "Project Name Title isn't Displayed");
 		ExtentManager.getExtentTest().log(Status.PASS, "Project Name Title is Displayed");
 	
@@ -183,7 +183,7 @@ public class RewardsPageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "Verified that the User is Navigating to the Home"
 				+ " Screen When clicking on the Brens Icon from Rewards Tab");
 	}
-	@AfterMethod
+	@AfterMethod()
 	public void tearDown() {
 		driver.quit();
 	}

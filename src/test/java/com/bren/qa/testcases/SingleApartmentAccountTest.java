@@ -102,7 +102,7 @@ public class SingleApartmentAccountTest extends Base {
 //		referAndEarnFormPage.fillAndSubmitReferAFriendForm();
 //		ExtentManager.getExtentTest().log(Status.PASS, "Submitted Refer A Friend Form");
 	}
-	@AfterMethod
+	@AfterMethod()
 	public void tearDown() {
 		driver.quit();
 	}

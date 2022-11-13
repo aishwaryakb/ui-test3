@@ -84,7 +84,7 @@ public class InteriorDesignPackagesListPageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "click on View-More-Details, opening the design package");
 	}
 	
-	@AfterMethod
+	@AfterMethod()
 	public void tearDown() {
 		driver.quit();
 	}

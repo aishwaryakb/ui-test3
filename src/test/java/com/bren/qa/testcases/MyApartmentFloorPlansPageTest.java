@@ -51,7 +51,7 @@ public class MyApartmentFloorPlansPageTest extends Base {
 		apartmentFloorPlansPage =  myHomePage.clickFloorPlans();
 	}
 
-	@Test(priority = 1)
+//	 pending @Test(priority = 1)
 	public void floorPlanViewAndDownloadVerification() throws IOException, InterruptedException {
 		Thread.sleep(3000);
 		Assert.assertEquals(apartmentFloorPlansPage.plansTitle.getAttribute("text"), expectedPageHeading);
@@ -60,7 +60,7 @@ public class MyApartmentFloorPlansPageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "floor plan is visible on screen");
 		apartmentFloorPlansPage.clickDownload();
 		driver.findElementByXPath("//*[@text = 'Download image file']").click();
-		driver.findElementByXPath("//*[@text = 'Allow']").click();
+		driver.findElementByXPath("//*[@text = 'ALLOW']").click();
 		driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
 		String  actualtoastMessage = driver.findElementByXPath("//android.widget.Toast[1]").getAttribute("name");
 		Thread.sleep(20000);
@@ -77,7 +77,7 @@ public class MyApartmentFloorPlansPageTest extends Base {
 		Thread.sleep(5000);
 		apartmentFloorPlansPage.clickShare();
 		driver.findElementByXPath("//*[@text = 'Share image file']").click();
-		driver.findElementByXPath("//*[@text = 'Allow']").click();
+		driver.findElementByXPath("//*[@text = 'ALLOW']").click();
 		driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
 		boolean shareTitle = driver.findElementByXPath("//*[@text = 'Share']").isDisplayed();
 		Assert.assertTrue(shareTitle, "Not working share option");
@@ -91,7 +91,7 @@ public class MyApartmentFloorPlansPageTest extends Base {
 		boolean selectAPrinterTitle = driver.findElementByXPath("//*[@text = 'Select a printer']").isDisplayed();
 		Assert.assertTrue(selectAPrinterTitle, "Able to print the document");
 	}
-	@AfterMethod
+	@AfterMethod()
 	public void tearDown() {
 		driver.quit();
 	}

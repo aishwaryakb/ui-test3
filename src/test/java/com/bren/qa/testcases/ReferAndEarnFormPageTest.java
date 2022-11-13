@@ -100,7 +100,7 @@ public class ReferAndEarnFormPageTest extends Base{
 	
 		Assert.assertTrue(referAndEarnFormPage.isProjectNameTitleIsDisplayed(), "Project Name Title isn't Displayed");
 		ExtentManager.getExtentTest().log(Status.PASS, "Project Name Title is Displayed");
-	
+		ScrollHelper.scrollDown();
 		Assert.assertTrue(referAndEarnFormPage.isProjectNameFieldIsDisplayed(), "Project Input Field isn't Displayed");
 		ExtentManager.getExtentTest().log(Status.PASS, "Project Input Field is Displayed");
 		
@@ -118,6 +118,7 @@ public class ReferAndEarnFormPageTest extends Base{
         ExtentManager.getExtentTest().log(Status.PASS, "First Name is mandatory");
         Assert.assertTrue(driver.findElementByXPath("//*[@text ='Please enter last name']").isDisplayed(), "Last Name isn't mandatory");
         ExtentManager.getExtentTest().log(Status.PASS, "Last Name is mandatory");
+        ScrollHelper.scrollDown();
         Assert.assertTrue(driver.findElementByXPath("//*[@text ='Please enter mobile number']").isDisplayed(), "Mobile Number isn't mandatory");
         ExtentManager.getExtentTest().log(Status.PASS, "Mobile Number is mandatory");
     }
@@ -137,7 +138,7 @@ public class ReferAndEarnFormPageTest extends Base{
         Assert.assertTrue(referAndEarnFormPage.isConfirmationScreenOrExistingReferalMessageIsDisplayed(firstNameFieldValue), "User isn't Getting Confirmation Screen after clicking on the Refer Friend option");
         ExtentManager.getExtentTest().log(Status.PASS, "User is Getting Confirmation Screen or referal message after clicking on the Refer Friend option");
 	}	
-	@AfterMethod
+	@AfterMethod()
     public void tearDown() {
         driver.quit();
     }

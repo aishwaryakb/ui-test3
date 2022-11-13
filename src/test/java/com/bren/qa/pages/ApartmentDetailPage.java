@@ -8,6 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.bren.qa.base.Base;
 import com.bren.qa.helper.SwipeHelper;
+import com.bren.qa.helper.TapHelper;
 
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.TouchAction;
@@ -94,6 +95,8 @@ public class ApartmentDetailPage extends Base{
 	public WebElement detailsOfSpecification;
 	@FindBy(xpath = "//*[@resource-id = 'projectAmenities']")
 	public WebElement projectAmenitiesSection;
+	@FindBy(xpath = "//*[@text = 'Full screen']")
+	public WebElement fullScreenOption;
 	
 	
 	
@@ -110,6 +113,9 @@ public class ApartmentDetailPage extends Base{
 	public void clickLeftAndRightArrows() {
 		leftAndrightArrow.click();
 	}
+	public void clickDownArrows() {
+        TapHelper.tapElementAt(downArrow, 0.8, 0.6);
+    }
 	public void clickViewGallery() {
 		viewGalleryButton.click();
 	}
@@ -165,7 +171,10 @@ public class ApartmentDetailPage extends Base{
 		shareAndDownloadIcons.findElements(By.xpath("//*[@resource-id ='button']")).get(1).click();
 	}
 	public void clickYoutubeVideContainer() {
-		youtubePlayerContainer.click();
+	    TapHelper.tapElementAt(youtubePlayerContainer, 0.8, 0.6);
+	}
+	public void clickOnFullScreen() {
+	    TapHelper.tapElementAt(fullScreenOption, 0.8, 0.6);
 	}
 	public boolean viewGalleryButtonIsDisplayed() {
 		return viewGalleryButton.isDisplayed();

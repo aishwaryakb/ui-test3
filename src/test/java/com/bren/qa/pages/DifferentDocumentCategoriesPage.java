@@ -23,4 +23,8 @@ public class DifferentDocumentCategoriesPage extends Base{
 		categoryName.click();
 		return new DocumentsPage();
 	}
+	public DifferentDocumentCategoriesPage clickNextDocument() {
+        categoryName.click();
+        return new DifferentDocumentCategoriesPage();
+    }
 }

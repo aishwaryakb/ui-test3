@@ -76,7 +76,7 @@ public class OtpVerificationPage extends Base{
 	}
 	public boolean verifyEditOption() {
 		WebElement editOption = driver.findElementByXPath("//*[@text = '"+editOptionString+"']");
-		TapHelper.tapElementAt(editOption, 0.4, 0.5);
+		TapHelper.tapElementAt(editOption, 0.35, 0.5);
 		WebElement loginTitle = driver.findElementByXPath("//*[@text = 'Login']");
 		return loginTitle.isDisplayed();
 	}

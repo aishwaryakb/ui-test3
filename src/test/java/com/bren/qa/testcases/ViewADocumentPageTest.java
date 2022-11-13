@@ -28,6 +28,7 @@ public class ViewADocumentPageTest extends Base {
 	DocumentsPage docsPage;
 	ViewADocumentPage viewADocumentPage;
 	DifferentDocumentCategoriesPage differentDocumentCategoriesPage;
+	DifferentDocumentCategoriesPage differentDocumentCategoriesPageNext;
 	
 	public ViewADocumentPageTest() {
 		super();
@@ -43,17 +44,20 @@ public class ViewADocumentPageTest extends Base {
         driver.findElementByXPath("//*[@text = 'Enter OTP']");
 		myHomePage = otpVerificationPage.inputOtp(prop.getProperty("otp").toString());
 		differentDocumentCategoriesPage = myHomePage.clickDocuments();
+		Thread.sleep(5000);
+		differentDocumentCategoriesPageNext = differentDocumentCategoriesPage.clickNextDocument();
+		
 		docsPage = differentDocumentCategoriesPage.clickDocument();
 		Thread.sleep(5000);
 		viewADocumentPage = docsPage.clickOnOneDoc();
 		Thread.sleep(8000);
 		viewADocumentPage.clickMoreOptions();
 	}
-	@Test(priority = 2)
+//	pending  @Test(priority = 2)
 	public void documentDownloadVerification() throws IOException, InterruptedException {
 		Thread.sleep(5000);
 		viewADocumentPage.clickDownload();
-		driver.findElementByXPath("//*[@text = 'Allow']").click();
+		driver.findElementByXPath("//*[@text = 'ALLOW']").click();
 		driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
 		String  actualtoastMessage = driver.findElementByXPath("//android.widget.Toast[1]").getAttribute("name");
 		Thread.sleep(20000);
@@ -66,7 +70,7 @@ public class ViewADocumentPageTest extends Base {
 	public void documentShareVerification() throws IOException, InterruptedException {
 		Thread.sleep(5000);
 		viewADocumentPage.clickShare();
-		driver.findElementByXPath("//*[@text = 'Allow']").click();
+		driver.findElementByXPath("//*[@text = 'ALLOW']").click();
 		driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
 		boolean shareTitle = driver.findElementByXPath("//*[@text = 'Share']").isDisplayed();
 		Assert.assertTrue(shareTitle, "Not working share option");
@@ -80,7 +84,7 @@ public class ViewADocumentPageTest extends Base {
 		boolean selectAPrinterTitle = driver.findElementByXPath("//*[@text = 'Select a printer']").isDisplayed();
 		Assert.assertTrue(selectAPrinterTitle, "Able to print the document");
 	}
-	@AfterMethod
+	@AfterMethod()
 	public void tearDown() {
 		driver.quit();
 	}
