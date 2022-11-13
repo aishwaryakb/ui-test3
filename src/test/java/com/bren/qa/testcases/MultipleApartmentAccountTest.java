@@ -91,11 +91,7 @@ public class MultipleApartmentAccountTest extends Base {
 		
 	}
 	
-<<<<<<< HEAD
-	// pending @Test(priority = 7)
-=======
 // 	@Test(priority = 7)
->>>>>>> ec3ede83c0989956aa75cbe93269ff224c3abf3c
 	public void documentDownloadVerification() throws IOException, InterruptedException {
 	    differentDocumentCategoriesPage = myHomePage.clickDocuments();
 	    Thread.sleep(5000);
