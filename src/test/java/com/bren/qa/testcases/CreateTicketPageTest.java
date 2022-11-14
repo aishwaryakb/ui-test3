@@ -137,7 +137,8 @@ public class CreateTicketPageTest extends Base{
         driver.findElementByXPath("//*[@text = 'Camera']").click();
         Thread.sleep(10000);
         System.out.println(driver.getPageSource());
-        driver.findElementByXPath("//*[@text = 'WHILE USING THE APP']").click();
+//         driver.findElementByXPath("//*[@text = 'WHILE USING THE APP']").click();
+        driver.findElementByXPath("//*[@text = 'ALLOW']").click();
         Thread.sleep(5000);
         driver.findElementByXPath("//*[@content-desc = 'Shutter']");
         driver.findElementByXPath("//*[@content-desc = 'Shutter']").click();
