@@ -124,16 +124,16 @@ public class CreateTicketPageTest extends Base{
     @Test(priority = 4)
     public void verifyTicketCreation() throws IOException, InterruptedException {
         String expectedToastMessage = "Ticket successfully created";
-		createTicketPage.ticketTitleInputField.sendKeys("ticket-title");
-		createTicketPage.describeYourIssueInputField.sendKeys("descreption");
-		createTicketPage.issueTypeDropDownList.click();
-		createTicketPage.issueTypeDropDownListElement.click();
-		createTicketPage.unitNameDropDownList.click();
-		createTicketPage.unitNameDropDownListElement.click();
-		ScrollHelper.scrollDown();
-		ticketCreationSuccessPage = createTicketPage.clickCreateATicketButton();
-		Assert.assertTrue(ticketCreationSuccessPage.supportTicketCreatedTitle.isDisplayed(), "Not redirecting to Ticket Creation Successful screen");
-		ExtentManager.getExtentTest().log(Status.PASS, "Redirecting to Ticket Creation Successful screen");
+	createTicketPage.ticketTitleInputField.sendKeys("ticket-title");
+	createTicketPage.describeYourIssueInputField.sendKeys("descreption");
+	createTicketPage.issueTypeDropDownList.click();
+	createTicketPage.issueTypeDropDownListElement.click();
+	createTicketPage.unitNameDropDownList.click();
+	createTicketPage.unitNameDropDownListElement.click();
+	ScrollHelper.scrollDown();
+	ticketCreationSuccessPage = createTicketPage.clickCreateATicketButton();
+	Assert.assertTrue(ticketCreationSuccessPage.supportTicketCreatedTitle.isDisplayed(), "Not redirecting to Ticket Creation Successful screen");
+	ExtentManager.getExtentTest().log(Status.PASS, "Redirecting to Ticket Creation Successful screen");
 	
     }
 //     @Test(priority = 5)
