@@ -141,7 +141,6 @@ public class ApartmentDetailPageTest extends Base {
 		Assert.assertTrue(apartmentDetailPage.viewGalleryButtonIsDisplayed(), "Doesn't return back to detail page after clicking on close icon");
 		ExtentManager.getExtentTest().log(Status.PASS, "Returns back to Apartment detail Page after clicking on Close Icon");
 	}
-	// verifyReferAFriendFormIsOpeningWhenUserClicksOnTheReferAFriendOptionFromApartmentDetailsScreen
 	@Test(priority =5)
 	public void verifyImagesAreInPortraitMode() throws InterruptedException {
 		apartmentDetailPage.clickViewGallery();
@@ -166,20 +165,16 @@ public class ApartmentDetailPageTest extends Base {
 		Assert.assertTrue(apartmentDetailPage.shareTitleIsDisplayed(), "Not able to share the docs");
 		
 	}
-	// pending @Test(priority = 8)
+	@Test(priority = 8)
 	public void documentDownloadVerification() throws IOException, InterruptedException {
 		Thread.sleep(5000);
+		String expectedToastMessage = "Downloading please wait..";
 		apartmentDetailPage.clickDownloadIcon();
 		driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
 		driver.findElementByXPath("//*[@text = 'ALLOW']").click();
-
-		driver.manage().timeouts().implicitlyWait(240, TimeUnit.SECONDS);
-		driver.findElementByXPath("//*[@content-desc = 'Find']");
-		String fileName = driver.findElementByXPath("//android.widget.TextView[@index = '1']").getAttribute("text");
-
-		byte[] fileBase64 = driver.pullFile("/storage/emulated/0/Android/data/com.brencorp.play.mybren/files/Download/"+fileName);
-		Assert.assertTrue(fileBase64.length > 0, "Document wasnt downloaded successfully");
-		ExtentManager.getExtentTest().log(Status.PASS, "Document downloaded successfully");
+		String actualToastMessage = driver.findElementByXPath("//android.widget.Toast[1]").getAttribute("name");
+	    Assert.assertEquals(actualToastMessage, expectedToastMessage);
+	    ExtentManager.getExtentTest().log(Status.PASS, "Document downloaded successfully"); 
 	}
 	
 	@Test(priority = 10)

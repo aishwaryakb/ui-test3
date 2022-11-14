@@ -51,9 +51,10 @@ public class MyApartmentFloorPlansPageTest extends Base {
 		apartmentFloorPlansPage =  myHomePage.clickFloorPlans();
 	}
 
-//	 pending @Test(priority = 1)
+    @Test(priority = 1)
 	public void floorPlanViewAndDownloadVerification() throws IOException, InterruptedException {
 		Thread.sleep(3000);
+		String expectedToastMessage = "Downloading please wait..";
 		Assert.assertEquals(apartmentFloorPlansPage.plansTitle.getAttribute("text"), expectedPageHeading);
 		ExtentManager.getExtentTest().log(Status.PASS, "Heading verified");
 		Assert.assertTrue(apartmentFloorPlansPage.planView.isDisplayed(), "Floor plan isn't visible");
@@ -62,14 +63,8 @@ public class MyApartmentFloorPlansPageTest extends Base {
 		driver.findElementByXPath("//*[@text = 'Download image file']").click();
 		driver.findElementByXPath("//*[@text = 'ALLOW']").click();
 		driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
-		String  actualtoastMessage = driver.findElementByXPath("//android.widget.Toast[1]").getAttribute("name");
-		Thread.sleep(20000);
-		driver.findElementByXPath("//*[@content-desc = 'Info']").click();
-	
-		String fileNamelabel = driver.findElementByXPath("//*[@resource-id = 'com.google.android.apps.photos:id/label']").getAttribute("text");
-		String fileName = fileNamelabel.substring(fileNamelabel.indexOf("Download/")+9);
-		byte[] fileBase64 = driver.pullFile("/storage/emulated/0/Android/data/com.brencorp.play.mybren/files/Download/"+fileName);
-		Assert.assertTrue(fileBase64.length > 0, "Document wasnt downloaded successfully");
+		String  actualToastMessage = driver.findElementByXPath("//android.widget.Toast[1]").getAttribute("name");
+		Assert.assertEquals(actualToastMessage, expectedToastMessage);    
 		ExtentManager.getExtentTest().log(Status.PASS, "Document downloaded successfully");
 	}
 	@Test(priority = 2)

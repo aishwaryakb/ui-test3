@@ -53,9 +53,7 @@ public class ReferAndEarnFormPageTest extends Base{
 		apartmentsListPage = myHomePage.clickApartmentsTab();
 		Thread.sleep(5000);
 		apartmentDetailPage = apartmentsListPage.clickOnZaharaByBrenProject();
-		
-//		apartmentDetailPage.scrollDownUntil(referAndEarnDescreption);
-//		ScrollHelper.scrollDown();
+
 		
 		ScrollHelper.scrollUntil("REFER A FRIEND");
 		

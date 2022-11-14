@@ -46,7 +46,7 @@ public class MultipleApartmentAccountTest extends Base {
         driver.findElementByXPath("//*[@text = 'Enter OTP']");
 		myHomePage = otpVerificationPage.inputOtpForMultupleApartmentAccount(prop.getProperty("multpleApartmentsOwnerOtp").toString());
 	}
-// 	@Test(priority = 1)
+ 	@Test(priority = 1)
 	public void verifyHomePageOfMultipleApartmentsOwner() {
 		Assert.assertTrue(myHomePage.createTicketIcon.isDisplayed(),"Create A Ticket Icon is not Added to Navbar inside home page");
 		ExtentManager.getExtentTest().log(Status.PASS, "Verified that Create A Ticket Icon is Added to Navbar inside home page");
@@ -55,21 +55,21 @@ public class MultipleApartmentAccountTest extends Base {
 		
 	}
 	
-// 	@Test(priority = 2)
+ 	@Test(priority = 2)
 	public void verifyViewMoreOptionOpensApartmentDetails() {
 		apartmentDetailsPage = myHomePage.clickapartmentMoreDetails();
 		Assert.assertTrue(apartmentDetailsPage.aboutThisPropertySectionIsDisplayed(), "View more option doesn't opens Apartment Details");
 		ExtentManager.getExtentTest().log(Status.PASS, "View more option opens Apartment Details");
 	}
 	
-// 	@Test(priority = 3)
+ 	@Test(priority = 3)
 	public void clickOnTheCardOpensApartmentDetails() {
 		apartmentDetailsPage = myHomePage.clickapartmentMoreDetails();
 		Assert.assertTrue(apartmentDetailsPage.aboutThisPropertySectionIsDisplayed(), "View more option doesn't opens Apartment Details");
 		ExtentManager.getExtentTest().log(Status.PASS, "View more option opens Apartment Details");
 	}
 	
-// 	@Test(priority = 5)
+ 	@Test(priority = 5)
 	public void verifyThatTheUserIsNavigatingToTheHomeScreenWhenClickingOnTheBrensIconFromMultipleApartmentsHomePage() throws InterruptedException {
 		driver.findElementByXPath("//*[@resource-id ='RNE__Image']").click();
 		myHomePage.homePageVerification();
@@ -77,7 +77,7 @@ public class MultipleApartmentAccountTest extends Base {
 				+ " Screen When clicking on the Brens Icon from Multiple apartments Home Page");
 	}
 	
-// 	@Test(priority = 6)
+ 	@Test(priority = 6)
 	public void documentsViewVerification() throws IOException, InterruptedException {
 	    differentDocumentCategoriesPage = myHomePage.clickDocuments();
 	    Thread.sleep(5000);
@@ -91,8 +91,10 @@ public class MultipleApartmentAccountTest extends Base {
 		
 	}
 	
-// 	@Test(priority = 7)
+	@Test(priority = 7)
 	public void documentDownloadVerification() throws IOException, InterruptedException {
+	    String expectedToastMessage = "Downloading please wait..";
+        
 	    differentDocumentCategoriesPage = myHomePage.clickDocuments();
 	    Thread.sleep(5000);
 	    differentDocumentCategoriesPageNext = differentDocumentCategoriesPage.clickNextDocument();
@@ -101,16 +103,12 @@ public class MultipleApartmentAccountTest extends Base {
 		docsPage.clickDownload();
 		driver.findElementByXPath("//*[@text = 'ALLOW']").click();
 		driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
-		String  actualtoastMessage = driver.findElementByXPath("//android.widget.Toast[1]").getAttribute("name");
-		System.out.print(actualtoastMessage);
-		Thread.sleep(20000);
-		String fileName = driver.findElementByXPath("//android.widget.TextView[@index = '1']").getAttribute("text");
-		
-		byte[] fileBase64 = driver.pullFile("/storage/emulated/0/Android/data/com.brencorp.play.mybren/files/Download/"+fileName);
-		Assert.assertTrue(fileBase64.length > 0, "Document wasnt downloaded successfully");
+		String actualToastMessage = driver.findElementByXPath("//android.widget.Toast[1]").getAttribute("name");
+        Assert.assertEquals(actualToastMessage, expectedToastMessage);
+        
 		ExtentManager.getExtentTest().log(Status.PASS, "Document downloaded successfully");
 	}
-// 	@Test(priority = 8)
+ 	@Test(priority = 8)
 	public void documentShareVerification() throws IOException, InterruptedException {
 	    differentDocumentCategoriesPage = myHomePage.clickDocuments();
 	    Thread.sleep(5000);
@@ -125,7 +123,7 @@ public class MultipleApartmentAccountTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "Able to share the document");
 		
 	}
-// 	@Test(priority = 9)
+ 	@Test(priority = 9)
 	public void documentPrintVerification() throws IOException, InterruptedException {
 	    differentDocumentCategoriesPage = myHomePage.clickDocuments();
 	    Thread.sleep(5000);
@@ -138,9 +136,10 @@ public class MultipleApartmentAccountTest extends Base {
 		Assert.assertTrue(selectAPrinterTitle, "Able to print the document");
 	}
 	
-	// pending @Test(priority = 1)
+	@Test(priority = 1)
 	public void floorPlanViewAndDownloadVerification() throws IOException, InterruptedException {
-		apartmentFloorPlansPage =myHomePage.clickFloorPlans();
+	    String expectedToastMessage = "Downloading please wait..";
+	    apartmentFloorPlansPage =myHomePage.clickFloorPlans();
 		Thread.sleep(3000);
 		Assert.assertTrue(apartmentFloorPlansPage.planView.isDisplayed(), "Floor plan isn't visible");
 		ExtentManager.getExtentTest().log(Status.PASS, "floor plan is visible on screen");
@@ -148,23 +147,12 @@ public class MultipleApartmentAccountTest extends Base {
 		driver.findElementByXPath("//*[@text = 'Download image file']").click();
 		driver.findElementByXPath("//*[@text = 'ALLOW']").click();
 		driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
-		String  actualtoastMessage = driver.findElementByXPath("//android.widget.Toast[1]").getAttribute("name");
-		System.out.print(actualtoastMessage);
-		System.out.println(driver.getPageSource());
-		driver.manage().timeouts().implicitlyWait(180, TimeUnit.SECONDS);
-		driver.findElementByXPath("//*[@resource-id = 'android:id/content']");
-		
-//		driver.findElementByXPath("//*[@content-desc = 'Info']").click();
-		
-//		String fileNamelabel = driver.findElementByXPath("//*[@resource-id = 'com.google.android.apps.photos:id/label']").getAttribute("text");
-//		String fileName = fileNamelabel.substring(fileNamelabel.indexOf("Download/")+9);
-//		byte[] fileBase64 = driver.pullFile("/storage/emulated/0/Android/data/com.brencorp.play.mybren/files/Download/"+fileName);
-	    byte[] fOLDERBase64 = driver.pullFile("/storage/emulated/0/Android/data/com.brencorp.play.mybren/files/Download");
-	    System.out.print(fOLDERBase64);
-//		Assert.assertTrue(fileBase64.length > 0, "Document wasnt downloaded successfully");
-		ExtentManager.getExtentTest().log(Status.PASS, "Document downloaded successfully");
+		String  actualToastMessage = driver.findElementByXPath("//android.widget.Toast[1]").getAttribute("name");
+		Assert.assertEquals(actualToastMessage, expectedToastMessage);
+	    ExtentManager.getExtentTest().log(Status.PASS, "Document downloaded successfully");
+	        
 	}
-// 	@Test(priority = 2)
+ 	@Test(priority = 2)
 	public void floorPlanShareVerification() throws IOException, InterruptedException {
 		Thread.sleep(5000);
 		apartmentFloorPlansPage = myHomePage.clickFloorPlans();
@@ -176,7 +164,7 @@ public class MultipleApartmentAccountTest extends Base {
 		Assert.assertTrue(shareTitle, "Not working share option");
 		ExtentManager.getExtentTest().log(Status.PASS, "Able to share the document");
 	}
-// 	@Test(priority = 4)
+ 	@Test(priority = 4)
 	public void floorPlanPrintVerification() throws IOException, InterruptedException {
 		Thread.sleep(5000);
 		apartmentFloorPlansPage = myHomePage.clickFloorPlans();

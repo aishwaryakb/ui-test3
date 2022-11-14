@@ -89,18 +89,7 @@ public class GuestGetInTouchFormTest extends Base {
 	
 	}
 	@Test(priority = 2)
-	public void  verifyTheUserCanSelectAnyProjectNameFromTheProjectNameField() throws InterruptedException {
-//		int count = driver.findElementsByXPath("//*[@resource-id ='android:id/text1']").size();
-//		for(int i=0; i<count; i++ ) {
-//			getInTouchFormPage.projectName.click();
-//			String itemClicked1 = driver.findElementByXPath("//*[@resource-id = 'android:id/text1'][@index='"+i+"']").getAttribute("text");
-//			driver.findElementByXPath("//*[@resource-id = 'android:id/text1'][@index='"+i+"']").click();
-//			Thread.sleep(3000);
-//			String selectedProject1 = driver.findElementByXPath("//*[@resource-id = 'text_input']").getAttribute("text");
-//			Assert.assertEquals(itemClicked1, selectedProject1, "Project name isn't selectable");
-//			ExtentManager.getExtentTest().log(Status.PASS, "Project name is selectable");
-//		}
-		
+	public void  verifyTheUserCanSelectAnyProjectNameFromTheProjectNameField() throws InterruptedException {		
 		getInTouchFormPage.projectName.click();
 		String itemClicked1 = driver.findElementByXPath("//*[@resource-id = 'android:id/text1'][@index='1']").getAttribute("text");
 		driver.findElementByXPath("//*[@resource-id = 'android:id/text1'][@index='1']").click();
@@ -193,10 +182,6 @@ public class GuestGetInTouchFormTest extends Base {
 				+ " Screen When clicking on the Brens Icon from Get In Touch Form screen");
 	}
 	
-//	@Test(priority = 6)
-//	public void verifyTheGetInTouchIconIsAddedTohNavbarForSupportTab() {
-//		
-//	}
 		
 	@Test(priority = 7)
 	public void verifyThatGetInTouchFormIsOpeningWhenTheUserClickOnTheIconFromNavbar() {
