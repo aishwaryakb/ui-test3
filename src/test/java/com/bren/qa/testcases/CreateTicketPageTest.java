@@ -140,6 +140,8 @@ public class CreateTicketPageTest extends Base{
         driver.findElementByXPath("//*[@text = 'ALLOW']").click();
         Thread.sleep(8000);
         System.out.println(driver.getPageSource());
+        driver.findElementByXPath("//*[@text = 'ALLOW ALL THE TIME']");
+        driver.findElementByXPath("//*[@text = 'ALLOW ALL THE TIME']").click();
         driver.findElementByXPath("//*[@content-desc = 'Shutter']");
         driver.findElementByXPath("//*[@content-desc = 'Shutter']").click();
         driver.findElementByXPath("//*[@content-desc = 'Done']").click();
