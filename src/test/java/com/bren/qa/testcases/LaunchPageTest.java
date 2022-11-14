@@ -51,8 +51,9 @@ public class LaunchPageTest extends Base{
 	@Test(priority = 3)
 	public void verifyLandingPageForTheAppIsApartmentsForTheGuestUser() throws InterruptedException {
 		guestHomePage = launchPage.clickContinueAsGuest();
-		Thread.sleep(3000);
-		Assert.assertTrue(guestHomePage.isProjectTitleIsDisplayed(), "Landing Page for the app isn't apartments for Guest User");
+		Thread.sleep(10000);
+		boolean isProjectTitleVisible = guestHomePage.isProjectTitleIsDisplayed();
+		Assert.assertTrue(isProjectTitleVisible, "Landing Page for the app isn't apartments for Guest User");
 		ExtentManager.getExtentTest().log(Status.PASS, "Verified that Landing Page for the app is apartments for Guest User");
 	}
 	@AfterMethod()
