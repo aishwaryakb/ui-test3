@@ -123,28 +123,18 @@ public class CreateTicketPageTest extends Base{
     
     @Test(priority = 4)
     public void verifyTicketCreation() throws IOException, InterruptedException {
-//      Ticket successfully created
         String expectedToastMessage = "Ticket successfully created";
-        createTicketPage.ticketTitleInputField.sendKeys("ticket-title");
-        createTicketPage.describeYourIssueInputField.sendKeys("descreption");
-        createTicketPage.issueTypeDropDownList.click();
-        createTicketPage.issueTypeDropDownListElement.click();
-        createTicketPage.unitNameDropDownList.click();
-        createTicketPage.unitNameDropDownListElement.click();
-        ScrollHelper.scrollDown();
-        createTicketPage.chooseFileButton.click();
-        // upload file start
-        driver.findElementByXPath("//*[@text = 'Camera']").click();
-        driver.findElementByXPath("//*[@text = 'WHILE USING THE APP']").click();
-        Thread.sleep(5000);
-        driver.findElementByXPath("//*[@content-desc = 'Shutter']");
-        driver.findElementByXPath("//*[@content-desc = 'Shutter']").click();
-        driver.findElementByXPath("//*[@content-desc = 'Done']").click();
-        driver.findElementByXPath("//*[@text = 'Unit name']");
-        ScrollHelper.scrollDown();
-        ticketCreationSuccessPage = createTicketPage.clickCreateATicketButton();
-        Assert.assertTrue(ticketCreationSuccessPage.supportTicketCreatedTitle.isDisplayed(), "Not redirecting to Ticket Creation Successful screen");
-        ExtentManager.getExtentTest().log(Status.PASS, "Redirecting to Ticket Creation Successful screen");
+	createTicketPage.ticketTitleInputField.sendKeys("ticket-title");
+	createTicketPage.describeYourIssueInputField.sendKeys("descreption");
+	createTicketPage.issueTypeDropDownList.click();
+	createTicketPage.issueTypeDropDownListElement.click();
+	createTicketPage.unitNameDropDownList.click();
+	createTicketPage.unitNameDropDownListElement.click();
+	ScrollHelper.scrollDown();
+	ticketCreationSuccessPage = createTicketPage.clickCreateATicketButton();
+	Assert.assertTrue(ticketCreationSuccessPage.supportTicketCreatedTitle.isDisplayed(), "Not redirecting to Ticket Creation Successful screen");
+	ExtentManager.getExtentTest().log(Status.PASS, "Redirecting to Ticket Creation Successful screen");
+	
     }
     @Test(priority = 5)
     public void verifyANewlyCreatedTicketIsAddedIntoTheList() throws InterruptedException {
