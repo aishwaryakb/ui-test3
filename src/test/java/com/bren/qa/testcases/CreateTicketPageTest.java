@@ -123,7 +123,6 @@ public class CreateTicketPageTest extends Base{
     
     @Test(priority = 4)
     public void verifyTicketCreation() throws IOException, InterruptedException {
-//      Ticket successfully created
         String expectedToastMessage = "Ticket successfully created";
         createTicketPage.ticketTitleInputField.sendKeys("ticket-title");
         createTicketPage.describeYourIssueInputField.sendKeys("descreption");
@@ -139,7 +138,8 @@ public class CreateTicketPageTest extends Base{
         System.out.println(driver.getPageSource());
 //         driver.findElementByXPath("//*[@text = 'WHILE USING THE APP']").click();
         driver.findElementByXPath("//*[@text = 'ALLOW']").click();
-        Thread.sleep(5000);
+        Thread.sleep(8000);
+        System.out.println(driver.getPageSource());
         driver.findElementByXPath("//*[@content-desc = 'Shutter']");
         driver.findElementByXPath("//*[@content-desc = 'Shutter']").click();
         driver.findElementByXPath("//*[@content-desc = 'Done']").click();
