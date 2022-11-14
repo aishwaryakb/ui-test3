@@ -42,7 +42,7 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: ${{ matrix.api-level }}
-     #    force-avd-creation: false
+          force-avd-creation: false
           avd-name: pixel-test
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: false
@@ -55,13 +55,13 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2 # install and create the Emulator
         with:
           api-level: ${{ matrix.api-level }}
-#           force-avd-creation: false
+          force-avd-creation: false
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: true
           target: ${{ matrix.target }}
           arch: x86_64
-          avd-name: pixel-test
-          profile: pixel
+          avd-name: test
+          profile: Nexus 6
           script: mvn clean test -Dsurefire.suiteXmlFiles=testng.xml # running our test to check the results
       - name: Use the Upload Artifact GitHub Action
         uses: actions/upload-artifact@v2
