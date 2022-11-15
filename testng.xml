@@ -25,11 +25,11 @@
 <!--           	<class name="com.bren.qa.testcases.InteriorDesignPackagesListPageTest"/>
          	<class name="com.bren.qa.testcases.MyApartmentDocumentsPageTest"/>
          	<class name="com.bren.qa.testcases.MyApartmentFloorPlansPageTest"/>
-         	<class name="com.bren.qa.testcases.OwnerProfilePageTest"/>
          	<class name="com.bren.qa.testcases.ReferAndEarnFormPageTest"/>
          	<class name="com.bren.qa.testcases.RewardsPageTest"/>
          	<class name="com.bren.qa.testcases.SingleApartmentAccountTest"/> 
          	<class name="com.bren.qa.testcases.ViewADocumentPageTest"/> -->
+		<class name="com.bren.qa.testcases.OwnerProfilePageTest"/>
 
         </classes>
 	</test>     
