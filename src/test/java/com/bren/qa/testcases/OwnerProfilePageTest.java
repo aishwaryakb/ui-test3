@@ -47,7 +47,7 @@ public class OwnerProfilePageTest extends Base {
 		singleApartmentHomePage = new SingleApartmentHomePage();
 		
 	}
-	@Test(priority = 1)
+// 	@Test(priority = 1)
 	public void verifyDetailsInProfilePage() throws InterruptedException {
 		Thread.sleep(5000);
 		Assert.assertTrue(ownerProfilePage.profilePicture.isDisplayed(), "Profile Picture isn't displayed");
@@ -73,7 +73,7 @@ public class OwnerProfilePageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "LogOut Button is displayed");
 	}
 	
-	@Test(priority = 2)
+// 	@Test(priority = 2)
 	public void verifyThatTheNameEmailAddressAndPhoneNumberFieldsAreNonEditable() throws InterruptedException {
 		Thread.sleep(5000);
 		String preSetFieldValue;
@@ -114,7 +114,7 @@ public class OwnerProfilePageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "Mobile Input field non editable");
 		
 	}
-	@Test(priority = 3)
+// 	@Test(priority = 3)
 	public void verifyThatTheUserCanLogOutTheAccountByClickingOnTheLogoutButton() {
 		
 		ownerProfilePage.logOutButton.click();
@@ -123,7 +123,7 @@ public class OwnerProfilePageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "Logout was successful");
 		
 	}
-	@Test(priority = 5)
+// 	@Test(priority = 5)
 	public void verifyThatTheUserIsNavigatingToTheHomeScreenWhenClickingOnTheBrensIconFromOwnerProfilePage() throws InterruptedException {
 		driver.findElementByXPath("//*[@resource-id ='RNE__Image']").click();
 		myHomePage.homePageVerification();
@@ -146,23 +146,23 @@ public class OwnerProfilePageTest extends Base {
 		String actualToastMessage = driver.findElementByXPath("//android.widget.Toast[1]").getAttribute("name");
 		Assert.assertEquals(actualToastMessage, expectedToastMessage);
 	}
-	@Test(priority = 6)
+// 	@Test(priority = 6)
 	public void verifyThatUserCanDeleteProfilePictureFromTheProfileScreen() throws InterruptedException {
 		String expectedToastMessage = "Profile image deleted";
 		Thread.sleep(4000);
 		WebElement parrentScrollView = driver.findElementByClassName("android.widget.ScrollView");
 		parrentScrollView.findElement(By.xpath("//*[@resource-id = 'RNE__Image']")).click();
 		driver.findElementByXPath("//*[@text = 'Camera']").click();
-        driver.findElementByXPath("//*[@text = 'WHILE USING THE APP']").click();
-        Thread.sleep(5000);
-        driver.findElementByXPath("//*[@content-desc = 'Shutter']");
-        driver.findElementByXPath("//*[@content-desc = 'Shutter']").click();
-        driver.findElementByXPath("//*[@content-desc = 'Done']").click();
-        driver.findElementByXPath("//*[@text = 'Name']");
-        parrentScrollView.findElement(By.xpath("//*[@resource-id = 'RNE__Image']")).click();
-        driver.findElementByXPath("//*[@text = 'Delete Photo']").click();
-        String actualToastMessage = driver.findElementByXPath("//android.widget.Toast[1]").getAttribute("name");
-        Assert.assertEquals(actualToastMessage, expectedToastMessage);
+        	driver.findElementByXPath("//*[@text = 'WHILE USING THE APP']").click();
+        	Thread.sleep(5000);
+        	driver.findElementByXPath("//*[@content-desc = 'Shutter']");
+        	driver.findElementByXPath("//*[@content-desc = 'Shutter']").click();
+        	driver.findElementByXPath("//*[@content-desc = 'Done']").click();
+        	driver.findElementByXPath("//*[@text = 'Name']");
+        	parrentScrollView.findElement(By.xpath("//*[@resource-id = 'RNE__Image']")).click();
+        	driver.findElementByXPath("//*[@text = 'Delete Photo']").click();
+        	String actualToastMessage = driver.findElementByXPath("//android.widget.Toast[1]").getAttribute("name");
+        	Assert.assertEquals(actualToastMessage, expectedToastMessage);
         
 		
 	}
