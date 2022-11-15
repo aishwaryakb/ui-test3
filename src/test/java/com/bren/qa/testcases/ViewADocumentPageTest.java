@@ -41,7 +41,7 @@ public class ViewADocumentPageTest extends Base {
 		otpVerificationPage = loginPage.enterNumber(prop.get("number").toString());
 		Thread.sleep(8000);
 		driver.manage().timeouts().implicitlyWait(240, TimeUnit.SECONDS);
-        driver.findElementByXPath("//*[@text = 'Enter OTP']");
+        	driver.findElementByXPath("//*[@text = 'Enter OTP']");
 		myHomePage = otpVerificationPage.inputOtp(prop.getProperty("otp").toString());
 		differentDocumentCategoriesPage = myHomePage.clickDocuments();
 		Thread.sleep(5000);
@@ -53,7 +53,7 @@ public class ViewADocumentPageTest extends Base {
 		Thread.sleep(8000);
 		viewADocumentPage.clickMoreOptions();
 	}
-    @Test(priority = 2)
+//      @Test(priority = 2)
 	public void documentDownloadVerification() throws IOException, InterruptedException {
 		Thread.sleep(5000);
 		String expectedToastMessage = "Downloading please wait..";
@@ -64,7 +64,7 @@ public class ViewADocumentPageTest extends Base {
 		Assert.assertEquals(actualToastMessage, expectedToastMessage);
 		ExtentManager.getExtentTest().log(Status.PASS, "Document downloaded successfully");
 	}
-	@Test(priority = 3)
+// 	@Test(priority = 3)
 	public void documentShareVerification() throws IOException, InterruptedException {
 		Thread.sleep(5000);
 		viewADocumentPage.clickShare();
@@ -78,6 +78,8 @@ public class ViewADocumentPageTest extends Base {
 	public void documentPrintVerification() throws IOException, InterruptedException {
 		Thread.sleep(5000);
 		viewADocumentPage.clickPrint();
+		Thread.sleep(10000);
+		System.out.println(driver.getPageSource());
 		driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
 		boolean selectAPrinterTitle = driver.findElementByXPath("//*[@text = 'Select a printer']").isDisplayed();
 		Assert.assertTrue(selectAPrinterTitle, "Able to print the document");
