@@ -53,7 +53,7 @@ public class ViewADocumentPageTest extends Base {
 		Thread.sleep(8000);
 		viewADocumentPage.clickMoreOptions();
 	}
-//      @Test(priority = 2)
+     @Test(priority = 2)
 	public void documentDownloadVerification() throws IOException, InterruptedException {
 		Thread.sleep(5000);
 		String expectedToastMessage = "Downloading please wait..";
@@ -64,7 +64,7 @@ public class ViewADocumentPageTest extends Base {
 		Assert.assertEquals(actualToastMessage, expectedToastMessage);
 		ExtentManager.getExtentTest().log(Status.PASS, "Document downloaded successfully");
 	}
-// 	@Test(priority = 3)
+	@Test(priority = 3)
 	public void documentShareVerification() throws IOException, InterruptedException {
 		Thread.sleep(5000);
 		viewADocumentPage.clickShare();
