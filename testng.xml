@@ -3,6 +3,7 @@
 <suite name="Bren-First UI-TEST">
 	<listeners>
 	   	<listener class-name="com.bren.qa.listeners.ListenerClass"></listener>
+	   	<listener class-name="com.bren.qa.listeners.AnnotationTransformer"></listener>
 	</listeners> 
     <test name="Tests">
     	<classes>
