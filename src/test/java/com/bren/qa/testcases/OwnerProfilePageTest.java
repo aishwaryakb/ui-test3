@@ -146,6 +146,7 @@ public class OwnerProfilePageTest extends Base {
 		
 		driver.findElementByXPath("//*[@text = 'ALLOW ALL THE TIME']").click();
 		Thread.sleep(5000);
+		System.out.println(driver.getPageSource());
 		driver.findElementByXPath("//*[@content-desc = 'Shutter']");
 		driver.findElementByXPath("//*[@content-desc = 'Shutter']").click();
 		driver.findElementByXPath("//*[@content-desc = 'Done']").click();
