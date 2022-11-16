@@ -137,6 +137,7 @@ public class OwnerProfilePageTest extends Base {
 	public void verifyThatUserCanUpdateProfilePictureFromTheProfileScreen() throws InterruptedException, IOException {
 		String expectedToastMessage = "Customer's Profile Photo updated successfully";
 		Thread.sleep(4000);
+		ownerProfilePage.nameTitle.isDisplayed();
 		WebElement parrentScrollView = driver.findElementByClassName("android.widget.ScrollView");
 		parrentScrollView.findElement(By.xpath("//*[@resource-id = 'RNE__Image']")).click();
 		driver.pushFile("/sdcard/image.jpg", new File("src//test//resources//files//image.jpg"));
