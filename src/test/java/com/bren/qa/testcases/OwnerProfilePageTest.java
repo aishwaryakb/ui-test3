@@ -1,6 +1,7 @@
 package com.bren.qa.testcases;
 
 import java.net.MalformedURLException;
+import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
