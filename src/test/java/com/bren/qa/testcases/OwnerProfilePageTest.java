@@ -137,7 +137,7 @@ public class OwnerProfilePageTest extends Base {
 		Thread.sleep(4000);
 		WebElement parrentScrollView = driver.findElementByClassName("android.widget.ScrollView");
 		parrentScrollView.findElement(By.xpath("//*[@resource-id = 'RNE__Image']")).click();
-		driver.findElementByXPath("//*[@text = 'Camera']").click();
+		driver.findElementByXPath("//*[@text = 'Gallery']").click();
 		Thread.sleep(10000);
 		System.out.println(driver.getPageSource());
 		driver.findElementByXPath("//*[@text = 'ALLOW']").click();
