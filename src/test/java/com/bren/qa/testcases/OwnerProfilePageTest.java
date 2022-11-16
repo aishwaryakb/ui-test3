@@ -3,6 +3,7 @@ package com.bren.qa.testcases;
 import java.net.MalformedURLException;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
+import java.io.IOException;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.InvalidElementStateException;
@@ -133,7 +134,7 @@ public class OwnerProfilePageTest extends Base {
 	}
 	
 	@Test(priority = 5)
-	public void verifyThatUserCanUpdateProfilePictureFromTheProfileScreen() throws InterruptedException {
+	public void verifyThatUserCanUpdateProfilePictureFromTheProfileScreen() throws InterruptedException, IOException {
 		String expectedToastMessage = "Customer's Profile Photo updated successfully";
 		Thread.sleep(4000);
 		WebElement parrentScrollView = driver.findElementByClassName("android.widget.ScrollView");
