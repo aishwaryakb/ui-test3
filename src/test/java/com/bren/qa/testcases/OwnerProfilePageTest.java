@@ -145,7 +145,7 @@ public class OwnerProfilePageTest extends Base {
 		ownerProfilePage.nameTitle.isDisplayed();
 		WebElement parrentScrollView = driver.findElementByClassName("android.widget.ScrollView");
 		parrentScrollView.findElement(By.xpath("//*[@resource-id = 'RNE__Image']")).click();
-		driver.pushFile("/sdcard/image.jpg", new File("src//test//resources//files//image.jpg"));
+		driver.pushFile("/storage/emulated/0/Pictures/image.jpg", new File("src//test//resources//files//image.jpg"));
 		driver.findElementByXPath("//*[@text = 'Gallery']").click();
 		Thread.sleep(10000);
 		System.out.println(driver.getPageSource());
