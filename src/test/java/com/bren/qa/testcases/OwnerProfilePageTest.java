@@ -141,31 +141,21 @@ public class OwnerProfilePageTest extends Base {
 		WebElement parrentScrollView = driver.findElementByClassName("android.widget.ScrollView");
 		parrentScrollView.findElement(By.xpath("//*[@resource-id = 'RNE__Image']")).click();
 		driver.pushFile("/sdcard/image.jpg", new File("src//test//resources//files//image.jpg"));
-		driver.findElementByXPath("//*[@text = 'Camera']").click();
-		Thread.sleep(10000);
-		System.out.println(driver.getPageSource());
-		driver.findElementByXPath("//*[@text = 'ALLOW']").click();
+		driver.findElementByXPath("//*[@text = 'Gallery']").click();
 		Thread.sleep(10000);
 		System.out.println(driver.getPageSource());
 		
-		driver.findElementByXPath("//*[@text = 'ALLOW ALL THE TIME']").click();
-		Thread.sleep(5000);
+		
+		int x = 700;
+		int y = 900;
+		Point point = new Point(x, y);
+		TapHelper.tapAtPoint(point);
 		System.out.println(driver.getPageSource());
-		driver.findElementByXPath("//*[@text = 'App info']").click();
-		Thread.sleep(5000);
-		System.out.println(driver.getPageSource());
-		driver.findElementByXPath("//*[@text = 'Storage & cache']").click();
-		Thread.sleep(5000);
-		System.out.println(driver.getPageSource());
-		driver.findElementByXPath("//*[@text = 'CLEAR STORAGE']").click();
-		Thread.sleep(5000);
-		System.out.println(driver.getPageSource());
-		driver.findElementByXPath("//*[@text = 'OK']").click();
-		Thread.sleep(5000);
-		System.out.println(driver.getPageSource());
-		driver.findElementByXPath("//*[@content-desc = 'Shutter']");
-		driver.findElementByXPath("//*[@content-desc = 'Shutter']").click();
-		driver.findElementByXPath("//*[@content-desc = 'Done']").click();
+		
+		
+		
+		
+		
 		String actualToastMessage = driver.findElementByXPath("//android.widget.Toast[1]").getAttribute("name");
 		Assert.assertEquals(actualToastMessage, expectedToastMessage);
 	}
