@@ -147,11 +147,15 @@ public class OwnerProfilePageTest extends Base {
 		System.out.println(driver.getPageSource());
 		
 		
+		driver.findElementByXPath("//*[@text = 'ALLOW']").click();
+		driver.findElementByXPath("//*[@text = 'Select photo']").isDisplayed();
 		int x = 700;
 		int y = 900;
 		Point point = new Point(x, y);
 		TapHelper.tapAtPoint(point);
+		Thread.sleep(5000);
 		System.out.println(driver.getPageSource());
+		TapHelper.tapAtPoint(point);
 		
 		
 		
