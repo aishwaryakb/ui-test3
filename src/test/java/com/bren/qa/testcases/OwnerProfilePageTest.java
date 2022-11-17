@@ -154,7 +154,7 @@ public class OwnerProfilePageTest extends Base {
 		driver.findElementByXPath("//*[@text = 'App info']").click();
 		Thread.sleep(5000);
 		System.out.println(driver.getPageSource());
-		driver.findElementByXPath("//*[@text = 'Storage &amp; cache']").click();
+		driver.findElementByXPath("//*[@text = 'Storage & cache']").click();
 		Thread.sleep(5000);
 		System.out.println(driver.getPageSource());
 		driver.findElementByXPath("//*[@text = 'CLEAR STORAGE']").click();
