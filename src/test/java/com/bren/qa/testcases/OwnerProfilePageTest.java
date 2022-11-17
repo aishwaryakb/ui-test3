@@ -150,7 +150,8 @@ public class OwnerProfilePageTest extends Base {
 		Thread.sleep(10000);
 		System.out.println(driver.getPageSource());
 		
-		
+		File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(file, new File("src//test//resources//files//screen1.jpg"));
 		driver.findElementByXPath("//*[@text = 'ALLOW']").click();
 		driver.findElementByXPath("//*[@text = 'Select photo']").isDisplayed();
 		int x = 700;
@@ -158,8 +159,8 @@ public class OwnerProfilePageTest extends Base {
 		Point point = new Point(x, y);
 		TapHelper.tapAtPoint(point);
 		Thread.sleep(5000);
-		File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(file, new File("src//test//resources//files//screen1.jpg"));
+
+		
 		System.out.println(driver.getPageSource());
 		TapHelper.tapAtPoint(point);
 		
