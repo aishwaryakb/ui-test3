@@ -64,5 +64,10 @@ jobs:
         with: 
           name: Report-download
           path: index.html
+      - name: screenshots
+        uses: actions/upload-artifact@v2
+        with:
+          path: src/test/resources/files
+          name: Download-screenshots
         if: always()
 
