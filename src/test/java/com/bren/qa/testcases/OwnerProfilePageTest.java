@@ -159,7 +159,7 @@ public class OwnerProfilePageTest extends Base {
 		TapHelper.tapAtPoint(point);
 		Thread.sleep(5000);
 		File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(file, new File("screen.jpg"));
+		FileUtils.copyFile(file, new File("src//test//resources//files//screen1.jpg"));
 		System.out.println(driver.getPageSource());
 		TapHelper.tapAtPoint(point);
 		
