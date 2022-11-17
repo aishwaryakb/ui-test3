@@ -154,20 +154,6 @@ public class OwnerProfilePageTest extends Base {
 		driver.findElementByXPath("//*[@text = 'App info']").click();
 		Thread.sleep(5000);
 		System.out.println(driver.getPageSource());
-		ownerProfilePage.nameTitle.isDisplayed();
-		WebElement parrentScrollView = driver.findElementByClassName("android.widget.ScrollView");
-		parrentScrollView.findElement(By.xpath("//*[@resource-id = 'RNE__Image']")).click();
-		driver.pushFile("/sdcard/image.jpg", new File("src//test//resources//files//image.jpg"));
-		driver.findElementByXPath("//*[@text = 'Camera']").click();
-		Thread.sleep(10000);
-		System.out.println(driver.getPageSource());
-		driver.findElementByXPath("//*[@text = 'ALLOW']").click();
-		Thread.sleep(10000);
-		System.out.println(driver.getPageSource());
-		
-		driver.findElementByXPath("//*[@text = 'ALLOW ALL THE TIME']").click();
-		Thread.sleep(5000);
-		System.out.println(driver.getPageSource());
 		driver.findElementByXPath("//*[@text = 'Storage']").click();
 		Thread.sleep(5000);
 		System.out.println(driver.getPageSource());
