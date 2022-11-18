@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Bren-First UI-TEST">
+<suite thread-count = "1" name="Bren-First UI-TEST">
 	<listeners>
 	   	<listener class-name="com.bren.qa.listeners.ListenerClass"></listener>
 	   	<listener class-name="com.bren.qa.listeners.AnnotationTransformer"></listener>
