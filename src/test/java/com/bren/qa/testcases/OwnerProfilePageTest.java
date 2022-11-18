@@ -1,22 +1,15 @@
 package com.bren.qa.testcases;
 
 import java.net.MalformedURLException;
-import java.io.File;
 import java.util.concurrent.TimeUnit;
-import java.io.IOException;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Point;
 import org.openqa.selenium.InvalidElementStateException;
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import com.bren.qa.helper.TapHelper;
 
 import com.aventstack.extentreports.Status;
 import com.bren.qa.base.Base;
@@ -54,7 +47,7 @@ public class OwnerProfilePageTest extends Base {
 		singleApartmentHomePage = new SingleApartmentHomePage();
 		
 	}
-// 	@Test(priority = 1)
+	@Test(priority = 1)
 	public void verifyDetailsInProfilePage() throws InterruptedException {
 		Thread.sleep(5000);
 		Assert.assertTrue(ownerProfilePage.profilePicture.isDisplayed(), "Profile Picture isn't displayed");
@@ -80,7 +73,7 @@ public class OwnerProfilePageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "LogOut Button is displayed");
 	}
 	
-// 	@Test(priority = 2)
+	@Test(priority = 2)
 	public void verifyThatTheNameEmailAddressAndPhoneNumberFieldsAreNonEditable() throws InterruptedException {
 		Thread.sleep(5000);
 		String preSetFieldValue;
@@ -121,7 +114,7 @@ public class OwnerProfilePageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "Mobile Input field non editable");
 		
 	}
-// 	@Test(priority = 3)
+	@Test(priority = 3)
 	public void verifyThatTheUserCanLogOutTheAccountByClickingOnTheLogoutButton() {
 		
 		ownerProfilePage.logOutButton.click();
@@ -130,7 +123,7 @@ public class OwnerProfilePageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "Logout was successful");
 		
 	}
-// 	@Test(priority = 5)
+	@Test(priority = 5)
 	public void verifyThatTheUserIsNavigatingToTheHomeScreenWhenClickingOnTheBrensIconFromOwnerProfilePage() throws InterruptedException {
 		driver.findElementByXPath("//*[@resource-id ='RNE__Image']").click();
 		myHomePage.homePageVerification();
@@ -139,55 +132,37 @@ public class OwnerProfilePageTest extends Base {
 	}
 	
 	@Test(priority = 5)
-	public void verifyThatUserCanUpdateProfilePictureFromTheProfileScreen() throws InterruptedException, IOException {
+	public void verifyThatUserCanUpdateProfilePictureFromTheProfileScreen() throws InterruptedException {
 		String expectedToastMessage = "Customer's Profile Photo updated successfully";
 		Thread.sleep(4000);
-		ownerProfilePage.nameTitle.isDisplayed();
 		WebElement parrentScrollView = driver.findElementByClassName("android.widget.ScrollView");
 		parrentScrollView.findElement(By.xpath("//*[@resource-id = 'RNE__Image']")).click();
-		driver.pushFile("/storage/emulated/0/Pictures/image.jpg", new File("src//test//resources//files//image.jpg"));
-		driver.findElementByXPath("//*[@text = 'Gallery']").click();
-		Thread.sleep(10000);
-		System.out.println(driver.getPageSource());
-		
-		File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(file, new File("src//test//resources//files//screen1.jpg"));
-		driver.findElementByXPath("//*[@text = 'ALLOW']").click();
-		driver.findElementByXPath("//*[@text = 'Select photo']").isDisplayed();
-		int x = 700;
-		int y = 900;
-		Point point = new Point(x, y);
-		TapHelper.tapAtPoint(point);
+		driver.findElementByXPath("//*[@text = 'Camera']").click();
+		driver.findElementByXPath("//*[@text = 'WHILE USING THE APP']").click();
 		Thread.sleep(5000);
-
-		
-		System.out.println(driver.getPageSource());
-		TapHelper.tapAtPoint(point);
-		
-		
-		
-		
-		
+		driver.findElementByXPath("//*[@content-desc = 'Shutter']");
+		driver.findElementByXPath("//*[@content-desc = 'Shutter']").click();
+		driver.findElementByXPath("//*[@content-desc = 'Done']").click();
 		String actualToastMessage = driver.findElementByXPath("//android.widget.Toast[1]").getAttribute("name");
 		Assert.assertEquals(actualToastMessage, expectedToastMessage);
 	}
-// 	@Test(priority = 6)
+	@Test(priority = 6)
 	public void verifyThatUserCanDeleteProfilePictureFromTheProfileScreen() throws InterruptedException {
 		String expectedToastMessage = "Profile image deleted";
 		Thread.sleep(4000);
 		WebElement parrentScrollView = driver.findElementByClassName("android.widget.ScrollView");
 		parrentScrollView.findElement(By.xpath("//*[@resource-id = 'RNE__Image']")).click();
 		driver.findElementByXPath("//*[@text = 'Camera']").click();
-        	driver.findElementByXPath("//*[@text = 'WHILE USING THE APP']").click();
-        	Thread.sleep(5000);
-        	driver.findElementByXPath("//*[@content-desc = 'Shutter']");
-        	driver.findElementByXPath("//*[@content-desc = 'Shutter']").click();
-        	driver.findElementByXPath("//*[@content-desc = 'Done']").click();
-        	driver.findElementByXPath("//*[@text = 'Name']");
-        	parrentScrollView.findElement(By.xpath("//*[@resource-id = 'RNE__Image']")).click();
-        	driver.findElementByXPath("//*[@text = 'Delete Photo']").click();
-        	String actualToastMessage = driver.findElementByXPath("//android.widget.Toast[1]").getAttribute("name");
-        	Assert.assertEquals(actualToastMessage, expectedToastMessage);
+        driver.findElementByXPath("//*[@text = 'WHILE USING THE APP']").click();
+        Thread.sleep(5000);
+        driver.findElementByXPath("//*[@content-desc = 'Shutter']");
+        driver.findElementByXPath("//*[@content-desc = 'Shutter']").click();
+        driver.findElementByXPath("//*[@content-desc = 'Done']").click();
+        driver.findElementByXPath("//*[@text = 'Name']");
+        parrentScrollView.findElement(By.xpath("//*[@resource-id = 'RNE__Image']")).click();
+        driver.findElementByXPath("//*[@text = 'Delete Photo']").click();
+        String actualToastMessage = driver.findElementByXPath("//android.widget.Toast[1]").getAttribute("name");
+        Assert.assertEquals(actualToastMessage, expectedToastMessage);
         
 		
 	}
