@@ -131,7 +131,7 @@ public class OwnerProfilePageTest extends Base {
 				+ " Screen When clicking on the Brens Icon from Owner Profile Page");
 	}
 	
-	@Test(priority = 5)
+	@Test(priority = 6)
 	public void verifyThatUserCanUpdateProfilePictureFromTheProfileScreen() throws InterruptedException {
 		String expectedToastMessage = "Customer's Profile Photo updated successfully";
 		Thread.sleep(4000);
@@ -146,7 +146,7 @@ public class OwnerProfilePageTest extends Base {
 		String actualToastMessage = driver.findElementByXPath("//android.widget.Toast[1]").getAttribute("name");
 		Assert.assertEquals(actualToastMessage, expectedToastMessage);
 	}
-	@Test(priority = 6)
+	@Test(priority = 7)
 	public void verifyThatUserCanDeleteProfilePictureFromTheProfileScreen() throws InterruptedException {
 		String expectedToastMessage = "Profile image deleted";
 		Thread.sleep(4000);

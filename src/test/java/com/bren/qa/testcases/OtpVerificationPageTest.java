@@ -53,7 +53,7 @@ public class OtpVerificationPageTest extends Base {
 		Assert.assertTrue(myHomePage.myHomeIsDisplayed(), "Login wasn't successfull");
 		ExtentManager.getExtentTest().log(Status.PASS, "User Logged in Successfully");
 	}
-	@Test(priority = 8)
+	@Test(priority = 3)
 	public void validateEnablingOfVerifyButton() throws InterruptedException {	
 		boolean isEnabled = otpVerificationPage.isVerifyButtonEnabled();
 		Assert.assertFalse(isEnabled, "Verify-Button is enabled before entering 6 digits");

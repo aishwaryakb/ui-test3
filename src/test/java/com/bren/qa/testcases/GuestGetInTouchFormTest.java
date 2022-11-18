@@ -88,7 +88,7 @@ public class GuestGetInTouchFormTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "Project name field is editable");
 	
 	}
-	@Test(priority = 2)
+	@Test(priority = 3)
 	public void  verifyTheUserCanSelectAnyProjectNameFromTheProjectNameField() throws InterruptedException {		
 		getInTouchFormPage.projectName.click();
 		String itemClicked1 = driver.findElementByXPath("//*[@resource-id = 'android:id/text1'][@index='1']").getAttribute("text");
@@ -140,7 +140,7 @@ public class GuestGetInTouchFormTest extends Base {
 		
 	}
 	
-	@Test(priority = 3)
+	@Test(priority = 4)
 	public void verifyUserCanSubmitTheFormOnlyAfterEnteringAllTheFieldsInTheForm() {
 		getInTouchFormPage.submitButton.click();
 		ExtentManager.getExtentTest().log(Status.INFO, "Clicked on submit button without filling any of the fields");
@@ -154,7 +154,7 @@ public class GuestGetInTouchFormTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "Project name is mandatory");
 	}
 	
-	@Test(priority = 4)
+	@Test(priority = 5)
 	public void verifyUserIsGettingConfirmationScreenOrAlreadyExistingReferalAfterSubmittingGetInTouchFormOption() throws InterruptedException {
 		
 		getInTouchFormPage.firstNameInputField.sendKeys(prop.getProperty("referAFriendFirstName"));
@@ -174,7 +174,7 @@ public class GuestGetInTouchFormTest extends Base {
 		
 	}
 	
-	@Test(priority = 5)
+	@Test(priority = 6)
 	public void verifyThatTheUserIsNavigatingToTheHomeScreenWhenClickingOnTheBrensIconFromGetInTouchForm() throws InterruptedException {
 		driver.findElementByXPath("//*[@resource-id ='RNE__Image']").click();
 		apartmentsListPage.verifyApartmentsTabPage();

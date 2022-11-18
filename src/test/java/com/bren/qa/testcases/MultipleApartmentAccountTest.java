@@ -69,7 +69,7 @@ public class MultipleApartmentAccountTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "View more option opens Apartment Details");
 	}
 	
- 	@Test(priority = 5)
+ 	@Test(priority = 4)
 	public void verifyThatTheUserIsNavigatingToTheHomeScreenWhenClickingOnTheBrensIconFromMultipleApartmentsHomePage() throws InterruptedException {
 		driver.findElementByXPath("//*[@resource-id ='RNE__Image']").click();
 		myHomePage.homePageVerification();
@@ -77,7 +77,7 @@ public class MultipleApartmentAccountTest extends Base {
 				+ " Screen When clicking on the Brens Icon from Multiple apartments Home Page");
 	}
 	
- 	@Test(priority = 6)
+ 	@Test(priority = 5)
 	public void documentsViewVerification() throws IOException, InterruptedException {
 	    differentDocumentCategoriesPage = myHomePage.clickDocuments();
 	    Thread.sleep(5000);
@@ -91,7 +91,7 @@ public class MultipleApartmentAccountTest extends Base {
 		
 	}
 	
-	@Test(priority = 7)
+	@Test(priority = 6)
 	public void documentDownloadVerification() throws IOException, InterruptedException {
 	    String expectedToastMessage = "Downloading please wait..";
         
@@ -108,7 +108,7 @@ public class MultipleApartmentAccountTest extends Base {
         
 		ExtentManager.getExtentTest().log(Status.PASS, "Document downloaded successfully");
 	}
- 	@Test(priority = 8)
+ 	@Test(priority = 7)
 	public void documentShareVerification() throws IOException, InterruptedException {
 	    differentDocumentCategoriesPage = myHomePage.clickDocuments();
 	    Thread.sleep(5000);
@@ -123,7 +123,7 @@ public class MultipleApartmentAccountTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "Able to share the document");
 		
 	}
- 	@Test(priority = 9)
+ 	@Test(priority = 8)
 	public void documentPrintVerification() throws IOException, InterruptedException {
 	    differentDocumentCategoriesPage = myHomePage.clickDocuments();
 	    Thread.sleep(5000);
@@ -136,7 +136,7 @@ public class MultipleApartmentAccountTest extends Base {
 		Assert.assertTrue(selectAPrinterTitle, "Able to print the document");
 	}
 	
-	@Test(priority = 1)
+	@Test(priority = 9)
 	public void floorPlanViewAndDownloadVerification() throws IOException, InterruptedException {
 	    String expectedToastMessage = "Downloading please wait..";
 	    apartmentFloorPlansPage =myHomePage.clickFloorPlans();
@@ -152,7 +152,7 @@ public class MultipleApartmentAccountTest extends Base {
 	    ExtentManager.getExtentTest().log(Status.PASS, "Document downloaded successfully");
 	        
 	}
- 	@Test(priority = 2)
+ 	@Test(priority = 10)
 	public void floorPlanShareVerification() throws IOException, InterruptedException {
 		Thread.sleep(5000);
 		apartmentFloorPlansPage = myHomePage.clickFloorPlans();
@@ -164,7 +164,7 @@ public class MultipleApartmentAccountTest extends Base {
 		Assert.assertTrue(shareTitle, "Not working share option");
 		ExtentManager.getExtentTest().log(Status.PASS, "Able to share the document");
 	}
- 	@Test(priority = 4)
+ 	@Test(priority = 11)
 	public void floorPlanPrintVerification() throws IOException, InterruptedException {
 		Thread.sleep(5000);
 		apartmentFloorPlansPage = myHomePage.clickFloorPlans();

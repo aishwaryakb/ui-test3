@@ -118,7 +118,7 @@ public class RewardsPageTest extends Base {
 		
 	}
 		
-	@Test(priority = 4)
+	@Test(priority = 5)
 	public void verifyUserIsGettingConfirmationScreenOrAlreadyExistingReferalAfterClickingOnTheReferFriendOption() throws InterruptedException {
 		referAndEarnFormPage = rewardsPage.clickReferAFriendButton();
 		Thread.sleep(5000);
@@ -137,7 +137,7 @@ public class RewardsPageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "User is Getting Confirmation Screen or referal message after clicking on the Refer Friend option");
 		
 	}
-	@Test(priority = 5)
+	@Test(priority = 6)
 	public void verifyThatTheScreenWithReferralStepsIsOpeningWhenTheUserClickOnTheIconLabelledAsYourReferrals() {
 		howToEarnRewardsPage = rewardsPage.clickOnYourReferralsIcon();
 		String expectedHowToEarnRewardsTitle = "How to earn rewards";
@@ -159,7 +159,7 @@ public class RewardsPageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.INFO, "Verified that the screen with referral steps is opening when the user click on the icon labelled as \"Your referrals\"");
 		
 	}
-	@Test(priority = 6)
+	@Test(priority = 7)
 	public void verifyThatTheRewardsTabContainsTheListOfAlreadySubmittedReferralIfThereIsAny() {
 	
 		Assert.assertTrue(rewardsPage.referralCard.isDisplayed(), "Rewards Tab isn't showing existing Referrals");
@@ -176,7 +176,7 @@ public class RewardsPageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "Status is showing inside Referral Card");
 	}
 	
-	@Test(priority = 5) 
+	@Test(priority = 8) 
 	public void verifyThatTheUserIsNavigatingToTheHomeScreenWhenClickingOnTheBrensIconFromRewardsTab() throws InterruptedException {
 		driver.findElementByXPath("//*[@resource-id ='RNE__Image']").click();
 		myHomePage.homePageVerification();
