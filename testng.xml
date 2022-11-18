@@ -3,11 +3,11 @@
 <suite name="Bren-First UI-TEST">
 	<listeners>
 	   	<listener class-name="com.bren.qa.listeners.ListenerClass"></listener>
-<!-- 	   	<listener class-name="com.bren.qa.listeners.AnnotationTransformer"></listener> -->
+	   	<listener class-name="com.bren.qa.listeners.AnnotationTransformer"></listener>
 	</listeners> 
     <test name="Tests">
     	<classes>
-<!--          	<class name="com.bren.qa.testcases.LaunchPageTest"/>
+         	<class name="com.bren.qa.testcases.LaunchPageTest"/>
          	<class name="com.bren.qa.testcases.LoginPageTest"/>
          	<class name="com.bren.qa.testcases.OtpVerificationPageTest"/>
          	<class name="com.bren.qa.testcases.EmailLoginPageTest"/>
@@ -25,7 +25,7 @@
          	<class name="com.bren.qa.testcases.ReferAndEarnFormPageTest"/>
          	<class name="com.bren.qa.testcases.RewardsPageTest"/>
          	<class name="com.bren.qa.testcases.SingleApartmentAccountTest"/> 
-         	<class name="com.bren.qa.testcases.ViewADocumentPageTest"/> -->
+         	<class name="com.bren.qa.testcases.ViewADocumentPageTest"/>
 		<class name="com.bren.qa.testcases.OwnerProfilePageTest"/>
         </classes>
 	</test>     
