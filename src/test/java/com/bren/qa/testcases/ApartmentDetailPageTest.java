@@ -59,7 +59,7 @@ public class ApartmentDetailPageTest extends Base {
 		multipleApartmentHomePage = new MultipleApartmentHomePage();
 		Thread.sleep(4000);
 	}
-	@Test(priority = 1)
+// 	@Test(priority = 1)
 	public void verifySectionsInTheApartmentDetailPage() {
 		
 		Assert.assertTrue(apartmentDetailPage.takeVirtualTourButtonIsDisplayed(), "Take Virtual Tour Button isn't displayed");
@@ -123,7 +123,7 @@ public class ApartmentDetailPageTest extends Base {
 		}
 		
 	}
-// 	@Test(priority = 3)
+	@Test(priority = 3)
 	public void verifySeeAllImagesClickingInViewGallery() throws InterruptedException {
 		apartmentDetailPage.clickViewGallery();
 		Thread.sleep(5000);
