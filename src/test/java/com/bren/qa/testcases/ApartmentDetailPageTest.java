@@ -90,6 +90,7 @@ public class ApartmentDetailPageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "HighLights Section is displayed");
 		 
 		ScrollHelper.scrollUntil("WALKTHROUGH");
+		ScrollHelper.scrollDown();
 		Assert.assertTrue(apartmentDetailPage.youtubePlayerContainerIsDisplayed(), "Youtube Player Container isn't displayed");
 		ExtentManager.getExtentTest().log(Status.PASS, "Youtube Player Container is displayed");
 		

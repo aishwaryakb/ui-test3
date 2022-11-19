@@ -53,7 +53,7 @@ public class GuestsApartmentDetailsPageTest extends Base {
 		Assert.assertTrue(driver.findElementByXPath("//*[@text ='Please enter mobile number']").isDisplayed(), "Mobile Number isn't mandatory");
 		ExtentManager.getExtentTest().log(Status.PASS, "Mobile Number is mandatory");
 	}
-	@Test(priority = 2)
+	@Test(priority = 1)
 	public void verifyUserIsGettingConfirmationScreenOrAlreadyExistingReferalAfterSubmittingGetInTouchFormOption() throws InterruptedException {
 		ScrollHelper.scrollUntil("Submit");
 		getInTouchFormPage.firstNameInputField.sendKeys(prop.getProperty("referAFriendFirstName"));
