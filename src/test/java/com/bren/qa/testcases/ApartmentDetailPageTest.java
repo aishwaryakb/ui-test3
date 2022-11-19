@@ -123,7 +123,7 @@ public class ApartmentDetailPageTest extends Base {
 		}
 		
 	}
-	@Test(priority = 3)
+// 	@Test(priority = 3)
 	public void verifySeeAllImagesClickingInViewGallery() throws InterruptedException {
 		apartmentDetailPage.clickViewGallery();
 		Thread.sleep(5000);
@@ -131,7 +131,7 @@ public class ApartmentDetailPageTest extends Base {
 		Assert.assertEquals(apartmentDetailPage.getCurrentImagePosition(), apartmentDetailPage.getImageCount(), "All images in the gallery section is viewed ");
 	}
 	
-// 	@Test(priority = 4)
+	@Test(priority = 4)
 	public void verifyUserCanReturnToApartmentDetailScreenByClickOnTheCloseIconOnImages() throws InterruptedException {
 		apartmentDetailPage.clickViewGallery();
 		Thread.sleep(5000);
