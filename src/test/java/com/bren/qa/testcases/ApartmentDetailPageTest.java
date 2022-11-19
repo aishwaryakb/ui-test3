@@ -110,7 +110,7 @@ public class ApartmentDetailPageTest extends Base {
 		
 	}
 	
-	@Test(priority = 2)
+// 	@Test(priority = 2)
 	public void verifyThatTheUserCanSeeTheListOfAllSpecificationsByClickingOnTheViewMoreOption() {
 		ScrollHelper.scrollUntil("SPECIFICATIONS");
 		try {
@@ -123,7 +123,7 @@ public class ApartmentDetailPageTest extends Base {
 		}
 		
 	}
-	@Test(priority = 3)
+// 	@Test(priority = 3)
 	public void verifySeeAllImagesClickingInViewGallery() throws InterruptedException {
 		apartmentDetailPage.clickViewGallery();
 		Thread.sleep(5000);
@@ -131,7 +131,7 @@ public class ApartmentDetailPageTest extends Base {
 		Assert.assertEquals(apartmentDetailPage.getCurrentImagePosition(), apartmentDetailPage.getImageCount(), "All images in the gallery section is viewed ");
 	}
 	
-	@Test(priority = 4)
+// 	@Test(priority = 4)
 	public void verifyUserCanReturnToApartmentDetailScreenByClickOnTheCloseIconOnImages() throws InterruptedException {
 		apartmentDetailPage.clickViewGallery();
 		Thread.sleep(5000);
@@ -142,7 +142,7 @@ public class ApartmentDetailPageTest extends Base {
 		Assert.assertTrue(apartmentDetailPage.viewGalleryButtonIsDisplayed(), "Doesn't return back to detail page after clicking on close icon");
 		ExtentManager.getExtentTest().log(Status.PASS, "Returns back to Apartment detail Page after clicking on Close Icon");
 	}
-	@Test(priority =5)
+// 	@Test(priority =5)
 	public void verifyImagesAreInPortraitMode() throws InterruptedException {
 		apartmentDetailPage.clickViewGallery();
 		Thread.sleep(5000);
@@ -150,7 +150,7 @@ public class ApartmentDetailPageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "Images are in Portrait Mode");
 	}
 	
-	@Test(priority =6)
+// 	@Test(priority =6)
 	public void verifyTakeVirtualTourOpensVirtualTour() throws InterruptedException {
 		apartmentDetailPage.clickVirtualTour();
 		Thread.sleep(5000);
@@ -158,7 +158,7 @@ public class ApartmentDetailPageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "Opened Virtual Tour");
 	}
 	
-	@Test(priority = 7)
+// 	@Test(priority = 7)
 	public void verifyShareButton() throws InterruptedException {
 		apartmentDetailPage.clickShare();
 		driver.findElementByXPath("//*[@text = 'ALLOW']").click();
@@ -166,7 +166,7 @@ public class ApartmentDetailPageTest extends Base {
 		Assert.assertTrue(apartmentDetailPage.shareTitleIsDisplayed(), "Not able to share the docs");
 		
 	}
-	@Test(priority = 8)
+// 	@Test(priority = 8)
 	public void documentDownloadVerification() throws IOException, InterruptedException {
 		Thread.sleep(5000);
 		String expectedToastMessage = "Downloading please wait..";
@@ -178,7 +178,7 @@ public class ApartmentDetailPageTest extends Base {
 	    ExtentManager.getExtentTest().log(Status.PASS, "Document downloaded successfully"); 
 	}
 	
-	@Test(priority = 9)
+// 	@Test(priority = 9)
 	public void verifyUserCanSlideAllImagesAddedinTheHighlights() throws InterruptedException {
         ScrollHelper.scrollUntil("WALKTHROUGH");
         ScrollHelper.scrollUp();
@@ -211,14 +211,14 @@ public class ApartmentDetailPageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "Sixth HighLight Is Displayed");	
 	}
 	
-	@Test(priority = 10)
+// 	@Test(priority = 10)
 	public void verifyWalkthroughVideoAddedInTheDetailScreenIsPlayingWhenClickingOnIt() {
 	    ScrollHelper.scrollUntil("WALKTHROUGH");
 		apartmentDetailPage.clickYoutubeVideContainer();
 		Assert.assertTrue(apartmentDetailPage.pauseButtonIsDisplayed(), "Walkthrough Video Added In The Detail Screen Is Playing When Clicking On It");
 		ExtentManager.getExtentTest().log(Status.PASS, "Verified Walkthrough Video Added In The Detail Screen is Playing When Clicking On It");
 	}
-	@Test(priority = 11)
+// 	@Test(priority = 11)
 	public void verifyThatUserCanViewTheWalkthroughVideoInFullScreen() throws InterruptedException {
 		System.out.println(driver.getOrientation());
 		ScrollHelper.scrollUntil("WALKTHROUGH");
@@ -228,7 +228,7 @@ public class ApartmentDetailPageTest extends Base {
 		System.out.println(driver.getOrientation());
 		Assert.assertEquals(apartmentDetailPage.getScreenOrientation(), "LANDSCAPE", "Video is playing in full screen mode");
 	}
-	@Test(priority = 12)
+// 	@Test(priority = 12)
 	public void verifyAmenitiesSection() {
 		
 	    ScrollHelper.scrollUntil("AMENITIES");
@@ -244,7 +244,7 @@ public class ApartmentDetailPageTest extends Base {
 		Assert.assertTrue(apartmentDetailPage.downArrowIsDisplayed(), "Down Arrow isn't displayed");
 		ExtentManager.getExtentTest().log(Status.PASS, "Down Arrow is Displayed");		
 	}
-	@Test(priority = 13)
+// 	@Test(priority = 13)
 	
 	public void verifyUserCanClickOnDropDownArrowOnSpecificationForADetailedList() {
 	    ScrollHelper.scrollUntil("REQUEST FOR A CALLBACK");
@@ -253,7 +253,7 @@ public class ApartmentDetailPageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "Clicking on Drop Down Arrow on a Specification opens a Detailed List");	
 		
 	}
-	@Test(priority = 14)
+// 	@Test(priority = 14)
 	public void verifyUserWillGetPopupMessageWhenClickOnRequestForACallBackFromApartmentDetailScreen() throws InterruptedException {
 		String  actualtoastMessage;
 		String expectedToastMessage = "The contact information that you shared already exists in our system. We appreciate your time";
@@ -266,7 +266,7 @@ public class ApartmentDetailPageTest extends Base {
 		Assert.assertEquals(actualtoastMessage, expectedToastMessage, "Pop-up message isn't displayed after clicking on Request For CallBack");
 	    ExtentManager.getExtentTest().log(Status.PASS, "Pop-up message is verified");
 	}
-	@Test(priority = 15)
+// 	@Test(priority = 15)
 	public void verifyReferAFriendFormIsOpeningWhenUserClicksOnTheReferAFriendOptionFromApartmentDetailsScreen() {
 	    ScrollHelper.scrollUntil(referAndEarnDescreption);
 		ScrollHelper.scrollDown();
@@ -275,7 +275,7 @@ public class ApartmentDetailPageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "Refer and Earn Form is opened When User Clicks On The Refer A Friend option");
 		
 	}
-	@Test(priority = 16)
+// 	@Test(priority = 16)
 	public void verifyThatReferAFriendFormShouldBePreselectedWithCorrespondingApartment() throws InterruptedException {
 		String projectTitle = driver.findElementByXPath("//android.widget.TextView[@index ='0']").getAttribute("text");
 		System.out.println(projectTitle);
@@ -289,7 +289,7 @@ public class ApartmentDetailPageTest extends Base {
 		
 	}
 	
-	@Test(priority = 17)
+// 	@Test(priority = 17)
 	public void verifyUserIsGettingConfirmationScreenOrAlreadyExistingReferalAfterClickingOnTheReferFriendOption() throws InterruptedException {
 	    ScrollHelper.scrollUntil(referAndEarnDescreption);
 		ScrollHelper.scrollDown();
@@ -308,7 +308,7 @@ public class ApartmentDetailPageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "User is Getting Confirmation Screen after clicking on the Refer Friend option");
 		
 	}
-	@Test(priority = 18)
+// 	@Test(priority = 18)
 	public void verifyThatTheUserIsNavigatingToTheHomeScreenWhenClickingOnTheBrensIconFromSingleApartmentDetailsScreen() throws InterruptedException {
 
 		driver.findElementByXPath("//*[@resource-id ='RNE__Image']").click();
