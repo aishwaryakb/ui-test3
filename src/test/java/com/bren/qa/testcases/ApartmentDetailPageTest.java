@@ -178,7 +178,7 @@ public class ApartmentDetailPageTest extends Base {
 	    ExtentManager.getExtentTest().log(Status.PASS, "Document downloaded successfully"); 
 	}
 	
-// 	@Test(priority = 9)
+	@Test(priority = 9)
 	public void verifyUserCanSlideAllImagesAddedinTheHighlights() throws InterruptedException {
         ScrollHelper.scrollUntil("WALKTHROUGH");
         ScrollHelper.scrollUp();
