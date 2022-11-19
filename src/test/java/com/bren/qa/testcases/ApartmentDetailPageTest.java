@@ -279,7 +279,7 @@ public class ApartmentDetailPageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "Refer and Earn Form is opened When User Clicks On The Refer A Friend option");
 		
 	}
-// 	@Test(priority = 16)
+	@Test(priority = 16)
 	public void verifyThatReferAFriendFormShouldBePreselectedWithCorrespondingApartment() throws InterruptedException {
 		String projectTitle = driver.findElementByXPath("//android.widget.TextView[@index ='0']").getAttribute("text");
 		System.out.println(projectTitle);
@@ -293,7 +293,7 @@ public class ApartmentDetailPageTest extends Base {
 		
 	}
 	
-// 	@Test(priority = 17)
+	@Test(priority = 17)
 	public void verifyUserIsGettingConfirmationScreenOrAlreadyExistingReferalAfterClickingOnTheReferFriendOption() throws InterruptedException {
 	    ScrollHelper.scrollUntil(referAndEarnDescreption);
 		ScrollHelper.scrollDown();
@@ -312,7 +312,7 @@ public class ApartmentDetailPageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "User is Getting Confirmation Screen after clicking on the Refer Friend option");
 		
 	}
-// 	@Test(priority = 18)
+	@Test(priority = 18)
 	public void verifyThatTheUserIsNavigatingToTheHomeScreenWhenClickingOnTheBrensIconFromSingleApartmentDetailsScreen() throws InterruptedException {
 
 		driver.findElementByXPath("//*[@resource-id ='RNE__Image']").click();
