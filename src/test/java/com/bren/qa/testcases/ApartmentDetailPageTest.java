@@ -181,7 +181,7 @@ public class ApartmentDetailPageTest extends Base {
 	@Test(priority = 9)
 	public void verifyUserCanSlideAllImagesAddedinTheHighlights() throws InterruptedException {
         ScrollHelper.scrollUntil("WALKTHROUGH");
-	ScrollHelper.scrollDownn();
+	ScrollHelper.scrollDown();
         ScrollHelper.scrollUp();
 		Assert.assertTrue(apartmentDetailPage.highLightsSubTitle1IsDisplayed(), "First Highlights section is not displayed");
 		ExtentManager.getExtentTest().log(Status.PASS, "First HighLight Is Displayed");
@@ -215,7 +215,7 @@ public class ApartmentDetailPageTest extends Base {
 	@Test(priority = 10)
 	public void verifyWalkthroughVideoAddedInTheDetailScreenIsPlayingWhenClickingOnIt() {
 	    ScrollHelper.scrollUntil("WALKTHROUGH");
-	    ScrollHelper.scrollDownn();
+	    ScrollHelper.scrollDown();
 		apartmentDetailPage.clickYoutubeVideContainer();
 		Assert.assertTrue(apartmentDetailPage.pauseButtonIsDisplayed(), "Walkthrough Video Added In The Detail Screen Is Playing When Clicking On It");
 		ExtentManager.getExtentTest().log(Status.PASS, "Verified Walkthrough Video Added In The Detail Screen is Playing When Clicking On It");
@@ -224,7 +224,7 @@ public class ApartmentDetailPageTest extends Base {
 	public void verifyThatUserCanViewTheWalkthroughVideoInFullScreen() throws InterruptedException {
 		System.out.println(driver.getOrientation());
 		ScrollHelper.scrollUntil("WALKTHROUGH");
-		ScrollHelper.scrollDownn();
+		ScrollHelper.scrollDown();
 		apartmentDetailPage.clickYoutubeVideContainer();
 		driver.findElementByXPath("//*[@text = 'Full screen']").click();
 		Thread.sleep(3000);
@@ -252,7 +252,7 @@ public class ApartmentDetailPageTest extends Base {
 	public void verifyUserCanClickOnDropDownArrowOnSpecificationForADetailedList() {
 	    ScrollHelper.scrollUntil("REQUEST FOR A CALLBACK");
 		apartmentDetailPage.clickDownArrows();
-		ScrollHelper.scrollDownn();
+		ScrollHelper.scrollDown();
 		Assert.assertTrue(apartmentDetailPage.detailsOfSpecification.isDisplayed(), "Clicking on Drop Down Arrow on a Specification isn't opening a DetailedList");
 		ExtentManager.getExtentTest().log(Status.PASS, "Clicking on Drop Down Arrow on a Specification opens a Detailed List");	
 		
