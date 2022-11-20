@@ -123,7 +123,7 @@ public class ApartmentDetailPageTest extends Base {
 		}
 		
 	}
-// 	@Test(priority = 3)
+ 	@Test(priority = 3)
 	public void verifySeeAllImagesClickingInViewGallery() throws InterruptedException {
 		apartmentDetailPage.clickViewGallery();
 		Thread.sleep(5000);
@@ -247,7 +247,7 @@ public class ApartmentDetailPageTest extends Base {
 		Assert.assertTrue(apartmentDetailPage.downArrowIsDisplayed(), "Down Arrow isn't displayed");
 		ExtentManager.getExtentTest().log(Status.PASS, "Down Arrow is Displayed");		
 	}
-	@Test(priority = 13)
+//	@Test(priority = 13)
 	
 	public void verifyUserCanClickOnDropDownArrowOnSpecificationForADetailedList() {
 	    	ScrollHelper.scrollUntil("SPECIFICATIONS");
