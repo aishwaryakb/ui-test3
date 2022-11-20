@@ -74,9 +74,4 @@ public class GuestProfilePageTest extends Base{
 		ExtentManager.getExtentTest().log(Status.PASS, "Verified that the User is Navigating to the Home"
 				+ " Screen When clicking on the Brens Icon from Guest Profile Page");
 	}
-
-	@AfterMethod()
-	public void tearDown() {
-		driver.quit();
-	}
 }

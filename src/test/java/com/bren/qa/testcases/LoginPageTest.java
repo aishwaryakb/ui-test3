@@ -69,8 +69,5 @@ public class LoginPageTest extends Base {
 		Assert.assertTrue(myHomePage.myHomeIsDisplayed(), "Mail login was not successful");
 		ExtentManager.getExtentTest().log(Status.PASS, "Login with Mail was successful");
 	}
-	@AfterMethod()
-    public void tearDown() {
-        driver.quit();
-    }
+
 }

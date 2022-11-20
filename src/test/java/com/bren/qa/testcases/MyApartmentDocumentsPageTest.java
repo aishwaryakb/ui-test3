@@ -49,7 +49,7 @@ public class MyApartmentDocumentsPageTest extends Base {
 		differentDocumentCategoriesPageNext = differentDocumentCategoriesPage.clickNextDocument();
 		docsPage = differentDocumentCategoriesPage.clickDocument();
 	}
-	@Test(priority = 1)
+	@Test(priority = 1, alwaysRun=true)
 	public void documentsViewVerification() throws IOException, InterruptedException {
 		Thread.sleep(5000);
 		viewADocumentPage = docsPage.clickOnOneDoc();
@@ -58,7 +58,7 @@ public class MyApartmentDocumentsPageTest extends Base {
 		Assert.assertTrue(isDocDisplayed, "Document isn't opened");
 		ExtentManager.getExtentTest().log(Status.PASS, "Document Viewing is verified");
 	}
-	@Test(priority = 3)
+	@Test(priority = 3, alwaysRun=true)
 	public void documentDownloadVerification() throws IOException, InterruptedException {
 		Thread.sleep(3000);
 		String expectedToastMessage = "Downloading please wait..";
@@ -70,7 +70,7 @@ public class MyApartmentDocumentsPageTest extends Base {
         ExtentManager.getExtentTest().log(Status.PASS, "Document downloaded successfully"); 
     
 	}
-	@Test(priority = 2)
+	@Test(priority = 2, alwaysRun=true)
 	public void documentShareVerification() throws IOException, InterruptedException {
 		Thread.sleep(5000);
 		docsPage.clickShare();
@@ -80,7 +80,7 @@ public class MyApartmentDocumentsPageTest extends Base {
 		Assert.assertTrue(shareTitle, "Not able to share the document");
 		ExtentManager.getExtentTest().log(Status.PASS, "Able to share the document");
 	}
-	@Test(priority = 4)
+	@Test(priority = 4, alwaysRun=true)
 	public void documentPrintVerification() throws IOException, InterruptedException {
 		Thread.sleep(5000);
 		docsPage.clickPrint();
@@ -88,9 +88,5 @@ public class MyApartmentDocumentsPageTest extends Base {
 		boolean selectAPrinterTitle = driver.findElementByXPath("//*[@text = 'Select a printer']").isDisplayed();
 		Assert.assertTrue(selectAPrinterTitle, "Not Able to print the document");
 		ExtentManager.getExtentTest().log(Status.PASS, "Able to Print the document");
-	}
-	@AfterMethod()
-	public void tearDown() {
-		driver.quit();
 	}
 }

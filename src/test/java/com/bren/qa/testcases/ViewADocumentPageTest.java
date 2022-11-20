@@ -53,7 +53,7 @@ public class ViewADocumentPageTest extends Base {
 		Thread.sleep(8000);
 		viewADocumentPage.clickMoreOptions();
 	}
-     @Test(priority = 2)
+     @Test(priority = 2, alwaysRun=true)
 	public void documentDownloadVerification() throws IOException, InterruptedException {
 		Thread.sleep(5000);
 		String expectedToastMessage = "Downloading please wait..";
@@ -64,7 +64,7 @@ public class ViewADocumentPageTest extends Base {
 		Assert.assertEquals(actualToastMessage, expectedToastMessage);
 		ExtentManager.getExtentTest().log(Status.PASS, "Document downloaded successfully");
 	}
-	@Test(priority = 3)
+	@Test(priority = 3, alwaysRun=true)
 	public void documentShareVerification() throws IOException, InterruptedException {
 		Thread.sleep(5000);
 		viewADocumentPage.clickShare();
@@ -74,7 +74,7 @@ public class ViewADocumentPageTest extends Base {
 		Assert.assertTrue(shareTitle, "Not working share option");
 		ExtentManager.getExtentTest().log(Status.PASS, "Able to share the document");
 	}
-	@Test(priority = 4)
+	@Test(priority = 4, alwaysRun=true)
 	public void documentPrintVerification() throws IOException, InterruptedException {
 		Thread.sleep(5000);
 		viewADocumentPage.clickPrint();
@@ -83,9 +83,5 @@ public class ViewADocumentPageTest extends Base {
 		driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
 		boolean selectAPrinterTitle = driver.findElementByXPath("//*[@text = 'Select a printer']").isDisplayed();
 		Assert.assertTrue(selectAPrinterTitle, "Able to print the document");
-	}
-	@AfterMethod()
-	public void tearDown() {
-		driver.quit();
 	}
 }

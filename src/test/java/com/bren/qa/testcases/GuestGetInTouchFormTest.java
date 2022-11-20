@@ -35,7 +35,7 @@ public class GuestGetInTouchFormTest extends Base {
 		apartmentsListPage = new ApartmentsListPage();
 		Thread.sleep(3000);
 	}
-	@Test(priority = 1)
+	@Test(priority = 1, alwaysRun=true)
 	public void verifyFieldsInGetInTouchForm() throws InterruptedException {
 		Assert.assertTrue(getInTouchFormPage.getInTouchFormIcon.isDisplayed(),"Get-In-Touch Icon is not Added to Navbar inside SupportTab");
 		ExtentManager.getExtentTest().log(Status.PASS, "Verified that Get-In-Touch Icon is Added to Navbar inside SupportTab");
@@ -58,7 +58,7 @@ public class GuestGetInTouchFormTest extends Base {
 		Assert.assertTrue(getInTouchFormPage.submitButton.isDisplayed(), "Submit button isn't Displayed");
 		ExtentManager.getExtentTest().log(Status.PASS, "Submit button is Displayed");
 	}
-	@Test(priority = 2)
+	@Test(priority = 2, alwaysRun=true)
 	public void verifyTheFieldsInTheGetInTouchFormAreEditable() {
 		getInTouchFormPage.firstNameInputField.sendKeys("firstname");
 		System.out.println(driver.findElementsByClassName("android.widget.EditText").get(0).getAttribute("text"));
@@ -88,7 +88,7 @@ public class GuestGetInTouchFormTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "Project name field is editable");
 	
 	}
-	@Test(priority = 3)
+	@Test(priority = 3, alwaysRun=true)
 	public void  verifyTheUserCanSelectAnyProjectNameFromTheProjectNameField() throws InterruptedException {		
 		getInTouchFormPage.projectName.click();
 		String itemClicked1 = driver.findElementByXPath("//*[@resource-id = 'android:id/text1'][@index='1']").getAttribute("text");
@@ -140,7 +140,7 @@ public class GuestGetInTouchFormTest extends Base {
 		
 	}
 	
-	@Test(priority = 4)
+	@Test(priority = 4, alwaysRun=true)
 	public void verifyUserCanSubmitTheFormOnlyAfterEnteringAllTheFieldsInTheForm() {
 		getInTouchFormPage.submitButton.click();
 		ExtentManager.getExtentTest().log(Status.INFO, "Clicked on submit button without filling any of the fields");
@@ -154,7 +154,7 @@ public class GuestGetInTouchFormTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "Project name is mandatory");
 	}
 	
-	@Test(priority = 5)
+	@Test(priority = 5, alwaysRun=true)
 	public void verifyUserIsGettingConfirmationScreenOrAlreadyExistingReferalAfterSubmittingGetInTouchFormOption() throws InterruptedException {
 		
 		getInTouchFormPage.firstNameInputField.sendKeys(prop.getProperty("referAFriendFirstName"));
@@ -174,7 +174,7 @@ public class GuestGetInTouchFormTest extends Base {
 		
 	}
 	
-	@Test(priority = 6)
+	@Test(priority = 6, alwaysRun=true)
 	public void verifyThatTheUserIsNavigatingToTheHomeScreenWhenClickingOnTheBrensIconFromGetInTouchForm() throws InterruptedException {
 		driver.findElementByXPath("//*[@resource-id ='RNE__Image']").click();
 		apartmentsListPage.verifyApartmentsTabPage();
@@ -183,14 +183,10 @@ public class GuestGetInTouchFormTest extends Base {
 	}
 	
 		
-	@Test(priority = 7)
+	@Test(priority = 7, alwaysRun=true)
 	public void verifyThatGetInTouchFormIsOpeningWhenTheUserClickOnTheIconFromNavbar() {
 		getInTouchFormPage.getInTouchFormIcon.click();
 		Assert.assertTrue(getInTouchFormPage.getInTouchFormTitle.isDisplayed(), "GET-IN-TOUCH form is not opening when clicking on the icon from Nav bar");
 		ExtentManager.getExtentTest().log(Status.PASS, "verified that Get-In-Touch Form is opening when the user click on the icon from Navbar");
-	}
-	@AfterMethod()
-	public void tearDown() {
-		driver.quit();
 	}
 }

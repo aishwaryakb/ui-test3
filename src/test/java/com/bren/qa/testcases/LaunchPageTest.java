@@ -25,7 +25,7 @@ public class LaunchPageTest extends Base{
 		initialization();
 		launchPage = new LaunchPage();
 	}
-	@Test(priority = 1)
+	@Test(priority = 1, alwaysRun=true)
 	public void validateLaunchPageContents() throws InterruptedException {	
 	    launchPage.swipeLaunchScreenImages();
         ExtentManager.getExtentTest().log(Status.INFO, "sliding of launch screen images");
@@ -39,7 +39,7 @@ public class LaunchPageTest extends Base{
 		Assert.assertTrue(isContinueAsGuestDisplayed,"Continue-as-guest button isnt displayed");	
 		ExtentManager.getExtentTest().log(Status.PASS, "Continue-as-guest button is displayed");		
 	}
-	@Test(priority = 2)
+	@Test(priority = 2, alwaysRun=true)
 	public void continueAsGuestOptionVerification() throws InterruptedException {
 		guestHomePage = launchPage.clickContinueAsGuest();
 		ExtentManager.getExtentTest().log(Status.PASS, "clicked on the button Continue-as-Guest");
@@ -48,16 +48,12 @@ public class LaunchPageTest extends Base{
 		ExtentManager.getExtentTest().log(Status.PASS, "Verified Guest Login");		
 	}
 	
-	@Test(priority = 3)
+	@Test(priority = 3, alwaysRun=true)
 	public void verifyLandingPageForTheAppIsApartmentsForTheGuestUser() throws InterruptedException {
 		guestHomePage = launchPage.clickContinueAsGuest();
 		Thread.sleep(10000);
 		boolean isProjectTitleVisible = guestHomePage.isProjectTitleIsDisplayed();
 		Assert.assertTrue(isProjectTitleVisible, "Landing Page for the app isn't apartments for Guest User");
 		ExtentManager.getExtentTest().log(Status.PASS, "Verified that Landing Page for the app is apartments for Guest User");
-	}
-	@AfterMethod()
-	public void tearDown() {
-		driver.quit();
 	}
 }

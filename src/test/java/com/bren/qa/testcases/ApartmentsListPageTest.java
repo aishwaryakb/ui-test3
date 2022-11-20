@@ -47,14 +47,14 @@ public class ApartmentsListPageTest extends Base {
         apartmentsListPage = myHomePage.clickApartmentsTab();
         
     }
-    @Test(priority = 1)
+    @Test(priority = 1, alwaysRun=true)
     public void verifyApartmentTabPage() {
         Assert.assertTrue(apartmentsListPage.createTicketIcon.isDisplayed(),"Create A Ticket Icon is not Added to Navbar inside Apartments Tab");
         ExtentManager.getExtentTest().log(Status.PASS, "Verified that Create A Ticket Icon is Added to Navbar inside Apartments Tab");
         apartmentsListPage.verifyApartmentsTabPage();
     }
     
-    @Test(priority = 2)
+    @Test(priority = 2, alwaysRun=true)
     public void verifyApartmentDetailPageIsOpeningWhenClickingOnTheCard() {
         apartmentDetailPage = apartmentsListPage.clickOnProjectCard();
         Assert.assertTrue(apartmentDetailPage.viewGalleryButtonIsDisplayed(), "View Gallery Button isn't displaying");
@@ -62,15 +62,12 @@ public class ApartmentsListPageTest extends Base {
         ExtentManager.getExtentTest().log(Status.INFO, "Apartment Detail Page is opened when clicking on the card");
     
     }
-    @Test(priority = 3)
+    @Test(priority = 3, alwaysRun=true)
     public void verifyThatTheUserIsNavigatingToTheHomeScreenWhenClickingOnTheBrensIconFromMultipleApartmentListsPage() throws InterruptedException {
         driver.findElementByXPath("//*[@resource-id ='RNE__Image']").click();
         myHomePage.verifySingleApartmentHomePage();
         ExtentManager.getExtentTest().log(Status.PASS, "Verified that the User is Navigating to the Home"
                 + " Screen When clicking on the Brens Icon from Multiple Apartments Details screen");
     }
-    @AfterMethod()
-    public void tearDown() {
-        driver.quit();
-    }
+
 }

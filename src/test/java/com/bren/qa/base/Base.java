@@ -10,6 +10,7 @@ import java.net.URL;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
@@ -42,6 +43,10 @@ public class Base {
 	    String descreption = "Verifying The test case " + m.getName() + " within the Test file : " + className;
 		ExtentReport.createTest(methodNameWithClassName, descreption);	
 	}
+	@AfterMethod()
+    public void tearDown() {
+        driver.quit();
+    }
 	public Base() {
 		try {
 			prop = new Properties();

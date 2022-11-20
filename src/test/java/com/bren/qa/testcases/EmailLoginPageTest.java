@@ -65,8 +65,4 @@ public class EmailLoginPageTest extends Base {
 		myHomePage = otpVerificationPage.inputOtp(prop.getProperty("otp"));
 		Assert.assertTrue(myHomePage.myHomeIsDisplayed(), "Mail login was not successful");
 	}
-	@AfterMethod()
-    public void tearDown() {
-        driver.quit();
-    }
 }

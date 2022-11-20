@@ -62,7 +62,7 @@ public class ReferAndEarnFormPageTest extends Base{
 		
 }
 	
-	@Test(priority = 1)
+	@Test(priority = 1, alwaysRun=true)
 	public void verifyFieldsInReferAFriendForm() {
 		
 		
@@ -107,7 +107,7 @@ public class ReferAndEarnFormPageTest extends Base{
 		ExtentManager.getExtentTest().log(Status.PASS, "Refer a Friend Button is Displayed");
 		
 	}
-	@Test(priority = 3)
+	@Test(priority = 3, alwaysRun=true)
     public void verifyUserCanSubmitTheFormOnlyAfterEnteringAllTheFieldsInTheForm() {
 	    ScrollHelper.scrollDownUntil("Refer friend");
         referAndEarnFormPage.referAFriendButton.click();
@@ -121,7 +121,7 @@ public class ReferAndEarnFormPageTest extends Base{
         ExtentManager.getExtentTest().log(Status.PASS, "Mobile Number is mandatory");
     }
 
-	@Test(priority = 4)
+	@Test(priority = 4, alwaysRun=true)
 	public void verifyUserIsGettingConfirmationScreenOrAlreadyExistingReferalAfterClickingOnTheReferFriendOption() throws InterruptedException {
 		Thread.sleep(5000);
 		referAndEarnFormPage.firstNameField.sendKeys(prop.getProperty("referAFriendFirstName"));
@@ -136,8 +136,4 @@ public class ReferAndEarnFormPageTest extends Base{
         Assert.assertTrue(referAndEarnFormPage.isConfirmationScreenOrExistingReferalMessageIsDisplayed(firstNameFieldValue), "User isn't Getting Confirmation Screen after clicking on the Refer Friend option");
         ExtentManager.getExtentTest().log(Status.PASS, "User is Getting Confirmation Screen or referal message after clicking on the Refer Friend option");
 	}	
-	@AfterMethod()
-    public void tearDown() {
-        driver.quit();
-    }
 }

@@ -44,14 +44,14 @@ public class SingleApartmentAccountTest extends Base {
         driver.findElementByXPath("//*[@text = 'Enter OTP']");
 		myHomePage = otpVerificationPage.inputOtp(prop.getProperty("otp").toString());
 	}
-	@Test(priority = 1)
+	@Test(priority = 1, alwaysRun=true)
 	public void verifyHomePageOfSingleApartmentOwner() {
 		Assert.assertTrue(myHomePage.createTicketIcon.isDisplayed(),"Create A Ticket Icon is not Added to Navbar inside home page");
 		ExtentManager.getExtentTest().log(Status.PASS, "Verified that Create A Ticket Icon is Added to Navbar inside home page");
 		myHomePage.verifySingleApartmentHomePage();
 	}
 	
-	@Test(priority = 2)
+	@Test(priority = 2, alwaysRun=true)
 	public void verifyWorkStatusList() throws InterruptedException {	
 		myHomePage.clickProjectStatus();
 		Thread.sleep(3000);	
@@ -59,7 +59,7 @@ public class SingleApartmentAccountTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "All status is displayed");
 	}
 	
-	@Test(priority = 3)
+	@Test(priority = 3, alwaysRun=true)
 	public void clickOnInteriorDesignCardsDisplaysAvailableDesignPackages() {
 		myHomePage.scrollDownUntil("View options");
 		interiorDesignPackagesListPage = myHomePage.clickInteriorDesignCard();
@@ -67,21 +67,21 @@ public class SingleApartmentAccountTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "Click on Interior design cards, displaying available design packages");
 	}
 	
-	@Test(priority = 4)
+	@Test(priority = 4, alwaysRun=true)
 	public void clickOnViewOptionsDisplaysAvailableDesignPackages() {
 		myHomePage.scrollDownUntil(referAndEarnTitle);
 		interiorDesignPackagesListPage = myHomePage.clickViewOptions();
 		Assert.assertTrue(interiorDesignPackagesListPage.interiorNameAndDescriptionSectionIsDisplayed(), "Click on click on View-Options isn't displaying available design packages");
 		ExtentManager.getExtentTest().log(Status.PASS, "click on View-Options, displaying available design packages");
 	}
-	@Test(priority = 5)
+	@Test(priority = 5, alwaysRun=true)
 	public void verifyThatTheUserIsNavigatingToTheHomeScreenWhenClickingOnTheBrensIconFromSingleApartmentPage() throws InterruptedException {
 		driver.findElementByXPath("//*[@resource-id ='RNE__Image']").click();
 		myHomePage.verifySingleApartmentHomePage();
 		ExtentManager.getExtentTest().log(Status.PASS, "Verified that the User is Navigating to the Home"
 				+ " Screen When clicking on the Brens Icon from Single Apartment Page");
 	}
-	@Test(priority = 6)
+	@Test(priority = 6, alwaysRun=true)
 	public void verifyrReferAFriendOptionFromMyHomePageTest() throws InterruptedException {
 		myHomePage.scrollDownUntil("Refer people to buy an apartment with Bren and earn a reward when the referred person buys an apartment");
 		ScrollHelper.scrollDown();
@@ -101,9 +101,5 @@ public class SingleApartmentAccountTest extends Base {
         
 //		referAndEarnFormPage.fillAndSubmitReferAFriendForm();
 //		ExtentManager.getExtentTest().log(Status.PASS, "Submitted Refer A Friend Form");
-	}
-	@AfterMethod()
-	public void tearDown() {
-		driver.quit();
 	}
 }

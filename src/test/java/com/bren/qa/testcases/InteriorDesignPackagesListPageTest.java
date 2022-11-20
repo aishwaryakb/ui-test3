@@ -83,9 +83,4 @@ public class InteriorDesignPackagesListPageTest extends Base {
 		Assert.assertTrue(interiorDesignDetailPage.iamInterestedBtnIsDisplayed(), "Click on View-More-Details isn't opening the package");
 		ExtentManager.getExtentTest().log(Status.PASS, "click on View-More-Details, opening the design package");
 	}
-	
-	@AfterMethod()
-	public void tearDown() {
-		driver.quit();
-	}
 }

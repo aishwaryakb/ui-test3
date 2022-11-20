@@ -51,7 +51,7 @@ public class InteriorDesignDetailPageTest extends Base {
 		interiorDesignDetailPage =interiorDesignPackagesListPage.clickViewMoreDetails();
 		Thread.sleep(3000);
 	}
-	@Test(priority = 1)
+	@Test(priority = 1, alwaysRun=true)
 	public void verifyInteriorDesignPackageCardContents() { 
 		Assert.assertEquals(interiorDesignDetailPage.pageHeading.getAttribute("text"), expectedPageHeading);
 		ExtentManager.getExtentTest().log(Status.PASS, "Heading verified");
@@ -72,7 +72,7 @@ public class InteriorDesignDetailPageTest extends Base {
 		
 	}
 	// verify confirmation screen
-	@Test(priority = 2)
+	@Test(priority = 2, alwaysRun=true)
 	public void verifyConfirmationScreenAfterclickOnIAmInterstedButton() {
 	    String expectedInteriorName = driver.findElementByXPath("//*[@resource-id = 'interiorName']").getAttribute("text");
 		interiorDesignConfirmationScreenPage = interiorDesignDetailPage.clickIAmInterested();
@@ -80,14 +80,9 @@ public class InteriorDesignDetailPageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "Confirmation-Text is Showing");
 	}
 	
-	@Test(priority = 3)
+	@Test(priority = 3, alwaysRun=true)
 	public void swipeInteriorImagesTest() {
 		interiorDesignDetailPage.swipeInteriorImages();
 		ExtentManager.getExtentTest().log(Status.INFO, "All Interior images swiped");
-	}
-	
-	@AfterMethod()
-	public void tearDown() {
-		driver.quit();
 	}
 }

@@ -166,8 +166,4 @@ public class OwnerProfilePageTest extends Base {
         
 		
 	}
-	@AfterMethod()
-	public void tearDown() {
-		driver.quit();
-	}
 }
