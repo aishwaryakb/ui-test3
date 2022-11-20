@@ -252,8 +252,7 @@ public class ApartmentDetailPageTest extends Base {
 	public void verifyUserCanClickOnDropDownArrowOnSpecificationForADetailedList() {
 	    	ScrollHelper.scrollUntil("SPECIFICATIONS");
 		ScrollHelper.scrollDown();
-		apartmentDetailPage.clickDownArrows();
-		System.out.println(driver.getPageSource());
+		driver.findElementByXPath("//*[@text = 'ELEVATORS']").click();
 		Assert.assertTrue(apartmentDetailPage.detailsOfSpecification.isDisplayed(), "Clicking on Drop Down Arrow on a Specification isn't opening a DetailedList");
 		ExtentManager.getExtentTest().log(Status.PASS, "Clicking on Drop Down Arrow on a Specification opens a Detailed List");	
 		
