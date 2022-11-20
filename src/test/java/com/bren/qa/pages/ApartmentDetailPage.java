@@ -88,7 +88,7 @@ public class ApartmentDetailPage extends Base{
 	WebElement projectSpecAndAmenitiesSection;
 	
 	@FindBy(xpath = "//*[@resource-id = 'nameAndDownArrowContainer']")
-	WebElement nameAndDownArrowContainer;
+	WebElement amenintiesName;
 	@FindBy(xpath = "//*[@resource-id = 'downArrow']")
 	public WebElement downArrow;
 	@FindBy(xpath = "//*[@resource-id = 'details']")
@@ -114,7 +114,7 @@ public class ApartmentDetailPage extends Base{
 		leftAndrightArrow.click();
 	}
 	public void clickDownArrows() {
-        TapHelper.tapElementAt(nameAndDownArrowContainer, 0.8, 0.6);
+        TapHelper.tapElementAt(amenintiesName, 0.8, 0.6);
     }
 	public void clickViewGallery() {
 		viewGalleryButton.click();
