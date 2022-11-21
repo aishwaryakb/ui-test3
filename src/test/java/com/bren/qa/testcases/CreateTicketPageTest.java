@@ -51,6 +51,8 @@ public class CreateTicketPageTest extends Base{
         driver.findElementByXPath("//*[@text = 'Enter OTP']");
         myHomePage = otpVerificationPage.inputOtpForMultupleApartmentAccount(prop.getProperty("multpleApartmentsOwnerOtp").toString());
         Thread.sleep(3000);
+	driver.manage().timeouts().implicitlyWait(240, TimeUnit.SECONDS);
+	driver.findElementByXPath("//*[@content-desc = 'supportIcon']");
         createTicketPage = myHomePage.clickCreateTicketButton();
         
     }
