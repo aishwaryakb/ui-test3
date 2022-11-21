@@ -28,7 +28,7 @@ public class GuestGetInTouchFormTest extends Base {
 	public GuestGetInTouchFormTest() {
 		super();
 	}
-	@BeforeMethod
+	@BeforeMethod(alwaysRun=true)
 	public void setup(Method m) throws MalformedURLException, InterruptedException{
 	    ExtentReport.testInitialization(m);
 		initialization();

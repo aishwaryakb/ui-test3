@@ -25,7 +25,7 @@ public class GuestApartmentsListPageTest extends Base{
 		super();
 	}
 	
-	@BeforeMethod
+	@BeforeMethod(alwaysRun=true)
 	public void setup(Method m) throws MalformedURLException, InterruptedException {
 	    ExtentReport.testInitialization(m);
 		initialization();

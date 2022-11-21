@@ -22,7 +22,7 @@ public class LaunchPageTest extends Base{
 	public LaunchPageTest() {
 		super();
 	}
-	@BeforeMethod
+	@BeforeMethod(alwaysRun=true)
 	public void setup(Method m) throws MalformedURLException, InterruptedException{
 	    ExtentReport.testInitialization(m);
 		initialization();

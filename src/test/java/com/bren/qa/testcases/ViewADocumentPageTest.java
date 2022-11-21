@@ -34,7 +34,7 @@ public class ViewADocumentPageTest extends Base {
 	public ViewADocumentPageTest() {
 		super();
 	}
-	@BeforeMethod
+	@BeforeMethod(alwaysRun=true)
 	public void setup(Method m) throws MalformedURLException, InterruptedException {
 	    ExtentReport.testInitialization(m);
 		initialization();

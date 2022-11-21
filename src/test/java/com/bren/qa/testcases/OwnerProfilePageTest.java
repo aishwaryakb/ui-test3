@@ -35,7 +35,7 @@ public class OwnerProfilePageTest extends Base {
 	public OwnerProfilePageTest() {
 		super();
 	}
-	@BeforeMethod
+	@BeforeMethod(alwaysRun=true)
 	public void setup(Method m) throws MalformedURLException, InterruptedException {
 	    ExtentReport.testInitialization(m);
 		initialization();

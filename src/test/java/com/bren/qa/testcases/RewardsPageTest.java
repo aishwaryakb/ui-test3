@@ -39,7 +39,7 @@ public class RewardsPageTest extends Base {
 	public RewardsPageTest() {
 		super();
 	}
-	@BeforeMethod
+	@BeforeMethod(alwaysRun=true)
 	public void setup(Method m) throws MalformedURLException, InterruptedException {
 	    ExtentReport.testInitialization(m);
 		initialization();

@@ -43,7 +43,7 @@ public class ApartmentDetailPageTest extends Base {
 	public ApartmentDetailPageTest() {
 		super();
 	}
-	@BeforeMethod
+	@BeforeMethod(alwaysRun=true)
 	public void setup(Method m) throws MalformedURLException, InterruptedException {
 	    ExtentReport.testInitialization(m);
 		initialization();

@@ -34,7 +34,7 @@ public class InteriorDesignPackagesListPageTest extends Base {
 	public InteriorDesignPackagesListPageTest() {
 		super();
 	}
-	@BeforeMethod
+	@BeforeMethod(alwaysRun=true)
 	public void setup(Method m) throws MalformedURLException, InterruptedException {
 	    ExtentReport.testInitialization(m);
 		initialization();

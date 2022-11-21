@@ -34,7 +34,7 @@ public class Base {
 	public void tearDownSuite() {
 		ExtentReport.teardownReports();	
 	}
-	@AfterMethod()
+	@AfterMethod(alwaysRun=true)
     public void tearDown() {
         driver.quit();
     }

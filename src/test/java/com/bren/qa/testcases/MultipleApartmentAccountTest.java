@@ -37,7 +37,7 @@ public class MultipleApartmentAccountTest extends Base {
 	public MultipleApartmentAccountTest() {
 		super();
 	}
-	@BeforeMethod
+	@BeforeMethod(alwaysRun=true)
 	public void setup(Method m) throws MalformedURLException, InterruptedException {
 	    ExtentReport.testInitialization(m);
 		initialization();

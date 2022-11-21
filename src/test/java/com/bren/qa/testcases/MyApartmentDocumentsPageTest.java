@@ -36,7 +36,7 @@ public class MyApartmentDocumentsPageTest extends Base {
 	public MyApartmentDocumentsPageTest() {
 		super();
 	}
-	@BeforeMethod
+	@BeforeMethod(alwaysRun=true)
 	public void setup(Method m) throws MalformedURLException, InterruptedException {
 	    ExtentReport.testInitialization(m);
 		initialization();

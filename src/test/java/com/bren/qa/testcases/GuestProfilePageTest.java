@@ -34,7 +34,7 @@ public class GuestProfilePageTest extends Base{
 	public GuestProfilePageTest() {
 		super();
 	}
-	@BeforeMethod
+	@BeforeMethod(alwaysRun=true)
 	public void setup(Method m) throws MalformedURLException, InterruptedException{
 	    ExtentReport.testInitialization(m);
 		initialization();
