@@ -117,7 +117,7 @@ public class OwnerProfilePageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "Mobile Input field non editable");
 		
 	}
-// 	@Test(priority = 3, alwaysRun=true)
+	@Test(priority = 3, alwaysRun=true)
 	public void verifyThatTheUserCanLogOutTheAccountByClickingOnTheLogoutButton() {
 		
 		ownerProfilePage.logOutButton.click();
