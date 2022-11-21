@@ -36,7 +36,13 @@ public class Base {
 	}
 	@AfterMethod(alwaysRun=true)
     public void tearDown() {
-        driver.quit();
+        try {
+            driver.quit();
+        }
+        catch(Exception e) {
+            System.out.println(e);
+            driver.quit();
+        }
     }
 	public Base() {
 		try {
