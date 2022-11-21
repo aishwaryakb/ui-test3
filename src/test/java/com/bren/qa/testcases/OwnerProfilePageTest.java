@@ -1,5 +1,6 @@
 package com.bren.qa.testcases;
 
+import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.util.concurrent.TimeUnit;
 
@@ -20,6 +21,7 @@ import com.bren.qa.pages.OtpVerificationPage;
 import com.bren.qa.pages.OwnerProfilePage;
 import com.bren.qa.pages.SingleApartmentHomePage;
 import com.bren.qa.report.ExtentManager;
+import com.bren.qa.report.ExtentReport;
 
 public class OwnerProfilePageTest extends Base {
 
@@ -34,7 +36,8 @@ public class OwnerProfilePageTest extends Base {
 		super();
 	}
 	@BeforeMethod
-	public void setup() throws MalformedURLException, InterruptedException {
+	public void setup(Method m) throws MalformedURLException, InterruptedException {
+	    ExtentReport.testInitialization(m);
 		initialization();
 		launchPage = new LaunchPage();
 		loginPage = launchPage.clickSignInButton();
@@ -47,7 +50,7 @@ public class OwnerProfilePageTest extends Base {
 		singleApartmentHomePage = new SingleApartmentHomePage();
 		
 	}
-	@Test(priority = 1)
+	@Test(priority = 1, alwaysRun=true)
 	public void verifyDetailsInProfilePage() throws InterruptedException {
 		Thread.sleep(5000);
 		Assert.assertTrue(ownerProfilePage.profilePicture.isDisplayed(), "Profile Picture isn't displayed");
@@ -73,7 +76,7 @@ public class OwnerProfilePageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "LogOut Button is displayed");
 	}
 	
-	@Test(priority = 2)
+	@Test(priority = 2, alwaysRun=true)
 	public void verifyThatTheNameEmailAddressAndPhoneNumberFieldsAreNonEditable() throws InterruptedException {
 		Thread.sleep(5000);
 		String preSetFieldValue;
@@ -114,7 +117,7 @@ public class OwnerProfilePageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "Mobile Input field non editable");
 		
 	}
-	@Test(priority = 3)
+	@Test(priority = 3, alwaysRun=true)
 	public void verifyThatTheUserCanLogOutTheAccountByClickingOnTheLogoutButton() {
 		
 		ownerProfilePage.logOutButton.click();
@@ -123,7 +126,7 @@ public class OwnerProfilePageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "Logout was successful");
 		
 	}
-	@Test(priority = 5)
+	@Test(priority = 5, alwaysRun=true)
 	public void verifyThatTheUserIsNavigatingToTheHomeScreenWhenClickingOnTheBrensIconFromOwnerProfilePage() throws InterruptedException {
 		driver.findElementByXPath("//*[@resource-id ='RNE__Image']").click();
 		myHomePage.homePageVerification();

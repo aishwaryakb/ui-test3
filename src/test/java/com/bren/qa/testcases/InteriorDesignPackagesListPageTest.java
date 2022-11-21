@@ -1,4 +1,5 @@
 package com.bren.qa.testcases;
+import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.util.concurrent.TimeUnit;
 
@@ -17,6 +18,7 @@ import com.bren.qa.pages.LoginPage;
 import com.bren.qa.pages.OtpVerificationPage;
 import com.bren.qa.pages.SingleApartmentHomePage;
 import com.bren.qa.report.ExtentManager;
+import com.bren.qa.report.ExtentReport;
 public class InteriorDesignPackagesListPageTest extends Base {
 	LaunchPage launchPage;
 	LoginPage loginPage;
@@ -33,7 +35,8 @@ public class InteriorDesignPackagesListPageTest extends Base {
 		super();
 	}
 	@BeforeMethod
-	public void setup() throws MalformedURLException, InterruptedException {
+	public void setup(Method m) throws MalformedURLException, InterruptedException {
+	    ExtentReport.testInitialization(m);
 		initialization();
 		launchPage = new LaunchPage();
 		loginPage = launchPage.clickSignInButton();
@@ -46,7 +49,7 @@ public class InteriorDesignPackagesListPageTest extends Base {
 		
 		interiorDesignPackagesListPage = myHomePage.clickViewOptions();
 	}
-	@Test(priority = 1)
+	@Test(priority = 1, alwaysRun=true)
 	public void verifyInteriorDesignPackageCardContents() { 
 		Assert.assertEquals(interiorDesignPackagesListPage.pageHeading.getAttribute("text"), expectedPageHeading);
 		ExtentManager.getExtentTest().log(Status.PASS, "Heading verified");
@@ -69,7 +72,7 @@ public class InteriorDesignPackagesListPageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "View-More-Details-Link is displayed");
 	}
 	
-	@Test(priority = 2)
+	@Test(priority = 2, alwaysRun=true)
 	public void clickOnInteriorDesignCardOpensThePackage() {
 	
 		interiorDesignDetailPage = interiorDesignPackagesListPage.clickInteriorPackageListCard();
@@ -77,7 +80,7 @@ public class InteriorDesignPackagesListPageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "Click on Interior design cards, displaying the design package");
 	}
 	
-	@Test(priority = 3)
+	@Test(priority = 3, alwaysRun=true)
 	public void clickOnViewMoreDetailsOpensThePackage() {
 		interiorDesignDetailPage = interiorDesignPackagesListPage.clickViewMoreDetails();
 		Assert.assertTrue(interiorDesignDetailPage.iamInterestedBtnIsDisplayed(), "Click on View-More-Details isn't opening the package");

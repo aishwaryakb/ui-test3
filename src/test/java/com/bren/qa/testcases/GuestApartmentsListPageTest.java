@@ -1,5 +1,6 @@
 package com.bren.qa.testcases;
 
+import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 
 import org.testng.annotations.AfterMethod;
@@ -13,6 +14,7 @@ import com.bren.qa.pages.GuestHomePage;
 import com.bren.qa.pages.LaunchPage;
 import com.bren.qa.pages.SingleApartmentHomePage;
 import com.bren.qa.report.ExtentManager;
+import com.bren.qa.report.ExtentReport;
 
 public class GuestApartmentsListPageTest extends Base{
 	LaunchPage launchPage;
@@ -24,7 +26,8 @@ public class GuestApartmentsListPageTest extends Base{
 	}
 	
 	@BeforeMethod
-	public void setup() throws MalformedURLException, InterruptedException {
+	public void setup(Method m) throws MalformedURLException, InterruptedException {
+	    ExtentReport.testInitialization(m);
 		initialization();
 		launchPage = new LaunchPage();
 		guestHomePage = launchPage.clickContinueAsGuest();
@@ -32,11 +35,11 @@ public class GuestApartmentsListPageTest extends Base{
 		apartmentsListPage = guestHomePage.clickApartmentsTab();
 	}
 	
-	@Test(priority = 1)
+	@Test(priority = 1, alwaysRun=true)
 	public void verifyApartmentTabPage() {
 		apartmentsListPage.verifyApartmentsTabPage();
 	}
-	@Test(priority = 2)
+	@Test(priority = 2, alwaysRun=true)
 	public void verifyThatTheUserIsNavigatingToTheHomeScreenWhenClickingOnTheBrensIconFromGuestApartmentsListPage() throws InterruptedException {
 		driver.findElementByXPath("//*[@resource-id ='RNE__Image']").click();
 		apartmentsListPage.verifyApartmentsTabPage();

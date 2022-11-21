@@ -1,6 +1,7 @@
 package com.bren.qa.testcases;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.util.concurrent.TimeUnit;
 
@@ -21,6 +22,7 @@ import com.bren.qa.pages.ReferAndEarnFormPage;
 import com.bren.qa.pages.SingleApartmentHomePage;
 import com.bren.qa.pages.ViewADocumentPage;
 import com.bren.qa.report.ExtentManager;
+import com.bren.qa.report.ExtentReport;
 
 public class MyApartmentFloorPlansPageTest extends Base {
 	LaunchPage launchPage;
@@ -39,7 +41,8 @@ public class MyApartmentFloorPlansPageTest extends Base {
 		super();
 	}
 	@BeforeMethod
-	public void setup() throws MalformedURLException, InterruptedException {
+	public void setup(Method m) throws MalformedURLException, InterruptedException {
+	    ExtentReport.testInitialization(m);
 		initialization();
 		launchPage = new LaunchPage();
 		loginPage = launchPage.clickSignInButton();
@@ -51,7 +54,7 @@ public class MyApartmentFloorPlansPageTest extends Base {
 		apartmentFloorPlansPage =  myHomePage.clickFloorPlans();
 	}
 
-    @Test(priority = 1)
+    @Test(priority = 1, alwaysRun=true)
 	public void floorPlanViewAndDownloadVerification() throws IOException, InterruptedException {
 		Thread.sleep(3000);
 		String expectedToastMessage = "Downloading please wait..";
@@ -67,7 +70,7 @@ public class MyApartmentFloorPlansPageTest extends Base {
 		Assert.assertEquals(actualToastMessage, expectedToastMessage);    
 		ExtentManager.getExtentTest().log(Status.PASS, "Document downloaded successfully");
 	}
-	@Test(priority = 2)
+	@Test(priority = 2, alwaysRun=true)
 	public void floorPlanShareVerification() throws IOException, InterruptedException {
 		Thread.sleep(5000);
 		apartmentFloorPlansPage.clickShare();
@@ -78,7 +81,7 @@ public class MyApartmentFloorPlansPageTest extends Base {
 		Assert.assertTrue(shareTitle, "Not working share option");
 		ExtentManager.getExtentTest().log(Status.PASS, "Able to share the document");
 	}
-	@Test(priority = 4)
+	@Test(priority = 4, alwaysRun=true)
 	public void floorPlanPrintVerification() throws IOException, InterruptedException {
 		Thread.sleep(5000);
 		apartmentFloorPlansPage.clickPrint();

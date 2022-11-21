@@ -1,5 +1,6 @@
 package com.bren.qa.testcases;
 
+import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 
 import org.testng.Assert;
@@ -18,6 +19,7 @@ import com.bren.qa.pages.LaunchPage;
 import com.bren.qa.pages.LoginPage;
 import com.bren.qa.pages.ReferAndEarnFormPage;
 import com.bren.qa.report.ExtentManager;
+import com.bren.qa.report.ExtentReport;
 
 public class GuestHomePageTest extends Base {
 	String referAndEarnDescreption = "Refer people to buy an apartment with Bren and "
@@ -35,7 +37,8 @@ public class GuestHomePageTest extends Base {
 		super();
 	}
 	@BeforeMethod
-	public void setup() throws MalformedURLException, InterruptedException{
+	public void setup(Method m) throws MalformedURLException, InterruptedException{
+	    ExtentReport.testInitialization(m);
 		initialization();
 		launchPage = new LaunchPage();
 		guestHomePage = launchPage.clickContinueAsGuest();
@@ -45,12 +48,12 @@ public class GuestHomePageTest extends Base {
 		apartmentDetailPage = new ApartmentDetailPage();
 		
 	}
-	@Test(priority = 1)
+	@Test(priority = 1, alwaysRun=true)
 	public void verifyThatGetInTouchFormIsOpeningWhenUserClickOnSupportsTabFromFooter() {
 		getInTouchFormPage = guestHomePage.clickOnSupportTab();
 		Assert.assertTrue(getInTouchFormPage.getInTouchFormTitle.isDisplayed(), "verified that GetInTouch Form is Opening when user Click on Supports Tab from footer");
 	}
-	@Test(priority = 2)
+	@Test(priority = 2, alwaysRun=true)
 	public void verifyGetInTouchFormInApartmentScreen() throws InterruptedException {
 		
 		apartmentsListPage = guestHomePage.clickApartmentsTab();
@@ -82,7 +85,7 @@ public class GuestHomePageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "Submit button is Displayed");
 			
 	}
-	@Test(priority = 3)
+	@Test(priority = 3, alwaysRun=true)
 	public void verifyUserCanSubmitTheFormOnlyAfterEnteringAllTheFieldsInTheForm() {
 		getInTouchFormPage = guestHomePage.clickOnSupportTab();
 		getInTouchFormPage.submitButton.click();
@@ -96,7 +99,7 @@ public class GuestHomePageTest extends Base {
 		Assert.assertTrue(driver.findElementByXPath("//*[@text ='Please enter project name']").isDisplayed(), "Project name isn't mandatory");
 		ExtentManager.getExtentTest().log(Status.PASS, "Project name is mandatory");
 	}
-	@Test(priority = 4)
+	@Test(priority = 4, alwaysRun=true)
 	public void verifyThatTheUserIsNavigatingToTheHomeScreenWhenClickingOnTheBrensIconFromGuestHomePage() throws InterruptedException {
 		driver.findElementByXPath("//*[@resource-id ='RNE__Image']").click();
 		apartmentsListPage.verifyApartmentsTabPage();

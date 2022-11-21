@@ -1,4 +1,5 @@
 package com.bren.qa.testcases;
+import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 
 import org.testng.Assert;
@@ -12,6 +13,7 @@ import com.bren.qa.pages.GuestHomePage;
 import com.bren.qa.pages.LaunchPage;
 import com.bren.qa.pages.LoginPage;
 import com.bren.qa.report.ExtentManager;
+import com.bren.qa.report.ExtentReport;
 
 public class LaunchPageTest extends Base{
 	LaunchPage launchPage;
@@ -21,7 +23,8 @@ public class LaunchPageTest extends Base{
 		super();
 	}
 	@BeforeMethod
-	public void setup() throws MalformedURLException, InterruptedException{
+	public void setup(Method m) throws MalformedURLException, InterruptedException{
+	    ExtentReport.testInitialization(m);
 		initialization();
 		launchPage = new LaunchPage();
 	}

@@ -1,4 +1,5 @@
 package com.bren.qa.testcases;
+import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.util.concurrent.TimeUnit;
 
@@ -14,6 +15,7 @@ import com.bren.qa.pages.LoginPage;
 import com.bren.qa.pages.OtpVerificationPage;
 import com.bren.qa.pages.SingleApartmentHomePage;
 import com.bren.qa.report.ExtentManager;
+import com.bren.qa.report.ExtentReport;
 
 public class OtpVerificationPageTest extends Base {
 	LaunchPage launchPage;
@@ -25,7 +27,8 @@ public class OtpVerificationPageTest extends Base {
 		super();
 	}
 	@BeforeMethod
-	public void setup() throws MalformedURLException, InterruptedException {
+	public void setup(Method m) throws MalformedURLException, InterruptedException {
+	    ExtentReport.testInitialization(m);
 		initialization();
 		launchPage = new LaunchPage();
 		loginPage = launchPage.clickSignInButton();

@@ -1,4 +1,5 @@
 package com.bren.qa.testcases;
+import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 
 import org.testng.Assert;
@@ -14,6 +15,7 @@ import com.bren.qa.pages.LoginPage;
 import com.bren.qa.pages.OtpVerificationPage;
 import com.bren.qa.pages.SingleApartmentHomePage;
 import com.bren.qa.report.ExtentManager;
+import com.bren.qa.report.ExtentReport;
 
 public class EmailLoginPageTest extends Base {
 	LaunchPage launchPage;
@@ -25,14 +27,15 @@ public class EmailLoginPageTest extends Base {
 		super();
 	}
 	@BeforeMethod
-	public void setup() throws MalformedURLException, InterruptedException {
+	public void setup(Method m) throws MalformedURLException, InterruptedException {
+	    ExtentReport.testInitialization(m);
 		initialization();
 		launchPage = new LaunchPage();
 		Thread.sleep(2000);
 		loginPage = launchPage.clickSignInButton();
 		emailLoginPage = loginPage.clickOnUseMail();
 	}
-	@Test(priority = 1)
+	@Test(priority = 1, alwaysRun=true)
 	public void emailLoginPageContentsVerification() {
 		boolean isLoginPageDisplayed = emailLoginPage.isLoginPageIsDisplayed();
 		Assert.assertTrue(isLoginPageDisplayed,"Login Page is not  Displayed after sign-in");
@@ -49,17 +52,17 @@ public class EmailLoginPageTest extends Base {
 		otpVerificationPage = emailLoginPage.inputMail(prop.get("email").toString());
 		ExtentManager.getExtentTest().log(Status.PASS, "Mail ID entered");
 	}
-	@Test(priority = 2)
+	@Test(priority = 2, alwaysRun=true)
 	public void validateMessageForNotRegisteredEmailIDs() {
 		emailLoginPage.notRegisteredLoginAttempt(prop.getProperty("non-registered-MailId"));
 	}
-	@Test(priority = 3)
+	@Test(priority = 3, alwaysRun=true)
 	public void validateInvalidEmailId() {
 		boolean isAnyInvalidEmailMessage = emailLoginPage.inputInvalidEmail(prop.getProperty("invalid-mailId"));
 		Assert.assertTrue(isAnyInvalidEmailMessage, "Not Showing Invalid Email message");
 		ExtentManager.getExtentTest().log(Status.PASS, "Showing -Invalid Email-message for invalid mail-Id");
 	}
-	@Test(priority = 4)
+	@Test(priority = 4, alwaysRun=true)
 	public void validateUseMobileOption() throws InterruptedException {
 		otpVerificationPage = emailLoginPage.loginViaMobile(prop.getProperty("number"));
 		myHomePage = otpVerificationPage.inputOtp(prop.getProperty("otp"));

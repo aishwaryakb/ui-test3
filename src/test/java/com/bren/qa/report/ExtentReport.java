@@ -1,4 +1,5 @@
 package com.bren.qa.report;
+import java.lang.reflect.Method;
 import java.util.Objects;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
@@ -13,6 +14,14 @@ public class ExtentReport {
 		spark.config().setTheme(Theme.STANDARD);
 		spark.config().setReportName("Bren-First Automation Report");
 		extent.attachReporter(spark);
+	}
+	public static void testInitialization(Method m) {
+	    
+	    String declaringClass = m.getDeclaringClass().toString();
+        String className = declaringClass.substring(declaringClass.indexOf("testcases.")+10);
+        String methodNameWithClassName = m.getName() + " ( "+className+" ) ";
+        String descreption = "Verifying The test case " + m.getName() + " within the Test file : " + className;
+        ExtentReport.createTest(methodNameWithClassName, descreption);
 	}
 	public static void teardownReports() {
 		extent.flush();

@@ -1,5 +1,6 @@
 package com.bren.qa.testcases;
 
+import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 
 import org.testng.Assert;
@@ -18,6 +19,7 @@ import com.bren.qa.pages.LoginPage;
 import com.bren.qa.pages.MultipleApartmentHomePage;
 import com.bren.qa.pages.OtpVerificationPage;
 import com.bren.qa.report.ExtentManager;
+import com.bren.qa.report.ExtentReport;
 
 public class GuestProfilePageTest extends Base{
 	LaunchPage launchPage;
@@ -33,14 +35,15 @@ public class GuestProfilePageTest extends Base{
 		super();
 	}
 	@BeforeMethod
-	public void setup() throws MalformedURLException, InterruptedException{
+	public void setup(Method m) throws MalformedURLException, InterruptedException{
+	    ExtentReport.testInitialization(m);
 		initialization();
 		launchPage = new LaunchPage();
 		guestHomePage = launchPage.clickContinueAsGuest();
 		guestProfilePage = guestHomePage.clickOnProfileTab();
 		apartmentsListPage = new ApartmentsListPage();
 	}
-	@Test(priority = 1)
+	@Test(priority = 1, alwaysRun=true)
 	public void verifyTheDetailsInTheProfileTab() throws InterruptedException {
 		Thread.sleep(3000);
 		Assert.assertTrue(guestProfilePage.getInTouchFormIcon.isDisplayed(),"Get-In-Touch Icon is not Added to Navbar inside Profile tab");
@@ -53,7 +56,7 @@ public class GuestProfilePageTest extends Base{
 		ExtentManager.getExtentTest().log(Status.PASS, "Login Button is verified");
 	}
 	
-	@Test(priority = 2)
+	@Test(priority = 2, alwaysRun=true)
 	public void verifyThatTheLoginScreenIsOpeningWhenUserClicksOnTheLoginFromProfileAndCanLoginToTheirProfileWithCredentials() throws InterruptedException {
 
 		loginPage = guestProfilePage.clickOnLoginButton();
@@ -67,7 +70,7 @@ public class GuestProfilePageTest extends Base{
 		ExtentManager.getExtentTest().log(Status.INFO,"Otp entered");
 		myHomePage.verifyOwnerHomePage();
 	}
-	@Test(priority = 3)
+	@Test(priority = 3, alwaysRun=true)
 	public void verifyThatTheUserIsNavigatingToTheHomeScreenWhenClickingOnTheBrensIconFromGuestProfilePage() throws InterruptedException {
 		driver.findElementByXPath("//*[@resource-id ='RNE__Image']").click();
 		apartmentsListPage.verifyApartmentsTabPage();

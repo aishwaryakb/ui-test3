@@ -34,15 +34,6 @@ public class Base {
 	public void tearDownSuite() {
 		ExtentReport.teardownReports();	
 	}
-	@BeforeMethod
-	public void setupTest(Method m) {
-	   
-	    String declaringClass = m.getDeclaringClass().toString();
-	    String className = declaringClass.substring(declaringClass.indexOf("testcases.")+10);
-	    String methodNameWithClassName = m.getName() + " ( "+className+" ) ";
-	    String descreption = "Verifying The test case " + m.getName() + " within the Test file : " + className;
-		ExtentReport.createTest(methodNameWithClassName, descreption);	
-	}
 	@AfterMethod()
     public void tearDown() {
         driver.quit();

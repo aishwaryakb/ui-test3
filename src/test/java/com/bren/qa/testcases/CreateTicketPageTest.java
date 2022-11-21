@@ -2,6 +2,7 @@ package com.bren.qa.testcases;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.util.concurrent.TimeUnit;
 
@@ -24,6 +25,7 @@ import com.bren.qa.pages.MyTicketsPage;
 import com.bren.qa.pages.OtpVerificationPage;
 import com.bren.qa.pages.TicketCreationSuccessPage;
 import com.bren.qa.report.ExtentManager;
+import com.bren.qa.report.ExtentReport;
 
 public class CreateTicketPageTest extends Base{
     LaunchPage launchPage;
@@ -38,7 +40,8 @@ public class CreateTicketPageTest extends Base{
         super();
     }
     @BeforeMethod
-    public void setup() throws MalformedURLException, InterruptedException {
+    public void setup(Method m) throws MalformedURLException, InterruptedException {
+        ExtentReport.testInitialization(m);
         initialization();
         launchPage = new LaunchPage();
         loginPage = launchPage.clickSignInButton();
@@ -51,7 +54,7 @@ public class CreateTicketPageTest extends Base{
         createTicketPage = myHomePage.clickCreateTicketButton();
         
     }
-    @Test(priority = 1)
+    @Test(priority = 1, alwaysRun=true)
     public void verifyTheDetailsOfTheScreenOpeningWhenUserClicksOnTheIconForTicketCreation() {
         Assert.assertTrue(createTicketPage.createATicketTab.isDisplayed(), "Create Ticket Tab isn't Displayed");
         ExtentManager.getExtentTest().log(Status.PASS, "Create Ticket Tab is Displayed");
@@ -96,7 +99,7 @@ public class CreateTicketPageTest extends Base{
         Assert.assertTrue(createTicketPage.createATicketButton.isDisplayed(), "Create A Ticket Button isn't Displayed");
         ExtentManager.getExtentTest().log(Status.PASS, "Create A Ticket Button is Displayed");
     }
-    @Test(priority = 2)
+    @Test(priority = 2, alwaysRun=true)
     public void verifyThatTheUserCanEditTheTicketTitleAndDescreptionField() {
         createTicketPage.ticketTitleInputField.sendKeys("ticket-title");
         Assert.assertTrue(createTicketPage.ticketTitleInputField.getAttribute("text").length() > 0, "Ticket Title Input field isn't Editable");
@@ -106,7 +109,7 @@ public class CreateTicketPageTest extends Base{
         Assert.assertTrue(createTicketPage.describeYourIssueInputField.getAttribute("text").length() > 0, "Describe-your-issue Input field isn't Editable");
         ExtentManager.getExtentTest().log(Status.PASS, "Describe your issue Input field is editable");
     }
-    @Test(priority = 3)
+    @Test(priority = 3, alwaysRun=true)
     public void verifyTicketTitleDescriptionAndUnitNameFieldsInTheFormAreMandatory() throws InterruptedException {
         Thread.sleep(3000);
         ScrollHelper.scrollDown();
@@ -121,7 +124,7 @@ public class CreateTicketPageTest extends Base{
         ExtentManager.getExtentTest().log(Status.PASS, "Unit Name is showing as Mandatory");
     }
     
-    @Test(priority = 4)
+    @Test(priority = 4, alwaysRun=true)
     public void verifyTicketCreation() throws IOException, InterruptedException {
         String expectedToastMessage = "Ticket successfully created";
 	createTicketPage.ticketTitleInputField.sendKeys("ticket-title");
@@ -136,7 +139,7 @@ public class CreateTicketPageTest extends Base{
 	ExtentManager.getExtentTest().log(Status.PASS, "Redirecting to Ticket Creation Successful screen");
 	
     }
-    @Test(priority = 5)
+    @Test(priority = 5, alwaysRun=true)
     public void verifyANewlyCreatedTicketIsAddedIntoTheList() throws InterruptedException {
         createTicketPage.ticketTitleInputField.sendKeys("ticket-title");
         Thread.sleep(2000);
@@ -162,7 +165,7 @@ public class CreateTicketPageTest extends Base{
         Thread.sleep(3000);
 
     }
-    @Test(priority = 6 )
+    @Test(priority = 6, alwaysRun=true )
     public void verifyThatTheMyTicketsScreenContainsTheListOfTheTicketsCreated() throws InterruptedException, IOException {
         createTicketPage.myTicketsTab.click();
         Thread.sleep(3000);

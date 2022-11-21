@@ -1,5 +1,6 @@
 package com.bren.qa.testcases;
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.util.concurrent.TimeUnit;
 
@@ -20,6 +21,7 @@ import com.bren.qa.pages.OtpVerificationPage;
 import com.bren.qa.pages.SingleApartmentHomePage;
 import com.bren.qa.pages.ViewADocumentPage;
 import com.bren.qa.report.ExtentManager;
+import com.bren.qa.report.ExtentReport;
 
 public class MultipleApartmentAccountTest extends Base {
 	LaunchPage launchPage;
@@ -36,7 +38,8 @@ public class MultipleApartmentAccountTest extends Base {
 		super();
 	}
 	@BeforeMethod
-	public void setup() throws MalformedURLException, InterruptedException {
+	public void setup(Method m) throws MalformedURLException, InterruptedException {
+	    ExtentReport.testInitialization(m);
 		initialization();
 		launchPage = new LaunchPage();
 		loginPage = launchPage.clickSignInButton();
@@ -46,7 +49,7 @@ public class MultipleApartmentAccountTest extends Base {
         driver.findElementByXPath("//*[@text = 'Enter OTP']");
 		myHomePage = otpVerificationPage.inputOtpForMultupleApartmentAccount(prop.getProperty("multpleApartmentsOwnerOtp").toString());
 	}
- 	@Test(priority = 1)
+ 	@Test(priority = 1, alwaysRun=true)
 	public void verifyHomePageOfMultipleApartmentsOwner() {
 		Assert.assertTrue(myHomePage.createTicketIcon.isDisplayed(),"Create A Ticket Icon is not Added to Navbar inside home page");
 		ExtentManager.getExtentTest().log(Status.PASS, "Verified that Create A Ticket Icon is Added to Navbar inside home page");
@@ -55,21 +58,21 @@ public class MultipleApartmentAccountTest extends Base {
 		
 	}
 	
- 	@Test(priority = 2)
+ 	@Test(priority = 2, alwaysRun=true)
 	public void verifyViewMoreOptionOpensApartmentDetails() {
 		apartmentDetailsPage = myHomePage.clickapartmentMoreDetails();
 		Assert.assertTrue(apartmentDetailsPage.aboutThisPropertySectionIsDisplayed(), "View more option doesn't opens Apartment Details");
 		ExtentManager.getExtentTest().log(Status.PASS, "View more option opens Apartment Details");
 	}
 	
- 	@Test(priority = 3)
+ 	@Test(priority = 3, alwaysRun=true)
 	public void clickOnTheCardOpensApartmentDetails() {
 		apartmentDetailsPage = myHomePage.clickapartmentMoreDetails();
 		Assert.assertTrue(apartmentDetailsPage.aboutThisPropertySectionIsDisplayed(), "View more option doesn't opens Apartment Details");
 		ExtentManager.getExtentTest().log(Status.PASS, "View more option opens Apartment Details");
 	}
 	
- 	@Test(priority = 4)
+ 	@Test(priority = 4, alwaysRun=true)
 	public void verifyThatTheUserIsNavigatingToTheHomeScreenWhenClickingOnTheBrensIconFromMultipleApartmentsHomePage() throws InterruptedException {
 		driver.findElementByXPath("//*[@resource-id ='RNE__Image']").click();
 		myHomePage.homePageVerification();
@@ -77,7 +80,7 @@ public class MultipleApartmentAccountTest extends Base {
 				+ " Screen When clicking on the Brens Icon from Multiple apartments Home Page");
 	}
 	
- 	@Test(priority = 5)
+ 	@Test(priority = 5, alwaysRun=true)
 	public void documentsViewVerification() throws IOException, InterruptedException {
 	    differentDocumentCategoriesPage = myHomePage.clickDocuments();
 	    Thread.sleep(5000);
@@ -91,7 +94,7 @@ public class MultipleApartmentAccountTest extends Base {
 		
 	}
 	
-	@Test(priority = 6)
+	@Test(priority = 6, alwaysRun=true)
 	public void documentDownloadVerification() throws IOException, InterruptedException {
 	    String expectedToastMessage = "Downloading please wait..";
         
@@ -108,7 +111,7 @@ public class MultipleApartmentAccountTest extends Base {
         
 		ExtentManager.getExtentTest().log(Status.PASS, "Document downloaded successfully");
 	}
- 	@Test(priority = 7)
+ 	@Test(priority = 7, alwaysRun=true)
 	public void documentShareVerification() throws IOException, InterruptedException {
 	    differentDocumentCategoriesPage = myHomePage.clickDocuments();
 	    Thread.sleep(5000);
@@ -123,7 +126,7 @@ public class MultipleApartmentAccountTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "Able to share the document");
 		
 	}
- 	@Test(priority = 8)
+ 	@Test(priority = 8, alwaysRun=true)
 	public void documentPrintVerification() throws IOException, InterruptedException {
 	    differentDocumentCategoriesPage = myHomePage.clickDocuments();
 	    Thread.sleep(5000);
@@ -136,7 +139,7 @@ public class MultipleApartmentAccountTest extends Base {
 		Assert.assertTrue(selectAPrinterTitle, "Able to print the document");
 	}
 	
-	@Test(priority = 9)
+	@Test(priority = 9, alwaysRun=true)
 	public void floorPlanViewAndDownloadVerification() throws IOException, InterruptedException {
 	    String expectedToastMessage = "Downloading please wait..";
 	    apartmentFloorPlansPage =myHomePage.clickFloorPlans();
@@ -152,7 +155,7 @@ public class MultipleApartmentAccountTest extends Base {
 	    ExtentManager.getExtentTest().log(Status.PASS, "Document downloaded successfully");
 	        
 	}
- 	@Test(priority = 10)
+ 	@Test(priority = 10, alwaysRun=true)
 	public void floorPlanShareVerification() throws IOException, InterruptedException {
 		Thread.sleep(5000);
 		apartmentFloorPlansPage = myHomePage.clickFloorPlans();
@@ -164,7 +167,7 @@ public class MultipleApartmentAccountTest extends Base {
 		Assert.assertTrue(shareTitle, "Not working share option");
 		ExtentManager.getExtentTest().log(Status.PASS, "Able to share the document");
 	}
- 	@Test(priority = 11)
+ 	@Test(priority = 11, alwaysRun=true)
 	public void floorPlanPrintVerification() throws IOException, InterruptedException {
 		Thread.sleep(5000);
 		apartmentFloorPlansPage = myHomePage.clickFloorPlans();

@@ -1,5 +1,6 @@
 package com.bren.qa.testcases;
 
+import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.util.concurrent.TimeUnit;
 
@@ -19,6 +20,7 @@ import com.bren.qa.pages.OtpVerificationPage;
 import com.bren.qa.pages.ReferAndEarnFormPage;
 import com.bren.qa.pages.RewardsPage;
 import com.bren.qa.report.ExtentManager;
+import com.bren.qa.report.ExtentReport;
 
 public class RewardsPageTest extends Base {
 	String referAndEarnDescreption = "Refer people to buy an apartment with Bren and "
@@ -38,7 +40,8 @@ public class RewardsPageTest extends Base {
 		super();
 	}
 	@BeforeMethod
-	public void setup() throws MalformedURLException, InterruptedException {
+	public void setup(Method m) throws MalformedURLException, InterruptedException {
+	    ExtentReport.testInitialization(m);
 		initialization();
 		launchPage = new LaunchPage();
 		loginPage = launchPage.clickSignInButton();
@@ -51,7 +54,7 @@ public class RewardsPageTest extends Base {
 		Thread.sleep(5000);
 	}
 	
-	@Test(priority = 2)
+	@Test(priority = 2, alwaysRun=true)
 	public void verifyTheFieldsInTheScreenOpeningWhenTheUserClicksOnTheRewardsTab() {
 		Assert.assertTrue(rewardsPage.createTicketIcon.isDisplayed(),"Create A Ticket Icon is not Added to Navbar inside Apartments Tab");
 		ExtentManager.getExtentTest().log(Status.PASS, "Verified that Create A Ticket Icon is Added to Navbar inside Apartments Tab");
@@ -67,13 +70,13 @@ public class RewardsPageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.INFO, "Verified that rewards screen is opening when clicking on the rewards Tab");
 		
 	}
-	@Test(priority = 3)
+	@Test(priority = 3, alwaysRun=true)
 	public void verifyThatTheReferAfriendFormIsOpeningWhenTheUserClicksOnTheReferAfriendOptionFromTheRewardsScreen() throws InterruptedException {
 		referAndEarnFormPage = rewardsPage.clickReferAFriendButton();
 		Assert.assertTrue(referAndEarnFormPage.isFormDescreptionIsDisplayed(), "Refer a Friend Form isn't opening");
 		ExtentManager.getExtentTest().log(Status.PASS, "Refer a Friend Form is visible");	
 	}
-	@Test(priority = 4)
+	@Test(priority = 4, alwaysRun=true)
 	public void verifyTheFieldsInTheReferAFriendForm() {
 		referAndEarnFormPage = rewardsPage.clickReferAFriendButton();
 		Assert.assertTrue(referAndEarnFormPage.isReferAFriendTitleIsDisplayed(), "Refer A Friend Title isn't Displayed");
@@ -118,7 +121,7 @@ public class RewardsPageTest extends Base {
 		
 	}
 		
-	@Test(priority = 5)
+	@Test(priority = 5, alwaysRun=true)
 	public void verifyUserIsGettingConfirmationScreenOrAlreadyExistingReferalAfterClickingOnTheReferFriendOption() throws InterruptedException {
 		referAndEarnFormPage = rewardsPage.clickReferAFriendButton();
 		Thread.sleep(5000);
@@ -137,7 +140,7 @@ public class RewardsPageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "User is Getting Confirmation Screen or referal message after clicking on the Refer Friend option");
 		
 	}
-	@Test(priority = 6)
+	@Test(priority = 6, alwaysRun=true)
 	public void verifyThatTheScreenWithReferralStepsIsOpeningWhenTheUserClickOnTheIconLabelledAsYourReferrals() {
 		howToEarnRewardsPage = rewardsPage.clickOnYourReferralsIcon();
 		String expectedHowToEarnRewardsTitle = "How to earn rewards";
@@ -159,7 +162,7 @@ public class RewardsPageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.INFO, "Verified that the screen with referral steps is opening when the user click on the icon labelled as \"Your referrals\"");
 		
 	}
-	@Test(priority = 7)
+	@Test(priority = 7, alwaysRun=true)
 	public void verifyThatTheRewardsTabContainsTheListOfAlreadySubmittedReferralIfThereIsAny() {
 	
 		Assert.assertTrue(rewardsPage.referralCard.isDisplayed(), "Rewards Tab isn't showing existing Referrals");
@@ -176,7 +179,7 @@ public class RewardsPageTest extends Base {
 		ExtentManager.getExtentTest().log(Status.PASS, "Status is showing inside Referral Card");
 	}
 	
-	@Test(priority = 8) 
+	@Test(priority = 8, alwaysRun=true) 
 	public void verifyThatTheUserIsNavigatingToTheHomeScreenWhenClickingOnTheBrensIconFromRewardsTab() throws InterruptedException {
 		driver.findElementByXPath("//*[@resource-id ='RNE__Image']").click();
 		myHomePage.homePageVerification();
