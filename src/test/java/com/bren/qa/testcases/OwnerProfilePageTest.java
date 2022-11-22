@@ -145,7 +145,7 @@ public class OwnerProfilePageTest extends Base {
 				+ " Screen When clicking on the Brens Icon from Owner Profile Page");
 	}
 	
-	@Test(enabled=true)
+	@Test(enabled=false)
 	public void verifyThatUserCanUpdateProfilePictureFromTheProfileScreen() throws InterruptedException {
 		String expectedToastMessage = "Customer's Profile Photo updated successfully";
 		Thread.sleep(4000);
