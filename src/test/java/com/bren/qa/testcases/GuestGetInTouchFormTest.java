@@ -32,9 +32,10 @@ public class GuestGetInTouchFormTest extends Base {
 	}
 	@BeforeMethod(alwaysRun=true)
 	public void setup(Method m) throws MalformedURLException, InterruptedException{
+	    ExtentReport.testInitialization(m);
 	    while(true) {
             try{
-	            ExtentReport.testInitialization(m);
+	           
         		initialization();
         		launchPage = new LaunchPage();
         		guestHomePage = launchPage.clickContinueAsGuest();

@@ -28,9 +28,10 @@ public class LoginPageTest extends Base {
 	}
 	@BeforeMethod(alwaysRun=true)
 	public void setup(Method m) throws MalformedURLException, InterruptedException {
+	    ExtentReport.testInitialization(m);
 	    while(true) {
             try{
-	            ExtentReport.testInitialization(m);
+	           
         		initialization();
         		launchPage = new LaunchPage();
         		Thread.sleep(2000);
