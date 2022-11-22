@@ -22,6 +22,8 @@ import com.bren.qa.report.ExtentManager;
 import com.bren.qa.report.ExtentReport;
 
 public class SingleApartmentAccountTest extends Base {
+    int count = 0;
+    int maxTries = 3;
 	LaunchPage launchPage;
 	LoginPage loginPage;
 	OtpVerificationPage otpVerificationPage;
@@ -37,15 +39,24 @@ public class SingleApartmentAccountTest extends Base {
 	}
 	@BeforeMethod(alwaysRun=true)
 	public void setup(Method m) throws MalformedURLException, InterruptedException {
-	    ExtentReport.testInitialization(m);
-		initialization();
-		launchPage = new LaunchPage();
-		loginPage = launchPage.clickSignInButton();
-		otpVerificationPage = loginPage.enterNumber(prop.get("number").toString());
-		Thread.sleep(8000);
-		driver.manage().timeouts().implicitlyWait(240, TimeUnit.SECONDS);
-        driver.findElementByXPath("//*[@text = 'Enter OTP']");
-		myHomePage = otpVerificationPage.inputOtp(prop.getProperty("otp").toString());
+	    while(true) {
+            try{
+	            ExtentReport.testInitialization(m);
+        		initialization();
+        		launchPage = new LaunchPage();
+        		loginPage = launchPage.clickSignInButton();
+        		otpVerificationPage = loginPage.enterNumber(prop.get("number").toString());
+        		Thread.sleep(8000);
+        		driver.manage().timeouts().implicitlyWait(240, TimeUnit.SECONDS);
+                driver.findElementByXPath("//*[@text = 'Enter OTP']");
+        		myHomePage = otpVerificationPage.inputOtp(prop.getProperty("otp").toString());
+        		return;
+            }
+            catch(Exception e){
+                System.out.println(e);
+                if (++count == maxTries) throw e;
+            }
+        }
 	}
 	@Test(priority = 1, alwaysRun=true)
 	public void verifyHomePageOfSingleApartmentOwner() {

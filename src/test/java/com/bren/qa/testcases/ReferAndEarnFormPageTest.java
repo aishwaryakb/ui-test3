@@ -23,6 +23,8 @@ import com.bren.qa.report.ExtentManager;
 import com.bren.qa.report.ExtentReport;
 
 public class ReferAndEarnFormPageTest extends Base{
+    int count = 0;
+    int maxTries = 3;
 	String referAndEarnDescreption = "Refer people to buy an apartment with Bren and "
 			+ "earn a reward when the referred person buys an apartment";
 	String alreadyExistingReferalMessage = "The contact information that you shared already exists in our system. "
@@ -42,26 +44,34 @@ public class ReferAndEarnFormPageTest extends Base{
 	
 	@BeforeMethod(alwaysRun=true)
 	public void setup(Method m) throws MalformedURLException, InterruptedException {
-	    ExtentReport.testInitialization(m);
-		initialization();
-		launchPage = new LaunchPage();
-		loginPage = launchPage.clickSignInButton();
-		otpVerificationPage = loginPage.enterNumber(prop.get("number").toString());
-		Thread.sleep(8000);
-		driver.manage().timeouts().implicitlyWait(240, TimeUnit.SECONDS);
-        driver.findElementByXPath("//*[@text = 'Enter OTP']");
-		myHomePage = otpVerificationPage.inputOtp(prop.getProperty("otp").toString());
-		Thread.sleep(8000);
-		driver.findElementByXPath("//*[@text = 'About this property']");
-		apartmentsListPage = myHomePage.clickApartmentsTab();
-		Thread.sleep(5000);
-		apartmentDetailPage = apartmentsListPage.clickOnZaharaByBrenProject();
-
-		
-		ScrollHelper.scrollUntil("REFER A FRIEND");
-		
-        referAndEarnFormPage = apartmentDetailPage.clickReferAndEarnButton();
+	    while(true) {
+            try{
+	            ExtentReport.testInitialization(m);
+        		initialization();
+        		launchPage = new LaunchPage();
+        		loginPage = launchPage.clickSignInButton();
+        		otpVerificationPage = loginPage.enterNumber(prop.get("number").toString());
+        		Thread.sleep(8000);
+        		driver.manage().timeouts().implicitlyWait(240, TimeUnit.SECONDS);
+                driver.findElementByXPath("//*[@text = 'Enter OTP']");
+        		myHomePage = otpVerificationPage.inputOtp(prop.getProperty("otp").toString());
+        		Thread.sleep(8000);
+        		driver.findElementByXPath("//*[@text = 'About this property']");
+        		apartmentsListPage = myHomePage.clickApartmentsTab();
+        		Thread.sleep(5000);
+        		apartmentDetailPage = apartmentsListPage.clickOnZaharaByBrenProject();
         
+        		
+        		ScrollHelper.scrollUntil("REFER A FRIEND");
+        		
+                referAndEarnFormPage = apartmentDetailPage.clickReferAndEarnButton();
+                return;
+            }
+            catch(Exception e){
+                System.out.println(e);
+                if (++count == maxTries) throw e;
+            }
+        }
 		
 }
 	

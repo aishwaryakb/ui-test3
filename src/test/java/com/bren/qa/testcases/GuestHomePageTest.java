@@ -22,6 +22,8 @@ import com.bren.qa.report.ExtentManager;
 import com.bren.qa.report.ExtentReport;
 
 public class GuestHomePageTest extends Base {
+    int count = 0;
+    int maxTries = 3;
 	String referAndEarnDescreption = "Refer people to buy an apartment with Bren and "
 			+ "earn a reward when the referred person buys an apartment";
 	String alreadyExistingReferalMessage = "The contact information that you shared already exists in our system. "
@@ -38,14 +40,23 @@ public class GuestHomePageTest extends Base {
 	}
 	@BeforeMethod(alwaysRun=true)
 	public void setup(Method m) throws MalformedURLException, InterruptedException{
-	    ExtentReport.testInitialization(m);
-		initialization();
-		launchPage = new LaunchPage();
-		guestHomePage = launchPage.clickContinueAsGuest();
-		apartmentsListPage = new ApartmentsListPage();
-		getInTouchFormPage = new GetInTouchFormPage();
-		getInTouchFormPage = new GetInTouchFormPage();
-		apartmentDetailPage = new ApartmentDetailPage();
+	    while(true) {
+            try{
+	            ExtentReport.testInitialization(m);
+        		initialization();
+        		launchPage = new LaunchPage();
+        		guestHomePage = launchPage.clickContinueAsGuest();
+        		apartmentsListPage = new ApartmentsListPage();
+        		getInTouchFormPage = new GetInTouchFormPage();
+        		getInTouchFormPage = new GetInTouchFormPage();
+        		apartmentDetailPage = new ApartmentDetailPage();
+        		return;
+            }
+            catch(Exception e){
+                System.out.println(e);
+                if (++count == maxTries) throw e;
+            }
+        }
 		
 	}
 	@Test(priority = 1, alwaysRun=true)

@@ -59,7 +59,6 @@ public class Base {
 		}
 	}
 	public static void initialization() throws MalformedURLException {
-		
 		DesiredCapabilities cap = new DesiredCapabilities();
 // 		cap.setCapability(MobileCapabilityType.DEVICE_NAME, "Pixel 4 API 29");
 		File appdir = new File("src");

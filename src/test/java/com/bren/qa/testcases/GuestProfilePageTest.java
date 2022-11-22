@@ -22,6 +22,8 @@ import com.bren.qa.report.ExtentManager;
 import com.bren.qa.report.ExtentReport;
 
 public class GuestProfilePageTest extends Base{
+    int count = 0;
+    int maxTries = 3;
 	LaunchPage launchPage;
 	LoginPage loginPage;
 	GuestHomePage guestHomePage;
@@ -36,12 +38,21 @@ public class GuestProfilePageTest extends Base{
 	}
 	@BeforeMethod(alwaysRun=true)
 	public void setup(Method m) throws MalformedURLException, InterruptedException{
-	    ExtentReport.testInitialization(m);
-		initialization();
-		launchPage = new LaunchPage();
-		guestHomePage = launchPage.clickContinueAsGuest();
-		guestProfilePage = guestHomePage.clickOnProfileTab();
-		apartmentsListPage = new ApartmentsListPage();
+	    while(true) {
+            try{
+	            ExtentReport.testInitialization(m);
+        		initialization();
+        		launchPage = new LaunchPage();
+        		guestHomePage = launchPage.clickContinueAsGuest();
+        		guestProfilePage = guestHomePage.clickOnProfileTab();
+        		apartmentsListPage = new ApartmentsListPage();
+        		return;
+            }
+            catch(Exception e){
+                System.out.println(e);
+                if (++count == maxTries) throw e;
+            }
+        }
 	}
 	@Test(priority = 1, alwaysRun=true)
 	public void verifyTheDetailsInTheProfileTab() throws InterruptedException {

@@ -23,6 +23,8 @@ import com.bren.qa.report.ExtentManager;
 import com.bren.qa.report.ExtentReport;
 
 public class RewardsPageTest extends Base {
+    int count = 0;
+    int maxTries = 3;
 	String referAndEarnDescreption = "Refer people to buy an apartment with Bren and "
 			+ "earn a reward when the referred person buys an apartment";
 	String alreadyExistingReferalMessage = "The contact information that you shared already exists in our system. "
@@ -41,17 +43,26 @@ public class RewardsPageTest extends Base {
 	}
 	@BeforeMethod(alwaysRun=true)
 	public void setup(Method m) throws MalformedURLException, InterruptedException {
-	    ExtentReport.testInitialization(m);
-		initialization();
-		launchPage = new LaunchPage();
-		loginPage = launchPage.clickSignInButton();
-		otpVerificationPage = loginPage.enterNumber(prop.get("multpleApartmentsOwnerNumber").toString());
-		Thread.sleep(8000);
-		driver.manage().timeouts().implicitlyWait(240, TimeUnit.SECONDS);
-        driver.findElementByXPath("//*[@text = 'Enter OTP']");
-		myHomePage = otpVerificationPage.inputOtpForMultupleApartmentAccount(prop.getProperty("multpleApartmentsOwnerOtp").toString());
-		rewardsPage = myHomePage.clickRewardsPage();
-		Thread.sleep(5000);
+	    while(true) {
+            try{
+	            ExtentReport.testInitialization(m);
+        		initialization();
+        		launchPage = new LaunchPage();
+        		loginPage = launchPage.clickSignInButton();
+        		otpVerificationPage = loginPage.enterNumber(prop.get("multpleApartmentsOwnerNumber").toString());
+        		Thread.sleep(8000);
+        		driver.manage().timeouts().implicitlyWait(240, TimeUnit.SECONDS);
+                driver.findElementByXPath("//*[@text = 'Enter OTP']");
+        		myHomePage = otpVerificationPage.inputOtpForMultupleApartmentAccount(prop.getProperty("multpleApartmentsOwnerOtp").toString());
+        		rewardsPage = myHomePage.clickRewardsPage();
+        		Thread.sleep(5000);
+        		return;
+            }
+            catch(Exception e){
+                System.out.println(e);
+                if (++count == maxTries) throw e;
+            }
+        }
 	}
 	
 	@Test(priority = 2, alwaysRun=true)

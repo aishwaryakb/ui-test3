@@ -18,6 +18,8 @@ import com.bren.qa.report.ExtentManager;
 import com.bren.qa.report.ExtentReport;
 
 public class EmailLoginPageTest extends Base {
+    int count = 0;
+    int maxTries = 3;
 	LaunchPage launchPage;
 	LoginPage loginPage;
 	OtpVerificationPage otpVerificationPage;
@@ -28,12 +30,21 @@ public class EmailLoginPageTest extends Base {
 	}
 	@BeforeMethod(alwaysRun=true)
 	public void setup(Method m) throws MalformedURLException, InterruptedException {
-	    ExtentReport.testInitialization(m);
-		initialization();
-		launchPage = new LaunchPage();
-		Thread.sleep(2000);
-		loginPage = launchPage.clickSignInButton();
-		emailLoginPage = loginPage.clickOnUseMail();
+	    while(true) {
+            try{
+	            ExtentReport.testInitialization(m);
+        		initialization();
+        		launchPage = new LaunchPage();
+        		Thread.sleep(2000);
+        		loginPage = launchPage.clickSignInButton();
+        		emailLoginPage = loginPage.clickOnUseMail();
+        		return;
+            }
+            catch(Exception e){
+                System.out.println(e);
+                if (++count == maxTries) throw e;
+            }
+        }
 	}
 	@Test(priority = 1, alwaysRun=true)
 	public void emailLoginPageContentsVerification() {
