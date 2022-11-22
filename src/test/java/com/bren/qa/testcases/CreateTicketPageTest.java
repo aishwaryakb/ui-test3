@@ -41,19 +41,24 @@ public class CreateTicketPageTest extends Base{
     }
     @BeforeMethod(alwaysRun=true)
     public void setup(Method m) throws MalformedURLException, InterruptedException {
-        ExtentReport.testInitialization(m);
-        initialization();
-        launchPage = new LaunchPage();
-        loginPage = launchPage.clickSignInButton();
-        otpVerificationPage = loginPage.enterNumber(prop.get("multpleApartmentsOwnerNumber").toString());
-        Thread.sleep(8000);
-        driver.manage().timeouts().implicitlyWait(240, TimeUnit.SECONDS);
-        driver.findElementByXPath("//*[@text = 'Enter OTP']");
-        myHomePage = otpVerificationPage.inputOtpForMultupleApartmentAccount(prop.getProperty("multpleApartmentsOwnerOtp").toString());
-        Thread.sleep(3000);
-	driver.manage().timeouts().implicitlyWait(240, TimeUnit.SECONDS);
-	driver.findElementByXPath("//*[@content-desc = 'supportIcon']");
-        createTicketPage = myHomePage.clickCreateTicketButton();
+	try{
+		ExtentReport.testInitialization(m);
+		initialization();
+		launchPage = new LaunchPage();
+		loginPage = launchPage.clickSignInButton();
+		otpVerificationPage = loginPage.enterNumber(prop.get("multpleApartmentsOwnerNumber").toString());
+		Thread.sleep(8000);
+		driver.manage().timeouts().implicitlyWait(240, TimeUnit.SECONDS);
+		driver.findElementByXPath("//*[@text = 'Enter OTP']");
+		myHomePage = otpVerificationPage.inputOtpForMultupleApartmentAccount(prop.getProperty("multpleApartmentsOwnerOtp").toString());
+		Thread.sleep(3000);
+		driver.manage().timeouts().implicitlyWait(240, TimeUnit.SECONDS);
+		driver.findElementByXPath("//*[@content-desc = 'supportIcon']");
+		createTicketPage = myHomePage.clickCreateTicketButton();
+	}
+	catch(Exception e){
+		System.out.println(e);
+	}
         
     }
     @Test(priority = 1, alwaysRun=true)
