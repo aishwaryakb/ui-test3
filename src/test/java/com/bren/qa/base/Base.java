@@ -40,6 +40,7 @@ public class Base {
    	 public void tearDown() {
 	    driver.close();
             driver.quit();
+	    Thread.sleep(8000);
     	}
 	public Base() {
 		try {
