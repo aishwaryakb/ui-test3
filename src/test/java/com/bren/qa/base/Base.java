@@ -37,9 +37,10 @@ public class Base {
 		ExtentReport.teardownReports();	
 	}
 	@AfterMethod(alwaysRun=true)
-    public void tearDown() {
-         driver.quit();
-    }
+   	 public void tearDown() {
+	    driver.close();
+            driver.quit();
+    	}
 	public Base() {
 		try {
 			prop = new Properties();
@@ -64,7 +65,7 @@ public class Base {
 		cap.setCapability("appActivity","com.brencorp.play.mybren.MainActivity");
 		cap.setCapability(MobileCapabilityType.AUTOMATION_NAME, "uiautomator2");
 		cap.setCapability("newCommandTimeout", 1000);
-		driver = new AndroidDriver<AndroidElement>(new URL(UrlUtil.getUrl()),cap);
+		driver = new AndroidDriver<AndroidElement>(new URL(prop.getProperty("url")),cap);
 		driver.manage().timeouts().implicitlyWait(TestUtil.IMPLICIT_WAIT, TimeUnit.SECONDS);
 	}
 }
