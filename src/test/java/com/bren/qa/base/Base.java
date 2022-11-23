@@ -18,6 +18,8 @@ import org.testng.annotations.BeforeSuite;
 import com.aventstack.extentreports.model.Test;
 import com.bren.qa.report.ExtentReport;
 import com.bren.qa.utils.TestUtil;
+import com.bren.qa.utils.UrlUtil;
+
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.remote.MobileCapabilityType;
@@ -36,13 +38,7 @@ public class Base {
 	}
 	@AfterMethod(alwaysRun=true)
     public void tearDown() {
-        try {
-            driver.quit();
-        }
-        catch(Exception e) {
-            System.out.println(e);
-            driver.quit();
-        }
+         driver.quit();
     }
 	public Base() {
 		try {
@@ -68,6 +64,7 @@ public class Base {
 		cap.setCapability("appActivity","com.brencorp.play.mybren.MainActivity");
 		cap.setCapability(MobileCapabilityType.AUTOMATION_NAME, "uiautomator2");
 		cap.setCapability("newCommandTimeout", 1000);
+//		driver = new AndroidDriver<AndroidElement>(new URL(UrlUtil.getUrl()),cap);
 		driver = new AndroidDriver<AndroidElement>(new URL(prop.getProperty("url")),cap);
 		driver.manage().timeouts().implicitlyWait(TestUtil.IMPLICIT_WAIT, TimeUnit.SECONDS);
 	}
