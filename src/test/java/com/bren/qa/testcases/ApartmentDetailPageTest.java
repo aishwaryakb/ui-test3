@@ -140,7 +140,8 @@ public class ApartmentDetailPageTest extends Base {
  	@Test(priority = 3, alwaysRun=true)
 	public void verifySeeAllImagesClickingInViewGallery() throws InterruptedException {
 		apartmentDetailPage.clickViewGallery();
-		Thread.sleep(5000);
+		apartmentDetailPage.shareCloseIconAndTitle.isDisplayed();
+		driver.manage().timeouts().implicitlyWait(240, TimeUnit.SECONDS);
 		apartmentDetailPage.swipeGalleryImages();
 		Assert.assertEquals(apartmentDetailPage.getCurrentImagePosition(), apartmentDetailPage.getImageCount(), "All images in the gallery section is viewed ");
 	}
@@ -149,8 +150,7 @@ public class ApartmentDetailPageTest extends Base {
 	public void verifyUserCanReturnToApartmentDetailScreenByClickOnTheCloseIconOnImages() throws InterruptedException {
 		apartmentDetailPage.clickViewGallery();
 		Thread.sleep(5000);
-		apartmentDetailPage.clickOnImageElement();
-		Thread.sleep(3000);
+		apartmentDetailPage.shareCloseIconAndTitle.isDisplayed();
 		driver.findElementByXPath("//*[@resource-id = 'iconIcon']").click();
 
 		Assert.assertTrue(apartmentDetailPage.viewGalleryButtonIsDisplayed(), "Doesn't return back to detail page after clicking on close icon");
