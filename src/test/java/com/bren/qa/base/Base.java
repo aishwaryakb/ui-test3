@@ -37,7 +37,7 @@ public class Base {
 		ExtentReport.teardownReports();	
 	}
 	@AfterMethod(alwaysRun=true)
-   	 public void tearDown() {
+   	 public void tearDown()throws InterruptedException {
 	    driver.close();
             driver.quit();
 	    Thread.sleep(8000);
