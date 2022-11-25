@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -28,9 +29,11 @@ public class Base {
     public static AndroidDriver<AndroidElement> driver;
     public static Properties prop;
     public static SoftAssert softAssert;
+    public static List<Integer> portsList;
     @BeforeSuite
     public void setupSuite() {
         ExtentReport.initReport();
+        portsList = UrlUtil.getPortsList();
     }
     @AfterSuite
     public void tearDownSuite() {
@@ -64,7 +67,8 @@ public class Base {
         cap.setCapability("appActivity","com.brencorp.play.mybren.MainActivity");
         cap.setCapability(MobileCapabilityType.AUTOMATION_NAME, "uiautomator2");
         cap.setCapability("newCommandTimeout", 1000);
-//         cap.setCapability("systemPort", UrlUtil.getPort());
+        cap.setCapability("systemPort", UrlUtil.getAPort(portsList));
+        System.out.println("****************"+portsList.size());
         driver = new AndroidDriver<AndroidElement>(new URL(prop.getProperty("url")),cap);
         driver.manage().timeouts().implicitlyWait(TestUtil.IMPLICIT_WAIT, TimeUnit.SECONDS);
     }
