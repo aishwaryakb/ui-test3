@@ -8,28 +8,112 @@
 	<test name="test1">
 		<classes>
 			<class name="com.bren.qa.testcases.OwnerProfilePageTest" />
-<!-- 			<class name="com.bren.qa.testcases.ViewADocumentPageTest" />
-			<class name="com.bren.qa.testcases.GuestsApartmentDetailsPageTest" />
-			<class name="com.bren.qa.testcases.LoginPageTest" />
-			<class name="com.bren.qa.testcases.OtpVerificationPageTest" />
-			<class name="com.bren.qa.testcases.EmailLoginPageTest" />
-			<class name="com.bren.qa.testcases.MultipleApartmentAccountTest" />
-			<class name="com.bren.qa.testcases.GuestProfilePageTest" />
-			<class name="com.bren.qa.testcases.CreateTicketPageTest" />
-			<class name="com.bren.qa.testcases.ApartmentsListPageTest" />
-			<class name="com.bren.qa.testcases.GuestApartmentsListPageTest" />
-			<class name="com.bren.qa.testcases.GuestGetInTouchFormTest" />
-			<class name="com.bren.qa.testcases.GuestHomePageTest" />
-			<class name="com.bren.qa.testcases.InteriorDesignDetailPageTest" />
-			<class name="com.bren.qa.testcases.InteriorDesignPackagesListPageTest" />
-			<class name="com.bren.qa.testcases.MyApartmentDocumentsPageTest" />
-			<class name="com.bren.qa.testcases.MyApartmentFloorPlansPageTest" />
-			<class name="com.bren.qa.testcases.ReferAndEarnFormPageTest" />
-			<class name="com.bren.qa.testcases.RewardsPageTest" />
-			<class name="com.bren.qa.testcases.SingleApartmentAccountTest" />
-			<class name="com.bren.qa.testcases.LaunchPageTest" />
-			<class name="com.bren.qa.testcases.ApartmentDetailPageTest" /> -->
 		</classes>
 	</test> 
+	<test name="test2">
+		<classes>
+			<class name="com.bren.qa.testcases.ViewADocumentPageTest" />
+		</classes>
+	</test>
+	<test name="test3">
+		<classes>
+			<class name="com.bren.qa.testcases.GuestsApartmentDetailsPageTest" />
+		</classes>
+	</test> 
+	<test name="test4">
+		<classes>
+			<class name="com.bren.qa.testcases.LoginPageTest" />
+		</classes>
+	</test> 
+	<test name="test5">
+		<classes>
+			<class name="com.bren.qa.testcases.OtpVerificationPageTest" />
+		</classes>
+	</test> 
+	<test name="test6">
+		<classes>
+			<class name="com.bren.qa.testcases.EmailLoginPageTest" />
+		</classes>
+	</test> 
+	<test name="test7">
+		<classes>
+			<class name="com.bren.qa.testcases.MultipleApartmentAccountTest" />
+		</classes>
+	</test> 
+	<test name="test8">
+		<classes>
+			<class name="com.bren.qa.testcases.GuestProfilePageTest" />
+		</classes>
+	</test>
+	<test name="test9">
+		<classes>
+			<class name="com.bren.qa.testcases.CreateTicketPageTest" />
+		</classes>
+	</test> 
+ 	<test name="test10">
+		<classes>
+			<class name="com.bren.qa.testcases.ApartmentsListPageTest" />
+		</classes>
+	</test> 
+	<test name="test11">
+		<classes>
+			<class name="com.bren.qa.testcases.GuestApartmentsListPageTest" />
+		</classes>
+	</test> 
+	<test name="test12">
+		<classes>
+			<class name="com.bren.qa.testcases.GuestGetInTouchFormTest" />
+		</classes>
+	</test>  
+	<test name="test13">
+		<classes>
+			<class name="com.bren.qa.testcases.GuestHomePageTest" />
+		</classes>
+	</test> 
+	<test name="test14">
+		<classes>
+			<class name="com.bren.qa.testcases.InteriorDesignDetailPageTest" />
+		</classes>
+	</test> 
+	<test name="test15">
+		<classes>
+			<class name="com.bren.qa.testcases.InteriorDesignPackagesListPageTest" />
+		</classes>
+	</test> 
+	<test name="test16">
+		<classes>
+			<class name="com.bren.qa.testcases.MyApartmentDocumentsPageTest" />
+		</classes>
+	</test> 
+	<test name="test17">
+		<classes>
+			<class name="com.bren.qa.testcases.MyApartmentFloorPlansPageTest" />
+		</classes>
+	</test> 
+	<test name="test18">
+		<classes>
+			<class name="com.bren.qa.testcases.ReferAndEarnFormPageTest" />
+		</classes>
+	</test> 
+	<test name="test19">
+		<classes>
+			<class name="com.bren.qa.testcases.RewardsPageTest" />
+		</classes>
+	</test> 
+	<test name="test20">
+		<classes>
+			<class name="com.bren.qa.testcases.SingleApartmentAccountTest" />
+		</classes>
+	</test> 
+	<test name="test21">
+		<classes>
+			<class name="com.bren.qa.testcases.LaunchPageTest" />
+		</classes>
+	</test> 
+	<test name="test22">
+		<classes>
+			<class name="com.bren.qa.testcases.ApartmentDetailPageTest" />
+		</classes>
+	</test>
 
 </suite> 
