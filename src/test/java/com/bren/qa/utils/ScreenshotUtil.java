@@ -4,7 +4,7 @@ import org.openqa.selenium.TakesScreenshot;
 import com.bren.qa.base.Base;
 
 public final class ScreenshotUtil {
-	public static String getBase64Image() {
+	public static FILE getBase64Image() {
 		return ((TakesScreenshot)Base.driver).getScreenshotAs(OutputType.FILE);
 	}
 }
