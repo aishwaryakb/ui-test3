@@ -3,6 +3,10 @@ package com.bren.qa.testcases;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.util.concurrent.TimeUnit;
+import java.io.File;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.OutputType;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.InvalidElementStateException;
@@ -146,9 +150,11 @@ public class OwnerProfilePageTest extends Base {
 	}
 	
 	@Test(enabled=true)
-	public void verifyThatUserCanUpdateProfilePictureFromTheProfileScreen() throws InterruptedException {
+	public void verifyThatUserCanUpdateProfilePictureFromTheProfileScreen() throws InterruptedException, IOException {
 		String expectedToastMessage = "Customer's Profile Photo updated successfully";
 		Thread.sleep(4000);
+		File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(file, new File("screen.jpg"));
 		WebElement parrentScrollView = driver.findElementByClassName("android.widget.ScrollView");
 		parrentScrollView.findElement(By.xpath("//*[@resource-id = 'RNE__Image']")).click();
 		driver.findElementByXPath("//*[@text = 'Camera']").click();
