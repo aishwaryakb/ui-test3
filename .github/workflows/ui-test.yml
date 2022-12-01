@@ -51,7 +51,7 @@ jobs:
         with:
           api-level: ${{ matrix.api-level }}
           force-avd-creation: false
-          emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim
+          emulator-options: -no-snapshot-save -gpu swiftshader_indirect -noaudio -no-boot-anim
 #           emulator-options: -no-snapshot-save -gpu host -noaudio -no-boot-anim
           disable-animations: true
           target: ${{ matrix.target }}
