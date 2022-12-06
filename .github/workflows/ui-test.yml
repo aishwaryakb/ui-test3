@@ -35,17 +35,17 @@ jobs:
             ~/.android/adb*
           key: avd-${{ matrix.api-level }} 
       
-      - name: create AVD and generate snapshot for caching
-        if: steps.avd-cache.outputs.cache-hit != 'true'
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: ${{ matrix.api-level }}
-          force-avd-creation: true
-          avd-name: pixel-test
-          emulator-options: -no-snapshot-save -gpu swiftshader_indirect -noaudio -no-boot-anim  
-#           emulator-options: -no-snapshot-save -gpu host -noaudio -no-boot-anim 
-          disable-animations: false
-          script: emulator -list-avds
+#       - name: create AVD and generate snapshot for caching
+#         if: steps.avd-cache.outputs.cache-hit != 'true'
+#         uses: reactivecircus/android-emulator-runner@v2
+#         with:
+#           api-level: ${{ matrix.api-level }}
+#           force-avd-creation: true
+#           avd-name: pixel-test
+#           emulator-options: -no-snapshot-save -gpu swiftshader_indirect -noaudio -no-boot-anim  
+# #           emulator-options: -no-snapshot-save -gpu host -noaudio -no-boot-anim 
+#           disable-animations: false
+#           script: emulator -list-avds
       - name: Run Appium Tests
         uses: reactivecircus/android-emulator-runner@v2 # install and create the Emulator
         with:
