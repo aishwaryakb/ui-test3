@@ -58,7 +58,9 @@ jobs:
           arch: x86_64
           avd-name: test
           profile: Nexus 6
-          script: mvn clean test -Dsurefire.suiteXmlFiles=testng.xml # running our test to check the results
+          script: |
+                  emulator -list-avds
+                  mvn clean test -Dsurefire.suiteXmlFiles=testng.xml # running our test to check the results
       - name: Use the Upload Artifact GitHub Action
         uses: actions/upload-artifact@v2
         with: 
