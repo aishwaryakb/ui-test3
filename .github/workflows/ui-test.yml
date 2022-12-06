@@ -62,7 +62,7 @@ jobs:
                   emulator -list-avds
                   pwd
                   cd /
-                  cd ~/.android/avd/
+                  cd /Users/runner/Library/Android/sdk
                   emulator -avd test -wipe-data
                   mvn clean test -Dsurefire.suiteXmlFiles=testng.xml # running our test to check the results
       - name: Use the Upload Artifact GitHub Action
