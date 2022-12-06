@@ -42,7 +42,7 @@ jobs:
           api-level: ${{ matrix.api-level }}
           force-avd-creation: true
           avd-name: pixel-test
-          emulator-options: -no-snapshot-save -gpu auto -noaudio -no-boot-anim  
+          emulator-options: -no-snapshot-save -gpu swiftshader_indirect -noaudio -no-boot-anim  
 #           emulator-options: -no-snapshot-save -gpu host -noaudio -no-boot-anim 
           disable-animations: false
           script: echo "avd created"
@@ -51,7 +51,7 @@ jobs:
         with:
           api-level: ${{ matrix.api-level }}
           force-avd-creation: true
-          emulator-options: -no-snapshot-save -gpu auto -noaudio -no-boot-anim 
+          emulator-options: -no-snapshot-save -gpu swiftshader_indirect -noaudio -no-boot-anim 
 #           emulator-options: -no-snapshot-save -gpu swiftshader_indirect -noaudio -no-accel -no-boot-anim
           disable-animations: true
           target: ${{ matrix.target }}
