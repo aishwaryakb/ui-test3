@@ -61,7 +61,8 @@ jobs:
           script: |
                   emulator -list-avds
                   pwd
-                  cd /
+                  cd ~
+                  pwd
                   cd /Users/runner/Library/Android/sdk
                   pwd
                   emulator -avd test -wipe-data
