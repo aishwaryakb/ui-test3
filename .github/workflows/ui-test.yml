@@ -45,7 +45,7 @@ jobs:
           emulator-options: -no-snapshot-save -gpu auto -noaudio -no-boot-anim  
 #           emulator-options: -no-snapshot-save -gpu host -noaudio -no-boot-anim 
           disable-animations: false
-          script: emulator -list-avds
+#           script: emulator -list-avds
       - name: Run Appium Tests
         uses: reactivecircus/android-emulator-runner@v2 # install and create the Emulator
         with:
