@@ -61,10 +61,8 @@ jobs:
           script: |
                   emulator -list-avds
                   pwd
-                  cd ..
-                  cd ..
-                  cd ..
-                  cd ..
+                  cd -
+                  cd -
                   ls -l
                   pwd
                   ls -l
