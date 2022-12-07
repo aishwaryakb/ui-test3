@@ -51,8 +51,8 @@ jobs:
         with:
           api-level: ${{ matrix.api-level }}
           force-avd-creation: true
-          #emulator-options: -no-snapshot-save -gpu swiftshader_indirect -noaudio -no-boot-anim 
-          emulator-options: -no-snapshot-save -gpu swiftshader_indirect -noaudio -no-accel -no-boot-anim
+          emulator-options: -no-snapshot-save -gpu swiftshader_indirect -noaudio -no-boot-anim 
+          #emulator-options: -no-snapshot-save -gpu swiftshader_indirect -noaudio -no-accel -no-boot-anim
           disable-animations: true
           target: ${{ matrix.target }}
           arch: x86_64
@@ -60,6 +60,7 @@ jobs:
           profile: Nexus 6
           script: |
                   emulator -list-avds
+                  #emulator -avd Nexus_6_API_29
                   #rm ~/.android/avd/test.avd/*.lock && ls -l
                   #cd / && ls -l && cd /Users/runner/Library/Android/sdk/emulator && ls -l && emulator -avd test -wipe-data
                   mvn clean test -Dsurefire.suiteXmlFiles=testng.xml # running our test to check the results
