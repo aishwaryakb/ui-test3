@@ -67,6 +67,6 @@ jobs:
         uses: actions/upload-artifact@v2
         with: 
           name: Report-download
-          path: screen.jpg
+          path: index.html
         if: always()
 
