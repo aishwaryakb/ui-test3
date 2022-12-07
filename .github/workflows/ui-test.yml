@@ -59,7 +59,7 @@ jobs:
           avd-name: test
           profile: Nexus 6
           script: |
-                  emulator -avd test
+                  cd / && ls -l && cd /Users/runner/Library/Android/sdk/emulator && ls -l &&  emulator -avd test
                   emulator -list-avds
                   #rm ~/.android/avd/test.avd/*.lock && ls -l
                   #cd / && ls -l && cd /Users/runner/Library/Android/sdk/emulator && ls -l && emulator -avd test -wipe-data
