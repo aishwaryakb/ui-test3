@@ -60,7 +60,7 @@ jobs:
           profile: Nexus 6
           script: |
                   emulator -list-avds
-                  cd ~/.android/avd/test.avd/ && ls -l
+                  rm ~/.android/avd/test.avd/*.lock && ls -l
                   cd / && ls -l && cd /Users/runner/Library/Android/sdk/emulator && ls -l && emulator -avd test -wipe-data
                   
                   mvn clean test -Dsurefire.suiteXmlFiles=testng.xml # running our test to check the results
