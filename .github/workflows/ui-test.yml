@@ -60,8 +60,8 @@ jobs:
           profile: Nexus 6
           script: |
                   emulator -list-avds
-                  #rm ~/.android/avd/test.avd/*.lock && ls -l
-                  #cd / && ls -l && cd /Users/runner/Library/Android/sdk/emulator && ls -l && emulator -avd test -wipe-data
+                  rm ~/.android/avd/test.avd/*.lock && ls -l
+                  cd / && ls -l && cd /Users/runner/Library/Android/sdk/emulator && ls -l && emulator -avd test -wipe-data
                   mvn clean test -Dsurefire.suiteXmlFiles=testng.xml # running our test to check the results
       - name: Use the Upload Artifact GitHub Action
         uses: actions/upload-artifact@v2
