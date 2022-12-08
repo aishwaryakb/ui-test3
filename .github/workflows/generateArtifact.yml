@@ -1,0 +1,68 @@
+name: UI Test
+on: 
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: macos-latest # the machine type
+    strategy: # we are using strategy if we need to run on parallel with different devices and version
+      matrix:
+        api-level: [29] #Google api level for example [25,23,28]
+        target: [default]
+    steps:
+      - uses: actions/checkout@v3 #checkout the code
+      - name: Set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: '11'
+      - name: Install and Run Appium Server
+        run: |
+          chmod +x ./scripts/RunAppiumServer.sh # install and run appium server in the background
+          ./scripts/RunAppiumServer.sh
+          
+      - name: Cache Maven packages
+        uses: actions/cache@v3
+        with:
+         path: ~/.m2
+         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+         restore-keys: ${{ runner.os }}-m2
+
+      - name: AVD cache
+        uses: actions/cache@v3
+        id: avd-cache
+        with:
+          path: |
+            ~/.android/avd/*
+            ~/.android/adb*
+          key: avd-${{ matrix.api-level }} 
+      
+      - name: create AVD and generate snapshot for caching
+        if: steps.avd-cache.outputs.cache-hit != 'true'
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: ${{ matrix.api-level }}
+          force-avd-creation: false
+          avd-name: pixel-test
+          emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim 
+#           emulator-options: -no-snapshot-save -gpu host -noaudio -no-boot-anim 
+          disable-animations: false
+          script: echo "Generated AVD snapshot for caching."
+      - name: Run Appium Tests
+        uses: reactivecircus/android-emulator-runner@v2 # install and create the Emulator
+        with:
+          api-level: ${{ matrix.api-level }}
+          force-avd-creation: false
+          emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim
+#           emulator-options: -no-snapshot-save -gpu host -noaudio -no-boot-anim
+          disable-animations: true
+          target: ${{ matrix.target }}
+          arch: x86_64
+          avd-name: test
+          profile: Nexus 6
+          script: mvn clean test -Dsurefire.suiteXmlFiles=testng.xml # running our test to check the results
+      - name: Use the Upload Artifact GitHub Action
+        uses: actions/upload-artifact@v2
+        with: 
+          name: Report-download
+          path: index.html
+        if: always()
+
