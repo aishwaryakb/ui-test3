@@ -1,6 +1,9 @@
-name: UI Test
+name: Download Arti
 on: 
-  workflow_dispatch:
+  workflow_run:
+    workflows: [UI Test]
+    types:
+      - completed
 jobs:
   build:
     runs-on: macos-latest # the machine type
@@ -57,8 +60,32 @@ jobs:
           target: ${{ matrix.target }}
           arch: x86_64
           avd-name: test
-          profile: Nexus 6
+          profile: Nexus 6  
           script: mvn clean test -Dsurefire.suiteXmlFiles=testng.xml # running our test to check the results
+          
+      - name: 'Download artifact'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            let allArtifacts = await github.rest.actions.listWorkflowRunArtifacts({
+               owner: context.repo.owner,
+               repo: context.repo.repo,
+               run_id: context.payload.workflow_run.id,
+            });
+            let matchArtifact = allArtifacts.data.artifacts.filter((artifact) => {
+              return artifact.name == "pr_number"
+            })[0];
+            let download = await github.rest.actions.downloadArtifact({
+               owner: context.repo.owner,
+               repo: context.repo.repo,
+               artifact_id: matchArtifact.id,
+               archive_format: 'zip',
+            });
+            let fs = require('fs');
+            fs.writeFileSync(`${process.env.GITHUB_WORKSPACE}/pr_number.zip`, Buffer.from(download.data));
+
+      - name: 'Unzip artifact'
+        run: unzip pr_number.zip
       - name: Use the Upload Artifact GitHub Action
         uses: actions/upload-artifact@v2
         with: 
