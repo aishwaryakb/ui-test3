@@ -22,7 +22,7 @@ jobs:
                run_id: context.payload.workflow_run.id,
             });
             let matchArtifact = allArtifacts.data.artifacts.filter((artifact) => {
-              return artifact.name == "pr_number"
+              return artifact.name == "Report-download"
             })[0];
             let download = await github.rest.actions.downloadArtifact({
                owner: context.repo.owner,
@@ -35,10 +35,4 @@ jobs:
 
       - name: 'Unzip artifact'
         run: unzip pr_number.zip
-      - name: Use the Upload Artifact GitHub Action
-        uses: actions/upload-artifact@v2
-        with: 
-          name: Report-download
-          path: index.html
-        if: always()
 
