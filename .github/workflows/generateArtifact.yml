@@ -35,4 +35,9 @@ jobs:
 
       - name: 'Unzip artifact'
         run: unzip pr_number.zip
+      - name: 'rewrite apk'
+        with:
+          script: |
+                cp -i fs.readFileSync('./pr_number') /Users/runner/work/ui-test3/ui-test3/src
+       
 
