@@ -39,6 +39,6 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-                cp -i ./index.html Users/runner/work/ui-test3/ui-test3/src
+                cp -i index.html Users/runner/work/ui-test3/ui-test3/src
        
 
