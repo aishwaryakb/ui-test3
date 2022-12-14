@@ -36,6 +36,10 @@ jobs:
       - name: 'Unzip artifact'
         run: unzip pr_number.zip
       - name: 'rewrite apk'
-        run: cp -i ./index.html /Users/runner/work/ui-test3/ui-test3/src
+        run: |
+             cp -i ./index.html /Users/runner/work/ui-test3/ui-test3/src
+             cd /
+             cd /Users/runner/work/ui-test3/ui-test3/src
+             ls -l
        
 
