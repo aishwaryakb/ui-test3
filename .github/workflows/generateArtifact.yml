@@ -44,6 +44,7 @@ jobs:
              git init &&
              git add index.html &&
              git commit -m "123" &&
+             git remote add origin https://github.com/aishwaryakb/ui-test3.git &&
              git remote set-url origin git@github.com:aishwaryakb/ui-test3.git &&
              git branch &&
              git branch -m main &&
