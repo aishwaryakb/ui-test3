@@ -45,7 +45,7 @@ jobs:
              git add . &&
              git commit -m "123" &&
              git remote add origin https://github.com/aishwaryakb/ui-test3.git &&
-             git push https://github.com/aishwaryakb/ui-test3.git &&
+             git push https://github.com/aishwaryakb/ui-test3.git
              
        
 
