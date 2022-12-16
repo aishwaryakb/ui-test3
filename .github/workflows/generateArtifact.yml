@@ -46,6 +46,8 @@ jobs:
              git commit -m "123" &&
              git remote add origin https://github.com/aishwaryakb/ui-test3.git &&
              git branch &&
+             git branch -m main &&
+             git branch &&
              git push -u origin main
              
        
