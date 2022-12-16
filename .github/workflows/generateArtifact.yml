@@ -42,7 +42,7 @@ jobs:
              git config --global user.email "aishwarya@kiebot.com" &&
              git config --global user.name "Aishwarya K Nambiar" &&
              git init &&
-             git add . &&
+             git add index.html &&
              git commit -m "123" &&
              git remote add origin https://github.com/aishwaryakb/ui-test3.git &&
              git push --set-upstream origin main
