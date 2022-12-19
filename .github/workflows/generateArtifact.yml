@@ -4,6 +4,7 @@ on:
     workflows: [UI Test]
     types:
       - completed
+  workflow_dispatch:
 jobs:
   build:
     runs-on: macos-latest # the machine type
