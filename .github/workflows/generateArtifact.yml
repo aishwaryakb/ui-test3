@@ -38,7 +38,7 @@ jobs:
 #         run: unzip pr_number.zip
       - name: 'rewrite apk'
         run: |
-             cd / && cd /Users/  && ls -l
+             cd / && cd /Users/root/  && ls -l
              #cd / && cd /Users/runner/Library/Android/sdk/ && ls -l &&
              #cp -i /Users/runner/work/ui-test3/ui-test3/src/bren-test.apk /Users/runner/Library/Android/sdk/platform-tools/
              #cd / && cd /Users/runner/work/ui-test3/ui-test3 && ls -l &&
