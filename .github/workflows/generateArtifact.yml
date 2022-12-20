@@ -38,9 +38,9 @@ jobs:
 #         run: unzip pr_number.zip
       - name: 'rewrite apk'
         run: |
-             cd / && cd /Users/runner/work/ui-test3/ui-test3/platform-tools  && ls -l &&
-             cd / && cd /Users/runner/Library/Android/sdk/ && ls -l &&
-             cp -i /Users/runner/work/ui-test3/ui-test3/src/bren-test.apk /Users/runner/Library/Android/sdk/platform-tools/
+             cd / && cd /Users/runner/Library/Android/sdk/platform-tools/  && ls -l &&
+             #cd / && cd /Users/runner/Library/Android/sdk/ && ls -l &&
+             #cp -i /Users/runner/work/ui-test3/ui-test3/src/bren-test.apk /Users/runner/Library/Android/sdk/platform-tools/
              #cd / && cd /Users/runner/work/ui-test3/ui-test3 && ls -l &&
              #git config --global user.email "aishwarya@kiebot.com" &&
              #git config --global user.name "Aishwarya K Nambiar" &&
