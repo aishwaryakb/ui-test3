@@ -61,14 +61,13 @@ public class Base {
         DesiredCapabilities cap = new DesiredCapabilities();
         cap.setCapability(MobileCapabilityType.DEVICE_NAME, "Nexus 6");
         File appdir = new File("src");
-        File app = new File(appdir, "bren-test.apk");
-        cap.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
+//         File app = new File(appdir, "bren-test.apk");
+//         cap.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
         cap.setCapability("appPackage","com.brencorp.play.mybren");
         cap.setCapability("appActivity","com.brencorp.play.mybren.MainActivity");
         cap.setCapability(MobileCapabilityType.AUTOMATION_NAME, "uiautomator2");
         cap.setCapability("newCommandTimeout", 1000);
         cap.setCapability("systemPort", UrlUtil.getAPort(portsList));
-        System.out.println("****************"+portsList.size());
         driver = new AndroidDriver<AndroidElement>(new URL(prop.getProperty("url")),cap);
         driver.manage().timeouts().implicitlyWait(TestUtil.IMPLICIT_WAIT, TimeUnit.SECONDS);
     }
