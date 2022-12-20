@@ -48,7 +48,8 @@ jobs:
           script: emulator -list-avds
       - name: install apk
         run: |
-              cd / && cd /Users/runner/work/ui-test3/ui-test3 && git clone https://github.com/aishwaryakb/ui-test3.git && 
+              cd / && cd /Users/runner/work/ui-test3/ui-test3 && 
+              git clone https://github.com/aishwaryakb/ui-test3.git && 
               cd / && cd /Users/runner/work/ui-test3/ui-test3/ui-test3 && ls -l &&
               cd / && cd Users/runner/Library/Android/sdk/platform-tools/ && ls -l &&
               cp -i /Users/runner/work/ui-test3/ui-test3/ui-test3/src/bren-test.apk /Users/runner/Library/Android/sdk/platform-tools/ &&
