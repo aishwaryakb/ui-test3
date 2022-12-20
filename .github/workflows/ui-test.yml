@@ -52,7 +52,7 @@ jobs:
               cd / && cd /Users/runner/work/ui-test3/ui-test3/ui-test3 && ls -l &&
               cd / && cd Users/runner/Library/Android/sdk/platform-tools/ && ls -l &&
               cp -i /Users/runner/work/ui-test3/ui-test3/ui-test3/src/bren-test.apk /Users/runner/Library/Android/sdk/platform-tools/ &&
-              adb install bren-test.apk 
+              
       - name: Run Appium Tests
         uses: reactivecircus/android-emulator-runner@v2 # install and create the Emulator
         with:
@@ -66,6 +66,7 @@ jobs:
           avd-name: test
           profile: Nexus 6
           script: |
+                adb install bren-test.apk 
                 mvn clean test -Dsurefire.suiteXmlFiles=testng.xml # running our test to check the results
       - name: Use the Upload Artifact GitHub Action
         uses: actions/upload-artifact@v2
