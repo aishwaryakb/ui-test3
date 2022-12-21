@@ -36,8 +36,8 @@ jobs:
 
       - name: 'Unzip artifact'
         run: |
-               cd / && cd /Users/runner/work/ui-test3/ui-test3 &&
-               unzip pr_number.zip
+               unzip pr_number.zip &&
+               pwd
                
       - name: 'rewrite apk'
         run: |
