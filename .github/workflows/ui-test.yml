@@ -66,7 +66,9 @@ jobs:
                 git clone https://github.com/aishwaryakb/ui-test3.git
                 cp -i /Users/runner/work/ui-test3/ui-test3/ui-test3/src/bren-test.apk /Users/runner/Library/Android/sdk/platform-tools/bren-test.apk
                 cd / && cd Users/runner/Library/Android/sdk/platform-tools/ && ls -l && adb install bren-test.apk 
-                mvn clean test -Dsurefire.suiteXmlFiles=testng.xml # running our test to check the results
+                #mvn clean test -Dsurefire.suiteXmlFiles=testng.xml # running our test to check the results
+      - name: mvn-clean-test
+        run: mvn clean test -Dsurefire.suiteXmlFiles=testng.xml
       - name: Use the Upload Artifact GitHub Action
         uses: actions/upload-artifact@v2
         with: 
